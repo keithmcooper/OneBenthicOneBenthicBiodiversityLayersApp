@@ -1,0 +1,2136 @@
+---
+title: "OneBenthic Layers"
+author: ''
+output:
+  flexdashboard::flex_dashboard:
+    theme: cerulean
+    #social: menu
+    #source_code: embed
+runtime: shiny
+resource_files:
+- config.yml
+---
+
+```{r setup, include = FALSE}
+library(flexdashboard)
+library(shiny)
+library(jsonlite)
+library(maptools)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(purrr)
+library(leaflet)
+library(DT)
+library(mapview)
+library(leaflet)
+library(leafem)
+library(leaflet.extras)
+library(htmltools)
+library(mapview)
+library(plotly)
+library(pool)
+library(sf)
+library (RPostgres)
+library(DBI)
+library(geojsonio)
+library(RPostgreSQL)
+library(raster)
+library(pals)
+library(RColorBrewer)
+library(knitr)
+library(rmarkdown)
+require(ggplot2)
+require(data.table)
+require(raster)
+require(ggcorrplot)
+require(ggdendro)
+require(ggpubr)
+require(ggpmisc)
+require(grid)
+require(gridExtra)
+require(tibble)
+require(kableExtra)
+library(patchwork)
+library(ggpubr)
+
+#options(show.error.messages = FALSE)
+#__________________________________________________________________________________________
+## Colour palette
+cpl <- c('#d4ebe7','#cbbcbb','#f5f1f1','#172957','#66afad')
+names(cpl) <- c('lt','dbe','lbe','dbl','dt')
+#__________________________________________________________________________________________
+#### CREATE A CONNECTION TO OneBenthic LIVE ####
+Sys.setenv(R_CONFIG_ACTIVE = "one_benthic")
+
+dw <- config::get()
+
+pool <- dbPool(drv = dbDriver(dw$driver),
+               dbname = dw$database,
+               host = dw$server,
+               port =  dw$port,
+               user = dw$uid,
+               password = dw$pwd)
+#__________________________________________________________________________________________
+#### GET STATION DATA ####
+sites <- dbGetQuery(pool,                   
+                  "SELECT
+samplecode,
+samplelat,
+samplelong
+
+FROM
+samples.sample;")
+#__________________________________________________________________________________________
+#### LOAD RASTERS LAYERS ####
+
+## Set working directory
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+
+## ASSEMBLAGES
+#r <- raster('www/Assemblages.tif')
+#r.agg <- aggregate(r, fact=5,fun = modal)
+#writeRaster(r.agg,'DATA/StructureClusterSmall.tif',overwrite=TRUE,format = "GTiff")
+## Convert to categorical
+#Assemblages = ratify(r)
+#########################
+## Assemblages
+#Assemblages <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/AssemblageMaxClass.tif')
+#Assemblages.agg <- aggregate(Assemblages, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Assemblages.agg,'www/Assemblages.tif',overwrite=TRUE,format = "GTiff")
+r <- raster('www/Assemblages.tif')
+Assemblages = ratify(r)
+
+######################
+## RICHNESS
+#s.agg <- raster("C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/S.tif")
+#Richness <- raster('www/Richness.tif')
+#s.agg <- aggregate(s, fact=5,fun = modal)
+#writeRaster(s.agg,'DATA/s.aggSmall.tif',overwrite=TRUE,format = "GTiff")
+
+## ABUNDANCE
+#n <- raster("C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/N2.tif")
+#Abundance <- raster('www/Abundance.tif')
+#n.agg <- aggregate(n, fact=5,fun = modal)
+#writeRaster(n.agg,'DATA/Abundance.tif',overwrite=TRUE,format = "GTiff")
+
+## EVENNESS
+# <- raster("C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/J.tif")
+#Evenness <- raster('www/Evenness.tif')
+#j.agg <- aggregate(j, fact=5,fun = modal)
+#writeRaster(j.agg,'DATA/j.Small.tif',overwrite=TRUE,format = "GTiff")
+
+## BIODIVERSITY CLUSTERS
+#biodiv <-  raster('C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/Biodiversity.tif')
+#Biodiversity_Cluster <-raster('www/Biodiversity_Cluster.tif')
+#biodiv.agg <- aggregate(biodiv, fact=5,fun = modal)
+#writeRaster(biodiv.agg,'DATA/BiodivSmall.tif',overwrite=TRUE,format = "GTiff")
+
+## RESPONSE TRAITS
+#Response<- raster('C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/ResponseTraitsCluster.tif') # RESPONSE TRAITS OR
+#Response.agg <- aggregate(Response, fact=5,fun = modal)
+#writeRaster(Response.agg,'DATA/Response.tif',overwrite=TRUE,format = "GTiff")
+#Response <- raster('www/Response.tif')
+
+## EFFECTS TRAITS
+#Effects<- raster('C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/EffectsTraitsCluster.tif') # EFFECTS TRAITS
+#Effects.agg <- aggregate(Effects, fact=5,fun = modal)
+#writeRaster(Effects.agg,'DATA/Effects.tif',overwrite=TRUE,format = "GTiff")
+#Effects <- raster('www/Effects.tif')
+
+## Sabellaria_spinulosa
+#Sabellaria_spinulosa <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Sabellaria_spinulosa_Mean_SQ.tif')
+#Sabellaria_spinulosa.agg <- aggregate(Sabellaria_spinulosa, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Sabellaria_spinulosa.agg,'Sabellaria_spinulosa.tif',overwrite=TRUE,format = "GTiff")
+Sabellaria_spinulosa <- raster('www/Sabellaria_spinulosa.tif')
+
+## Arctica_islandica
+#Arctica_islandica <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Arctica_islandica_Mean_SQ.tif')
+#Arctica_islandica.agg <- aggregate(Arctica_islandica, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Arctica_islandica.agg,'www/Arctica_islandica.tif',overwrite=TRUE,format = "GTiff")
+Arctica_islandica <- raster('www/Arctica_islandica.tif')
+
+## Ampelisca_spinipes
+#Ampelisca_spinipes <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Ampelisca_spinipes_Mean_SQ.tif')
+#Ampelisca_spinipes.agg <- aggregate(Ampelisca_spinipes, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Ampelisca_spinipes.agg,'www/Ampelisca_spinipes.tif',overwrite=TRUE,format = "GTiff")
+Ampelisca_spinipes <- raster('www/Ampelisca_spinipes.tif')
+
+## Abra_alba
+#Abra_alba <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Abra_alba_Mean_SQ.tif')
+#Abra_alba.agg <- aggregate(Abra_alba, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Abra_alba.agg,'www/Abra_alba.tif',overwrite=TRUE,format = "GTiff")
+Abra_alba <- raster('www/Abra_alba.tif')
+
+## Lagis_koreni
+#Lagis_koreni <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Lagis_koreni_Mean_SQ.tif')
+#Lagis_koreni.agg <- aggregate(Lagis_koreni, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Lagis_koreni.agg,'www/Lagis_koreni.tif',overwrite=TRUE,format = "GTiff")
+Lagis_koreni <- raster('www/Lagis_koreni.tif')
+
+## Goniadella_gracilis
+#Goniadella_gracilis <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Goniadella_gracilis_Mean_SQ.tif')
+#Goniadella_gracilis.agg <- aggregate(Goniadella_gracilis, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Goniadella_gracilis.agg,'www/Goniadella_gracilis.tif',overwrite=TRUE,format = "GTiff")
+Goniadella_gracilis <- raster('www/Goniadella_gracilis.tif')
+
+## Crepidula_fornicata
+#Crepidula_fornicata <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Crepidula_fornicata_Mean_SQ.tif')
+#Crepidula_fornicata.agg <- aggregate(Crepidula_fornicata, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Crepidula_fornicata.agg,'www/Crepidula_fornicata.tif',overwrite=TRUE,format = "GTiff")
+Crepidula_fornicata <- raster('www/Crepidula_fornicata.tif')
+
+## Modiolus_modiolus
+#Modiolus_modiolus <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Modiolus_modiolus_Mean_SQ.tif')
+#Modiolus_modiolus.agg <- aggregate(Modiolus_modiolus, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Modiolus_modiolus.agg,'www/Modiolus_modiolus.tif',overwrite=TRUE,format = "GTiff")
+Modiolus_modiolus <- raster('www/Modiolus_modiolus.tif')
+#__________________________________________________________________________________________
+#### CONFIDENCE LAYERS ####
+
+## Sabellaria_spinulosa_cv
+#Sabellaria_spinulosa_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Sabellaria_spinulosa_CV_SQ.tif')
+#Sabellaria_spinulosa_cv.agg <- aggregate(Sabellaria_spinulosa_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Sabellaria_spinulosa_cv.agg,'www/Sabellaria_spinulosa_cv.tif',overwrite=TRUE,format = "GTiff")
+Sabellaria_spinulosa_cv <- raster('www/Sabellaria_spinulosa_cv.tif')
+
+## Modiolus_modiolus_cv
+#Modiolus_modiolus_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Modiolus_modiolus_CV_SQ.tif')
+#Modiolus_modiolus_cv.agg <- aggregate(Modiolus_modiolus_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Modiolus_modiolus_cv.agg,'www/Modiolus_modiolus_cv.tif',overwrite=TRUE,format = "GTiff")
+Modiolus_modiolus_cv <- raster('www/Modiolus_modiolus_cv.tif')
+
+## Lagis_koreni_cv
+#Lagis_koreni_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Lagis_koreni_CV_SQ.tif')
+#Lagis_koreni_cv.agg <- aggregate(Lagis_koreni_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Lagis_koreni_cv.agg,'www/Lagis_koreni_cv.tif',overwrite=TRUE,format = "GTiff")
+Lagis_koreni_cv <- raster('www/Lagis_koreni_cv.tif')
+
+## Goniadella_gracilis_cv
+#Goniadella_gracilis_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Goniadella_gracilis_CV_SQ.tif')
+#Goniadella_gracilis_cv.agg <- aggregate(Goniadella_gracilis_CV, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Goniadella_gracilis_cv.agg,'www/Goniadella_gracilis_cv.tif',overwrite=TRUE,format = "GTiff")
+Goniadella_gracilis_cv <- raster('www/Goniadella_gracilis_cv.tif')
+
+## Crepidula_fornicata_cv
+#Crepidula_fornicata_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Crepidula_fornicata_CV_SQ.tif')
+#Crepidula_fornicata_cv.agg <- aggregate(Crepidula_fornicata_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Crepidula_fornicata_cv.agg,'www/Crepidula_fornicata_cv.tif',overwrite=TRUE,format = "GTiff")
+Crepidula_fornicata_cv <- raster('www/Crepidula_fornicata_cv.tif')
+
+## Arctica_islandica_cv
+#Arctica_islandica_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Arctica_islandica_CV_SQ.tif')
+#Arctica_islandica_cv.agg <- aggregate(Arctica_islandica_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Arctica_islandica_cv.agg,'www/Arctica_islandica_cv.tif',overwrite=TRUE,format = "GTiff")
+Arctica_islandica_cv <- raster('www/Arctica_islandica_cv.tif')
+
+## Ampelisca_spinipes_cv
+#Ampelisca_spinipes_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Ampelisca_spinipes_CV_SQ.tif')
+#Ampelisca_spinipes_cv.agg <- aggregate(Ampelisca_spinipes_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Ampelisca_spinipes_cv.agg,'www/Ampelisca_spinipes_cv.tif',overwrite=TRUE,format = "GTiff")
+Ampelisca_spinipes_cv <- raster('www/Ampelisca_spinipes_cv.tif')
+
+## Abra_alba_cv
+#Abra_alba_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Abra_alba_CV_SQ.tif')
+#Abra_alba_cv.agg <- aggregate(Abra_alba_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Abra_alba_cv.agg,'www/Abra_alba_cv.tif',overwrite=TRUE,format = "GTiff")
+Abra_alba_cv <- raster('www/Abra_alba_cv.tif')
+
+## Assemblages_cv
+#Assemblages_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/AssemblageConfidence.tif')
+#Assemblages_cv.agg <- aggregate(Assemblages_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Assemblages_cv.agg,'www/Assemblages_cv.tif',overwrite=TRUE,format = "GTiff")
+Assemblages_cv <- raster('www/Assemblages_cv.tif')
+#__________________________________________________________________________________________
+#### CREATE RASTER STACK ####
+myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus) #,Richness,Biodiversity_Cluster,Abundance,Evenness,Response,Effects
+
+modis.rasters <- stack(myras) 
+#__________________________________________________________________________________________
+#### CREATE RASTER STACK (CONFIDENCE MAPS) ####
+myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv) 
+modis.rasters_cv <- stack(myras_cv) 
+
+## Update layer names
+names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages')
+#__________________________________________________________________________________________
+#### DATAFRAME FOR SELECTION BOXES ####
+cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM")#"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits",
+layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni")#"Richness","Abundance","Evenness","Biodiversity_Cluster","Response","Effects",
+
+data <- data.frame(cat, layer)
+#__________________________________________________________________________________________
+#### BRING IN ACTIVITY LAYERS ####
+
+## API
+#Source: EU level: https://www.emodnet-humanactivities.eu/view-data.php 
+euowf <- readLines("https://ows.emodnet-humanactivities.eu/wfs?SERVICE=WFS&VERSION=1.1.0&request=GetFeature&typeName=windfarmspoly&OUTPUTFORMAT=json") %>% paste(collapse = "\n") %>% geojson_sf()
+agg <- readLines("https://opendata.arcgis.com/datasets/d734d753d04649e2a7e1c64b820a5df9_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+owf <- readLines("https://opendata.arcgis.com/datasets/4da955de094e475d8d902ee446e38d58_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+owf_cab <- readLines("https://opendata.arcgis.com/datasets/ceb51568455e4a9ba85bfd7c2da36fdc_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+wave <- readLines("https://opendata.arcgis.com/datasets/d9f9dbc0e29b410c87ba544f6082a0d0_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+#wave_cab <- readLines("https://opendata.arcgis.com/datasets/bf376b05c6ae489b8b8687d6b7d6525d_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf() # layer depricated
+tidal <- readLines("https://opendata.arcgis.com/datasets/db94124b152641a992d4e8dfa14d59f2_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+tidal_cab <- readLines("https://opendata.arcgis.com/datasets/3e5203ce7daa4ae08690699925668f46_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+oga <- readLines("https://opendata.arcgis.com/datasets/3c950a2c8186438899f99ced733dd947_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+R4_chara <- readLines("https://opendata.arcgis.com/datasets/c0e61d8972e4438ab1c39304b7f28608_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+R4_bid <- readLines("https://opendata.arcgis.com/datasets/54dce8a263324a85b36523e31fff20cc_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+
+## SPATIAL DATA FROM ONEBENTHIC
+mcz <-  st_read(pool, query = "SELECT * FROM spatial.c20190905_offshorempas_wgs84 WHERE site_statu = 'MCZ - Secretary of State';")
+sac <-  st_read(pool, query = "SELECT * FROM spatial.c20190905_offshorempas_wgs84 WHERE site_statu = 'SAC'or site_statu = 'cSAC';")
+ncmpa <-  st_read(pool, query = "SELECT * FROM spatial.c20190905_offshorempas_wgs84 WHERE site_statu = 'NCMPA';")
+disp  <-  st_read(pool, query = "SELECT * FROM spatial.disposalSiteJan2020;")
+#agg <- st_read(pool, query = "SELECT * FROM ap_marine_aggregate.extraction_areas;")
+#oga <- st_read(pool, query = "SELECT * FROM spatial.oga_licences_wgs84;")
+#owf <- st_read(pool, query = "SELECT * FROM spatial.offshore_wind_site_agreements_england_wales__ni__the_crown_esta;")
+#owf_cab <- st_read(pool, query = "SELECT * FROM spatial.offshore_wind_cable_agreements_england_wales__ni_the_crown_esta;")
+#wave <- st_read(pool, query = "SELECT * FROM spatial.offshore_wave_site_agreements_england_wales__ni_the_crown_estat;")
+#wave_cab <- st_read(pool, query = "SELECT * FROM spatial.offshore_wave_cable_agreements_england_wales__ni_the_crown_esta;")
+#tidal <- st_read(pool, query = "SELECT * FROM spatial.offshore_tidal_stream_site_agreements_england_wales__ni_the_cro;")
+#tidal_cab <- st_read(pool, query = "SELECT * FROM spatial.offshore_tidal_stream_cable_agreements_england_wales__ni_the_cr;")
+#R4_chara <- st_read(pool, query = "SELECT * FROM spatial.offshore_wind_leasing_round_4_characterisation_areas_england_wa;")
+#R4_bid <- st_read(pool, query = "SELECT * FROM spatial.offshore_wind_leasing_round_4_bidding_areas_england_wales_and_n;")
+
+## Check CRS
+st_crs(mcz)#Coordinate Reference System: NA
+st_crs(sac)#Coordinate Reference System: NA
+st_crs(ncmpa)#Coordinate Reference System: NA
+st_crs(oga)#Coordinate Reference System: NA
+st_crs(disp)#Coordinate Reference System: NA
+st_crs(agg) # 4326
+st_crs(owf)#Coordinate Reference System: NA
+st_crs(owf_cab)#Coordinate Reference System: NA
+st_crs(wave)#Coordinate Reference System: NA
+#st_crs(wave_cab)#Coordinate Reference System: NA
+st_crs(tidal)#Coordinate Reference System: NA
+st_crs(tidal_cab)#Coordinate Reference System: NA
+st_crs(R4_chara)#Coordinate Reference System: NA
+st_crs(R4_bid)#Coordinate Reference System: NA
+
+## Set CRS where necessary
+st_crs(mcz) <- 4326
+st_crs(sac) <- 4326
+st_crs(ncmpa) <- 4326
+#st_crs(oga) <- 4326
+st_crs(disp) <- 4326
+#st_crs(owf) <- 4326
+#st_crs(owf_cab) <- 4326
+#st_crs(wave) <- 4326
+#st_crs(wave_cab) <- 4326
+#st_crs(tidal) <- 4326
+#st_crs(tidal_cab) <- 4326
+#st_crs(R4_chara) <- 4326
+#st_crs(R4_bid) <- 4326
+
+#__________________________________________________________________________________________
+#### LOAD DATA FOR MODEL PLOTS ####
+
+#setwd('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT')
+
+## Load data frames
+#load("Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Collectors.RData")
+#load("www/Collectors.RData")
+#load("www/CollectorsVs2.RData")
+#load("www/CollectorsVs3.RData")
+#load("www/CollectorsVs4.RData")
+load("www/CollectorsVs5.RData")
+## Load response plots
+#load("Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/ResponsePlots.RData")
+#load("www/ResponsePlots.RData")
+load("www/ResponsePlotsVs2.RData")
+
+
+# Set model diagnostic type from map type input - it needs to be either 'continuous' or 'class'
+# Make this a reactive value based on the app inputs - using dummy here
+
+mod.type <- 'continuous'
+
+## Filter plotting data according to chosen model - this will be a reactive based on the map input using a dummy here
+
+RD$Tax[RD$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
+RD$Tax[RD$Tax == 'Arctica islandica']<-"Arctica_islandica"
+RD$Tax[RD$Tax == 'Modiolus modiolus']<-"Modiolus_modiolus"
+RD$Tax[RD$Tax == 'Ampelisca spinipes']<-"Ampelisca_spinipes"
+RD$Tax[RD$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
+RD$Tax[RD$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
+RD$Tax[RD$Tax == 'Abra alba']<-"Abra_alba"
+RD$Tax[RD$Tax == 'Lagis koreni']<-"Lagis_koreni"
+RD$Tax[RD$Tax == 'assemblage']<-"Assemblages"
+
+PSs$Tax[PSs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
+PSs$Tax[PSs$Tax == 'Arctica islandica']<-"Arctica_islandica"
+PSs$Tax[PSs$Tax == 'Modiolus modiolus']<-"Modiolus_modiolus"
+PSs$Tax[PSs$Tax == 'Ampelisca spinipes']<-"Ampelisca_spinipes"
+PSs$Tax[PSs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
+PSs$Tax[PSs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
+PSs$Tax[PSs$Tax == 'Abra alba']<-"Abra_alba"
+PSs$Tax[PSs$Tax == 'Lagis koreni']<-"Lagis_koreni"
+##################################
+
+PScs$Tax[PScs$Tax == 'assemblage']<-"Assemblages"
+PSas$Tax[PSas$Tax == 'assemblage']<-"Assemblages"
+
+
+#############################################
+
+OvsPs$Tax[OvsPs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
+OvsPs$Tax[OvsPs$Tax == 'Arctica islandica']<-"Arctica_islandica"
+OvsPs$Tax[OvsPs$Tax == 'Modiolus modiolus']<-"Modiolus_modiolus"
+OvsPs$Tax[OvsPs$Tax == 'Ampelisca spinipes']<-"Ampelisca_spinipes"
+OvsPs$Tax[OvsPs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
+OvsPs$Tax[OvsPs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
+OvsPs$Tax[OvsPs$Tax == 'Abra alba']<-"Abra_alba"
+OvsPs$Tax[OvsPs$Tax == 'Lagis koreni']<-"Lagis_koreni"
+
+VIs$Tax[VIs$Tax == 'assemblage']<-"Assemblages"
+VIs$Tax[VIs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
+VIs$Tax[VIs$Tax == 'Arctica islandica']<-"Arctica_islandica"
+VIs$Tax[VIs$Tax == 'Modiolus modiolus']<-"Modiolus_modiolus"
+VIs$Tax[VIs$Tax == 'Ampelisca spinipes']<-"Ampelisca_spinipes"
+VIs$Tax[VIs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
+VIs$Tax[VIs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
+VIs$Tax[VIs$Tax == 'Abra alba']<-"Abra_alba"
+VIs$Tax[VIs$Tax == 'Lagis koreni']<-"Lagis_koreni"
+
+names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage")
+
+## Labels for environmental variables in plots
+envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitrate','Oxygen','Phosphate','Phytoplankton','Gravel','Mud','Productivity','Rel. Slope Pos.','Salinity','Silicate','Suspended Matter','Temperature','Wave velocity','Gear type')
+names(envlab) <- c('bathy3','chla3','cur3','iron3','light3','lsf3','nitr3','oxy3','phos3','phyto3','Predicted_Gravel_Fraction','Predicted_Mud_Fraction','prod3','rsp3','sal3','sil3','SPM_MEAN','temp3','Wave_veloc','GearType')
+
+```
+
+Column {.sidebar data-width=200}
+-----------------------------------------------------------------------
+```{r}
+#### ADD SELECTION BOXES
+selectInput(inputId="layertypeInput",  multiple = F,h4("Category",style="color:#808080"), choices = c("",unique(data$cat)), selected = NULL)#
+#tags$style(type='text/css', ".selectize-input {  font-style: italic; }")# make selection text italic
+selectInput(inputId="layernameInput", multiple = F,h4("Layer",style="color:#808080"),  choices = NULL)
+observeEvent(input$layertypeInput,{
+     updateSelectInput(session,'layernameInput',
+                      choices=unique(data$layer[data$cat==input$layertypeInput]))})
+```
+
+Column {data-width=675}
+-----------------------------------------------------------------------
+
+### Map
+
+```{r}
+
+#### SELECT RASTER LAYER FROM STACK USING SELECTION BOXES ####
+
+## Reactive object for selected raster
+reactiveRaster <-  reactive({raster::subset(modis.rasters,grep(as.character(input$layernameInput), names(modis.rasters), value = T))})
+#__________________________________________________________________________________________
+
+## Reactive object for raster colours 
+  reactiveColour <- reactive({if (as.character(input$layernameInput) == "Assemblages") {colours <- #c('#9aff9a','#0000ee','#00cd00','#00ffff','#ffff00','#ff0000','#9a32cd','#ff8c00','#b4b404','#b40202','#05aac1')}
+c('#0000ee','#00ffff','#05aac1','#9a32cd','#00cd00','#9aff9a','#b40202','#ff0000','#ff8c00','#ffff00','#b4b404')}    
+    #else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
+    #else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
+    #else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
+    #else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+    #else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
+    #else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
+    #else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colours <- scale_fill_brewer(palette = "RdYlGn",n=6)}
+    else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,2.5,5,10,15,30), domain = c(0,2.5,5,10,15,30),na.color = "transparent")}
+    else if (as.character(input$layernameInput) == "Arctica_islandica"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.084,0.572,0.865,1.105,1.296,2.348), domain = c(0.084,0.572,0.865,1.105,1.296,2.348),na.color = "transparent")}
+    else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.228,0.774,1.018,1.268,1.640,5.371), domain = c(0.228,0.774,1.018,1.268,1.640,5.371),na.color = "transparent")}
+   else if (as.character(input$layernameInput) == "Abra_alba"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.11,1.21,1.86,2.80,5.0,15.51), domain = c(0.11,1.21,1.86,2.80,5.0,15.51),na.color = "transparent")}
+   else if (as.character(input$layernameInput) == "Lagis_koreni"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,1,2.5,5,10,55), domain = c(0,1,2.5,5,10,55),na.color = "transparent")}
+    else if (as.character(input$layernameInput) == "Goniadella_gracilis"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.063,0.783,1.125,1.492,1.887,2.930), domain = c(0.063,0.783,1.125,1.492,1.887,2.930),na.color = "transparent")}
+    else if (as.character(input$layernameInput) == "Crepidula_fornicata"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.03,0.54,1.26,2.39,5.29,10.29), domain = c(0.03,0.54,1.26,2.39,5.29,10.29),na.color = "transparent")}
+    else if (as.character(input$layernameInput) == "Modiolus_modiolus"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,1,2,3,4,5), domain = c(0,1,2,3,4,5),na.color = "transparent")}
+  })
+#__________________________________________________________________________________________
+## Create map
+output$map1 <-renderLeaflet({
+leaflet() %>% 
+    #addProviderTiles(providers$Esri.WorldImagery)%>%
+    addProviderTiles(providers$Esri.WorldGrayCanvas,options = providerTileOptions(noWrap = TRUE))%>%
+  #addTiles() %>% 
+     addCircleMarkers(data=sites,~as.numeric(samplelong), ~as.numeric(samplelat), radius = 1.4,stroke = T, group = "samples",color = "black",weight = 0.3,fill = TRUE, fillColor = "black",fillOpacity = 0.6)%>%
+      addPolygons(data=euowf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "euowf",popup = paste0("<b>Name: </b>", euowf$name))%>%
+      addPolygons(data=owf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf",popup = paste0("<b>Name: </b>", owf$Name_Prop, "<br>","<b>Status: </b>", owf$Inf_Status))%>%
+      addPolygons(data=owf_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf_cab",popup = paste0("<b>Name: </b>", owf_cab$Name_Prop, "<br>","<b>Status: </b>", owf_cab$Infra_Stat))%>%
+      addPolygons(data=R4_chara,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_chara",popup = paste0("<b>Name: </b>", R4_chara$Name))%>%
+      addPolygons(data=R4_bid,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_bid",popup = paste0("<b>Name: </b>", R4_bid$Name, "<br>","<b>Status: </b>", R4_bid$Bidding_Ar))%>%
+    addPolygons(data=agg,color = "#444444", weight = 2, smoothFactor = 0.5,group = "agg",popup = paste0("<b>Name: </b>", agg$Area_Name, "<br>",
+                                                                                                          "<b>Number: </b>", agg$Area_Numbe))%>%
+      addPolygons(data=disp,color = "#444444", weight = 1, smoothFactor = 0.5,group = "disp",popup = paste0("<b>Name: </b>", disp$name_, "<br>","<b>Number: </b>", disp$site_))%>%
+      addPolygons(data=wave,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave",popup = paste0("<b>Name: </b>", wave$Name_Prop, "<br>","<b>Status: </b>", wave$Inf_Status))%>%
+      #addPolygons(data=wave_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave_cab",popup = paste0("<b>Name: </b>", wave_cab$Name_Prop, "<br>","<b>Status: </b>", wave_cab$Infra_Stat))%>% # layer depricated
+      addPolygons(data=tidal,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal",popup = paste0("<b>Name: </b>", tidal$Name_Prop, "<br>","<b>Status: </b>", tidal$Inf_Status))%>%
+      addPolygons(data=tidal_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal_cab",popup = paste0("<b>Name: </b>", tidal_cab$Name_Prop, "<br>","<b>Status: </b>", tidal_cab$Infra_Stat))%>%
+      addPolygons(data=mcz,color = "#444444", weight = 1, smoothFactor = 0.5,group = "mcz",popup = paste0("<b>Name: </b>", mcz$site_name))%>%
+      addPolygons(data=sac,color = "#444444", weight = 1, smoothFactor = 0.5,group = "sac",popup = paste0("<b>Name: </b>", sac$site_name))%>%
+      addPolygons(data=ncmpa,color = "#444444", weight = 1, smoothFactor = 0.5,group = "ncmpa",popup = paste0("<b>Name: </b>", ncmpa$site_name))%>%
+      addPolygons(data=oga,color = "#444444", weight = 1, smoothFactor = 0.5,group = "oga",popup = paste0("<b>Number: </b>", oga$LICREF, "<br>","<b>Organisation: </b>", oga$LICORGGR))%>%
+      addLayersControl(
+      overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","mcz","sac","ncmpa","oga"),options = layersControlOptions(collapsed = FALSE))%>%#"wave_cab",
+      hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","mcz","sac","ncmpa","oga"))%>%#"wave_cab",
+      #setView(-3,54.6,zoom=5.6)%>%
+      setView(0.54,55.53,zoom=5.5)%>%
+      addMouseCoordinates()
+})
+
+leafletOutput('map1') 
+#__________________________________________________________________________________________
+#### UPDATE MAP WITH SELECTED RASTER LAYER ####
+#https://stackoverflow.com/questions/46979328/how-to-make-shiny-leaflet-map-reac-to-change-in-input-value-r
+ 
+## Watch for selection of new survey(s) 
+observeEvent(input$layernameInput, { 
+
+if (as.character(input$layernameInput) == "Assemblages"){
+leafletProxy ('map1')%>%
+clearImages()%>%      # Remove any previous selections 
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  colors = c("#0000EE","#00FFFF","#05aae1","#9A32CD","#00CD00","#9AFF9A","#B40202","#FF0000","#FF8C00","#FFFF00","#b4b404"),# NB have to use hex cols "#EEAEEE",
+  labels = c("A1","A2a","A2b","B1b","C1a","C1b","D1","D2a","D2b","D2c","D2d"), #"B1a",       
+  opacity = 1,
+  title = "Faunal Cluster")}
+#else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){
+#leafletProxy ('map1')%>%
+#clearImages() %>%
+#clearControls() %>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(
+#position = "bottomright",
+#colors = c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83'),# NB have to use hex cols
+#labels = c('1','2','3','4','5','6'),        
+#opacity = 3,
+#title = "biodiv")}
+#else if (as.character(input$layernameInput) == "Richness"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Richness), title = "Richness")}
+#else if (as.character(input$layernameInput) == "Abundance"){
+#pal <- colorNumeric(jet(100), values(Abundance),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(
+#position = "bottomright",
+#pal = pal,
+#values = values(Abundance),
+#title = "Abundance")}
+#else if (as.character(input$layernameInput) == "Evenness"){
+#pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",
+#pal = pal,
+#opacity = 5,
+#values = values(Evenness),
+#title = "Evenness")}
+#else if (as.character(input$layernameInput) == "Response"){leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(
+#position = "bottomright",
+#colors = c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59'),# NB have to use hex cols
+#labels = c('1','2','3','4','5','6'),        
+#opacity = 5,
+#title = "Response")}
+#else if (as.character(input$layernameInput) == "Effects"){leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(
+#position = "bottomright",
+#colors = c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e'),# NB have to use hex cols
+#labels = c('1','2','3','4','5','6'),        
+#opacity = 5,
+#title = "Effects")}
+else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0,2.5,5,10,15,30), 
+  title = "Sabellaria spinulosa (sqrt)")}
+else if (as.character(input$layernameInput) == "Arctica_islandica"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0.084,0.572,0.865,1.105,1.296,2.348), 
+  title = "Arctica islandica (sqrt)")} 
+else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0.228,0.774,1.018,1.268,1.640,5.371), 
+  title = "Ampelisca spinipes (sqrt)")}  
+else if (as.character(input$layernameInput) == "Abra_alba"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0.11,1.21,1.86,2.80,5.0,15.51), 
+  title = "Abra alba (sqrt)")}   
+else if (as.character(input$layernameInput) == "Lagis_koreni"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0,1,2.5,5,10,55), 
+  title = "Lagis koreni (sqrt)")} 
+else if (as.character(input$layernameInput) == "Goniadella_gracilis"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0.063,0.783,1.125,1.492,1.887,2.930), 
+  title = "Goniadella gracilis (sqrt)")}  
+else if (as.character(input$layernameInput) == "Crepidula_fornicata"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0.03,0.54,1.26,2.39,5.29,10.29), 
+  title = "Crepidula fornicata (sqrt)")}  
+     else if (as.character(input$layernameInput) == "Modiolus_modiolus"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+  position = "bottomright",
+  pal = reactiveColour(),
+  opacity = 5, 
+  values = c(0,1,2,3,4,5), 
+  title = "Modiolus modiolus (sqrt)")}  
+})
+
+
+```
+
+
+
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Welcome  {data-padding=20}
+
+<div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+<strong style="color: #044D94;font-size: 50px;">OneBenthic Layers<center>
+```{r picturetest, echo = F, out.width = '15%'}
+
+#knitr::include_graphics("www/output-onlinegiftools.gif")#this works
+knitr::include_graphics("www/NEWLOGOCROPPED.png")#this works
+```
+<br>
+<strong style="color: #5499C7;font-size: 30px;">Biodiversity models using big data
+<br>
+<br>
+
+<img src="www/output-onlinegiftools.gif"></center>
+
+</div>
+
+
+
+### About  {data-padding=20}
+<div>
+
+```{r layersappfunders, echo = F, out.width = '100%'}
+
+
+
+## Header: Modelling Methodology
+h2("Modelling Methodology",style=c("color:#044D94"))
+p("These layers were created using data from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative. Models are based on Random forest modelling of point sample data using a variety of raster predictor layers obtained from", tags$a(href="https://www.bio-oracle.org/", "Bio-ORACLE"), "and",tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "Mitchell et al. (2019)."))
+br()
+
+p("Mitchell, P.J., Downie, A.-L., Diesing, M. How good is my map? 2018. A tool for semi-automated thematic mapping and spatially explicit confidence assessment. Env. Model. Softw. 108, 111–122.", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "https://doi.org/10.1016/j.envsoft.2018.07.014"))
+br()
+
+## Header: How to use this app
+h2("How to use this app",style=c("color:#044D94"))
+p("Using the selection boxes on the left of the screen, select a category of modelled layer, choosing from the following options: Biodiversity, Structure, Traits or Species distibution model (SDM). Next select a layer to display.","The map window contains two tabs, one for the model itself and the other for an associated confidence map. The map also allows for different polygons to be displayed, including European offshore windfarm areas (based on an api link to Emodnet).")
+br()
+p("On the right of the screen are a number of tabs which show various model outputs. The first tab ‘About’ provides a description of the layers, a citation (if appropriate) and details of funders or partners involved in the production of the layer. The second tab ‘Characteristics’ applies only to categorical layers and details the nature or characteristics of individual groups. The 3rd tab ‘Input’ shows a histogram of the data used in the model. The 4th tab ‘Model performance’ is based on test data (i.e. data not included in the model development), with actual values of the modelled parameter plotted against modelled values. In a perfect model all values would lie on a diagonal line. The R2 value provides a numeric value describing the relationship between observed versus predicted values, with 1 being perfect agreement and 0 being no agreement. Typically a value of ? is considered to be good. The 5th tab ‘Variable contribution’ shows how the modelled metric changes in response to increasing values of each predictor variable.")
+br()
+## Header: Funders
+h2("Funders",style=c("color:#044D94"))
+br()
+p("This tool was developed by Cefas within funding from The Crown Estate's Offshore Wind Evidence and Change Programme.")
+
+#knitr::include_graphics("www/output-onlinegiftools.gif")#this works
+knitr::include_graphics("www/layersappfunderslogos.png")
+
+```
+</div>
+
+
+### Data  {data-padding=20}
+<div>
+
+```{r rtable, echo = F, results='asis'}
+
+## Header: Benthic data
+h2("Benthic data",style=c("color:#044D94"))
+p("Modelled layers were created using data from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative.","To explore the dataset in more detail see the",tags$a(href="https://openscience.cefas.co.uk/", "OneBenthic Dashboard."))
+br()
+br()
+ ## Header: Rasters
+h2("Rasters",style=c("color:#044D94"))
+pred_var <- data.frame(
+  Variable=c("temp",
+         "sal",
+               "cur",
+               "sil",
+               "oxy",
+               "phyto",
+               "light",
+               "bathy",
+               "mud",
+               "gravel",
+               "spm",
+               "wov",
+               "LS-Factor",
+               "Rel.Slope.Pos"),
+  Detail=c("Temperature",
+         "Salinity",
+               "Current velocity",
+               "Silicate",
+               "Dissolved molecular oxygen",
+               "Phytoplankton",
+               "Light at bottom",
+               "Depth",
+               "% Mud",
+               "% Gravel",
+               "Suspend inorganic particulate matter",
+               "Peak wave orbital velocity",
+               "topographic slope length and steepness",
+               "Relative slope position"),
+Units=c("ºC",
+         "PSS",
+               "m-1",
+               "mol.m-3",
+               "mol.m-3",
+               "umol.m-3",
+               "-",
+               "m",
+               "%",
+               "%",
+               "g.m-3",
+               "m.s",
+               "ratio",
+               "ratio"),
+Source=c('<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+         '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+         '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+         '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+         '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+          '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+          '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (download)</a></p>',
+           '<p><a href="https://www.bio-oracle.org/">Bio-ORACLE (via sdmpredictors R package)</a></p>',
+         '<p><a href="https://doi.org/10.14466/CefasDataHub.63">Mitchell et al. (2019)</a></p>',
+'<p><a href="https://doi.org/10.14466/CefasDataHub.63">Mitchell et al. (2019)</a></p>',
+'<p><a href="https://doi.org/10.14466/CefasDataHub.62)">Mitchell et al. (2019)</a></p>',
+'<p><a href="https://doi.org/10.14466/CefasDataHub.62)">Mitchell et al. (2019)</a></p>',
+"Based on Depth",
+"Based on Depth"))
+              
+
+
+## Create a table for map overlays
+library(knitr)
+  library(kableExtra)
+
+    kable(pred_var, escape=FALSE,format = "html") %>%
+      column_spec (1, bold = T)%>%
+      kable_styling(bootstrap_options = c("striped","hover", "condensed"))
+br()
+br()
+##############################
+
+## Header: Map overlays
+h2("Map overlays",style=c("color:#044D94"))
+#uiOutput("refheader") 
+## Table of overlay layers
+
+
+map_overlays <- data.frame(
+  Code=c("samples",
+         "euowf",
+               "owf",
+               "owf_cab",
+               "R4_chara",
+               "R4_bid",
+               "agg",
+               "disp",
+               "wave",
+               #"wave_cab",
+               "tidal",
+               "tidal_cab",
+               "oga",
+               "mcz",
+               "sac",
+               "ncmpa"),
+  Link=c('<p><a href="https://openscience.cefas.co.uk/obdash/",
+   >OneBenthic grab and core samples</a></p>',
+  '<p><a href="https://ows.emodnet-humanactivities.eu/wfs?SERVICE=WFS&VERSION=1.1.0&request=GetFeature&typeName=windfarmspoly&OUTPUTFORMAT=json"
+      >Wind Farms (Polygons)</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/4da955de094e475d8d902ee446e38d58_0.geojson"
+      >Offshore Wind Site Agreements (England, Wales & NI), The Crown Estate</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/ceb51568455e4a9ba85bfd7c2da36fdc_0.geojson"
+      >Offshore Wind Cable Agreements (England, Wales & NI), The Crown Estate</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/c0e61d8972e4438ab1c39304b7f28608_0.geojson"
+     >Offshore Wind Leasing Round 4 Characterisation Areas (England, Wales and NI), The Crown Estate</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/54dce8a263324a85b36523e31fff20cc_0.geojson"
+      >Offshore Wind Leasing Round 4 Bidding Areas (England, Wales and NI), The Crown Estate</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/d734d753d04649e2a7e1c64b820a5df9_0.geojson"
+      >Offshore Minerals Aggregates Site Agreements (England, Wales & NI), The Crown Estate</a></p>',
+         '<p><a href="http://data.cefas.co.uk/#/View/407"
+      >UK Disposal Site Layer, Cefas</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/d9f9dbc0e29b410c87ba544f6082a0d0_0.geojson"
+     >Offshore Wave Site Agreements (England, Wales & NI), The Crown Estate</a></p>',
+         #'<p><a href="https://opendata.arcgis.com/datasets/bf376b05c6ae489b8b8687d6b7d6525d_0.geojson">Visit W3Schools.com!</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/db94124b152641a992d4e8dfa14d59f2_0.geojson"
+      >Offshore Tidal Stream Site Agreements (England, Wales & NI), The Crown Estate</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/3e5203ce7daa4ae08690699925668f46_0.geojson"
+      >Offshore Tidal Stream Cable Agreements (England, Wales & NI), The Crown Estate</a></p>',
+         '<p><a href="https://opendata.arcgis.com/datasets/3c950a2c8186438899f99ced733dd947_0.geojson"
+      >OGA Licences WGS84, Oil and Gas Authority</a></p>',
+         '<p><a href="https://hub.jncc.gov.uk/assets/ade43f34-54d6-4084-b66a-64f0b4a5ef27/c20190905_OffshoreMPAs_WGS84.shp"
+      >Marine Conservation Zones (MCZ)</a></p>',
+         '<p><a href="https://hub.jncc.gov.uk/assets/ade43f34-54d6-4084-b66a-64f0b4a5ef27/c20190905_OffshoreMPAs_WGS84.shp"
+      >Special Area of Conservation (SAC)</a></p>',
+         '<p><a href="https://hub.jncc.gov.uk/assets/ade43f34-54d6-4084-b66a-64f0b4a5ef27/c20190905_OffshoreMPAs_WGS84.shp"
+      >Nature Conservation Marine Protected Areas (Scotland)</a></p>'),
+  Description=c("Location of all grab/core samples from the OneBenthic database",
+    "Offshore wind installations in European seas from the European Marine Observation and Data Network (EMODnet)",
+          "This dataset represents all current offshore wind farm agreements in pre-planning, planning, construction and operational phases, as well as Preferred Projects subject to HRA, in English, Welsh and Northern Irish waters.",
+          "This dataset represents all current export cables for offshore wind farm agreements in pre-planning, planning, construction and operational phases in English, Welsh and Northern Irish waters.",
+          "This dataset represents areas of seabed defined by The Crown Estate within each of the Bidding Areas which are considered to present the greatest opportunity to Bidders based on thorough assessment of the constraints.",
+          "This dataset represents the external boundary of the areas of seabed within which Bidders can propose projects through the Round 4 leasing process.",
+          "This dataset represents all current marine aggregates site agreements in English, Welsh and Northern Irish waters.",
+          "UK Disposal Sites (layer maintained by Cefas)",
+          "This dataset represents all current wave agreements in English, Welsh and Northern Irish waters.",
+          #"This dataset represents all current wave agreements in English, Welsh and Northern Irish waters.",
+          "This dataset represents all current tidal stream agreements in English, Welsh and Northern Irish waters",
+          "This dataset represents all current export cables for tidal stream agreements in English, Welsh and Northern Irish waters.",
+          "OGA Licences WGS84, Oil and Gas Authority",
+          "Marine Conservation Zones (MCZ)",
+          "Special Area of Conservation (SAC)",
+          "Nature Conservation Marine Protected Areas (Scotland)"))
+
+
+## Create a table for map overlays
+library(knitr)
+  library(kableExtra)
+
+    kable(map_overlays, escape=FALSE,format = "html") %>%
+      column_spec (1, bold = T)%>%
+      kable_styling(bootstrap_options = c("striped","hover", "condensed"))#%>%
+      #scroll_box( height = "900px")#width = "900px",
+####
+##############################
+    
+   
+    
+    
+```
+</div>
+
+
+
+### Layer Info  {data-padding=20}
+
+<div >
+```{r}
+
+#### LAYER DESCRIPTIONS ####
+#,"font-size: 30px"
+ output$desc <-  renderUI({
+   
+    if(as.character(input$layernameInput) == "Assemblages"){
+      list(h2("Description",style=c("color:#044D94")),"This layer shows benthic  macrofaunal assemblages (biotopes) based on the methodology in Cooper et al. (2019), but using an expanded dataset (see Cooper, Downie and Curtis (2021) for further details. In summary, macrofaunal abundance data from comparable surveys (0.1m2 grab or core, processed over a 1mm sieve, and not taken from known impact sites) were fourth-root transformed prior to k-means clustering. Cluster group distribution was then modelled using a random forest approach.")}
+    #else if(as.character(input$layernameInput) == "Richness"){
+     #list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Evenness"){
+    #  list("Modelled layer for taxon Pileou's Evenness (J) based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Abundance"){
+    #  list("Modelled layer for taxon abundance based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
+    #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
+   # else if(as.character(input$layernameInput) == "Response"){
+    #  list("six")}
+    #else if(as.character(input$layernameInput) == "Effects"){
+    #  list("seven")}
+    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      list(h2("Description",style=c("color:#044D94")),br(),"Add text")}
+   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      list(h2("Description",style=c("color:#044D94")),"This model consist of the predicted abundance of",em("Modiolus modiolus"), "over the study area as mean square-root transformed counts and the coefficient of variation (CV), both calculated over the ten split sample cross-validation runs (see 'Confidence' tab). The model predicts patches of high abundance mainly in the Irish Sea and the Northern North Sea. High abundance predicted in the deep waters on the shelf break and in the Norwegian Trench are expected to be model artefacts as there is no data supporting the predicted distribution in those areas (see 'Input data' tab). The coefficient of variation (CV) of predictions from the 10 cross-validation runs stays mostly below 25% with patches of highly variable predictions (up to 60% of the mean prediction).")}
+    else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      list(h2("Description",style=c("color:#044D94")),br(),"The model predicts patches of high abundance around the Southern North Sea, English Channel and Irish Sea up the coast of Western Scotland. The coefficient of variation (CV) of predictions from the 10 cross-validation runs stays mostly below 10% and almost entirely below 25%.")}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      list(h2("Description",style=c("color:#044D94")),br(),"Add text")}
+       else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      list(h2("Description",style=c("color:#044D94")),br(),"Add text")}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      list(h2("Description",style=c("color:#044D94")),br(),"Add text")}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+      list(h2("Description",style=c("color:#044D94")),br(),"Add text")}
+          else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      list(h2("Description",style=c("color:#044D94")),br(),"Add text")}
+
+  })
+uiOutput("desc")   
+
+#img(src="www/The_Crown_Estate_logo_black.png",height = 500, width =900)
+```
+</div>
+<br>
+
+<div>
+```{r}
+
+#### REFERENCES ####
+
+ output$test <-  renderUI({
+   
+    if(as.character(input$layernameInput) == "Assemblages"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.",br(),br(),
+                     "Cooper, K.M., Bolam, S. G., Downie, A. L. and Barry, J. (2019), Biological‐based habitat classification approaches promote cost‐efficient monitoring: an example using #seabed assemblages. J Appl Ecol. 56:1085–1098. doi:10.1111/1365-2664.13381")}
+    #else if(as.character(input$layernameInput) == "Richness"){
+    # list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Evenness"){
+    #  list("Modelled layer for taxon Pileou's Evenness (J) based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Abundance"){
+    #  list("Modelled layer for taxon abundance based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
+    #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
+    #else if(as.character(input$layernameInput) == "Response"){
+    #  list("six")}
+    #else if(as.character(input$layernameInput) == "Effects"){
+    #  list("seven")}
+    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+       else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      
+  })
+uiOutput("test")   
+
+#img(src="www/The_Crown_Estate_logo_black.png",height = 500, width =900)
+```
+</div>
+<br>
+
+<div>
+```{r partners}
+
+#####################################
+output$refheader <-  renderUI({
+    if(as.character(input$layernameInput) == "Assemblages"){list(h2("Partners",style=c("color:#044D94")))}
+    #else if(as.character(input$layernameInput) == "Richness"){
+    # list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Evenness"){
+    #  list("Modelled layer for taxon Pileou's Evenness (J) based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Abundance"){
+    #  list("Modelled layer for taxon abundance based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
+    #else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
+    #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
+    #else if(as.character(input$layernameInput) == "Response"){
+    #  list("six")}
+    #else if(as.character(input$layernameInput) == "Effects"){
+    #  list("seven")}
+    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Partners",style=c("color:#044D94")))}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Partners",style=c("color:#044D94")))}
+      
+  })
+uiOutput("refheader") 
+###########################################
+
+
+  
+
+#### PARTNER LOGOS ####
+output$img10 <- renderImage({  #This is where the image is set 
+  
+     req(input$layernameInput)## this will suppress error messages before a selection is made
+  
+    if(as.character(input$layernameInput) == "Assemblages"){            
+      list(src = "www/logos2.png",width ='90%')#, height =1000, width = 900
+    }
+ #else if(as.character(input$layernameInput) == "Richness"){            
+ #     list(src = "www/cefas&defralogo.png",width ='50%')}
+   else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
+      list(src = "www/logos2.png",width ='90%')}
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      list(src = "www/logos2.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      list(src = "www/logos2.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      list(src = "www/logos2.png",width ='90%')}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      list(src = "www/logos2.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      list(src = "www/logos2.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+      list(src = "www/logos2.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      list(src = "www/logos2.png",width ='90%')}
+  }, deleteFile = F)
+   
+imageOutput('img10')
+```
+
+</div>
+
+### Characteristics {data-padding=20}
+<div>
+```{r chr note}
+
+#### LAYER DESCRIPTIONS ####
+
+ output$noterechr <-  renderUI({
+   
+    if(as.character(input$layernameInput) == "Assemblages"){
+      list("Biological characteristics of modelled assemblages identified through a k-means clustering of macrofaunal data.")}
+   # else if(as.character(input$layernameInput) == "Richness"){
+   #  list("NA")}
+   # else if(as.character(input$layernameInput) == "Evenness"){
+   #   list("NA")}
+   # else if(as.character(input$layernameInput) == "Abundance"){
+   #   list("NA")}
+   # else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
+   #   list("")}
+   # else if(as.character(input$layernameInput) == "Response"){
+   #   list("")}
+   # else if(as.character(input$layernameInput) == "Effects"){
+   #   list("")}
+    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+       list("Not applicable for numerical models")}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){
+       list("Not applicable for numerical models")}
+
+  })
+uiOutput("noterechr")   
+
+#img(src="www/The_Crown_Estate_logo_black.png",height = 500, width =900)
+```
+</div>
+
+<div>
+```{r chara, echo=F, fig.cap = "Title", out.width ='150%'}
+
+#### MODELLED CATEGORY CHARACTERISTICS #### 
+
+  output$img1 <- renderImage({  #This is where the image is set 
+    
+    req(input$layernameInput)## this will suppress error messages before a selection is made
+    
+    if(as.character(input$layernameInput) == "Assemblages"){            
+      list(src = "www/structure_univariate_summary_tablev2.png",width ='90%')#, height =1000, width = 900
+    }
+   # else if(as.character(input$layernameInput) == "Effects"){
+   #     list(src = "www/et_characterising_traits_table.png",height ='90%')
+   # }
+   # else if(as.character(input$layernameInput) == "Response"){
+   #     list(src = "www/rt_characterising_traits_tablev1.png",height ='90%')
+   # }
+   # else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
+   #     list(src = "www/biodiversity_univariate_summary_tablev1.png",height ='90%')
+   # }
+   # else if(as.character(input$layernameInput) == "Richness"){
+   #     list(src = "www/blank.png",height ='90%')
+   # }
+   # else if(as.character(input$layernameInput) == "Abundance"){
+   #     list(src = "www/blank.png",height ='90%')}
+   # else if(as.character(input$layernameInput) == "Evenness"){
+   #     list(src = "www/blank.png",height ='90%')}
+  else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
+      list(src = "www//blank.png",width ='90%')}
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      list(src = "www//blank.png",width ='90%')}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      list(src = "www//blank.png",width ='90%')}
+  }, deleteFile = F)
+   
+imageOutput('img1') 
+
+
+```
+</div>
+
+### Input data {data-padding=20}
+
+<div>
+```{r}
+## RECORDS HEADER
+output$recordsheader <-  renderUI({
+if(as.character(input$layernameInput) == "Assemblages"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Records",style=c("color:#044D94")),p("Some text 1"))}
+  })
+uiOutput("recordsheader")
+#_______________________________________________________________________________
+
+```
+</div>
+
+<div style= "height:400px; width: 400px">
+```{r samples, fig.cap='Data distribution and summary statistics of model input data. Values are square-root transformed abundance collected using 0.1 m^2^ grab and core sampling gear.'}
+
+## SAMPLES USED IN MODELLING PLOTS 
+
+output$abund_obs <- renderImage({  #This is where the image is set 
+  
+     req(input$layernameInput)## this will suppress error messages before a selection is made
+  
+    if(as.character(input$layernameInput) == "Assemblages"){            
+      list(src = "www/Assemblages datamap-1.png",width ='100%')#, height =1000, width = 900
+    }
+ #else if(as.character(input$layernameInput) == "Richness"){            
+ #     list(src = "www/cefas&defralogo.png",width ='50%')}
+   else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
+      list(src = "www/Sab datamap-1.png",width ='130%')}
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      list(src = "www/Modiolus datamap-1.png",width ='130%')}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      list(src = "www/Ampelisca datamap-1.png",width ='130%')}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      list(src = "www/Arctica datamap-1.png",width ='130%')}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      list(src = "www/Crepidula datamap-1.png",width ='130%')}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      list(src = "www/Goniadella datamap-1.png",width ='130%')}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+      list(src = "www/Abra datamap-1.png",width ='130%')}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      list(src = "www/Lagis datamap-1.png",width ='130%')}
+  }, deleteFile = F)
+   
+imageOutput('abund_obs')
+
+```
+</div>
+
+<div>
+```{r}
+## PLOT HEADER
+output$plotheader <-  renderUI({
+#if(as.character(input$layernameInput) == "Assemblages"){list(h2("Histogram",style=c("color:#044D94")),p("Some text 1"))}
+if(as.character(input$layernameInput) == "Assemblages"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}  
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Plot",style=c("color:#044D94")),p("Some text 1"))}
+  })
+uiOutput("plotheader")
+
+```
+</div>
+
+```{r}
+## HIST/BAR REACTIVE DATA
+sdata <- reactive({
+  
+
+  req(input$layernameInput)## this will suppress error messages before a selection is made
+
+  
+if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      sdata2 <- RD[ which(RD$Tax=='Sabellaria_spinulosa'),]
+      print(sdata2)}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      sdata2 <- RD[ which(RD$Tax=='Arctica_islandica'),]
+      print(sdata2)}
+ else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      sdata2 <- RD[ which(RD$Tax=='Modiolus_modiolus'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      sdata2 <- RD[ which(RD$Tax=='Ampelisca_spinipes'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      sdata2 <- RD[ which(RD$Tax=='Arctica_islandica'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      sdata2 <- RD[ which(RD$Tax=='Crepidula_fornicata'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      sdata2 <- RD[ which(RD$Tax=='Goniadella_gracilis'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Abra_alba"){
+      sdata2 <- RD[ which(RD$Tax=='Abra_alba'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      sdata2 <- RD[ which(RD$Tax=='Lagis_koreni'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Assemblages"){
+     sdata2 <- RD[ which(RD$Tax=='Assemblages'),]
+      print(sdata2)}
+
+  })
+```
+
+<div id="inputhist" style= "height:400px; width: 400px">
+```{r hist}
+
+#### PLOTS: HISTOGRAM (NUM) OR BAR CHART (CAT) ####
+
+output$inputdat <-  renderPlot({
+
+    ######
+  ##19/12 
+  ## this stops error message for assemblages
+if(as.character(input$layernameInput) != "Assemblages"){
+  ####
+  ## Table settings
+t1 <- ttheme_minimal(core=list(bg_params = list(fill = '#f5f1f1', col=cpl['dbl']),
+                                 fg_params=list(fontface=1)),
+                       colhead=list(fg_params=list(col="#172957", fontface=4L),
+                                    bg_params = list(fill = '#f5f1f1', col=cpl['dbl'])),
+                       rowhead=list(fg_params=list(col="#172957", fontface=2L),
+                                    bg_params = list(fill = '#f5f1f1', col=cpl['dbl'])),
+                       padding = unit(c(5, 5), "mm"))
+
+## Present info according to model type
+if (mod.type=='continuous') {
+  
+  ## Subset data by filtering to input taxon
+    lab.x <- first(sdata()[,Metric])
+  
+    #### INPUT DATA PLOT ####
+    indat <- ggplot(sdata(),(aes(x=value))) +
+            geom_histogram(fill=cpl['dt'], col=cpl['dbl']) +
+            xlab(lab.x) +
+            theme(axis.title.y = element_text(vjust=0.5, size=12,colour="black"),
+                  axis.text.y  = element_text(vjust=0.5, size=12,colour="black"),
+                  axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
+                  axis.title.x  = element_text(vjust=-1, size=12,colour="black"),
+                  plot.title =  element_text(size=12,colour="white", face = "bold",vjust=2),
+                  strip.background = element_rect(fill="#f5f1f1"),
+                  strip.text.x = element_text(size=12, face="bold"),
+                  panel.grid.major = element_line(colour=cpl['lbe']),
+                  panel.grid.minor = element_line(colour=cpl['lbe']),
+                  panel.background = element_rect(fill="white"),
+                  legend.title = element_blank(),
+                  legend.key = element_rect(fill = NA),
+                  legend.text = element_text(size=12,colour="black"),
+                  plot.margin = ggplot2::margin(3,3,8,3))
+
+  ## Get the locations of the panel grid lines for fitting table
+  hmax.y <- max(ggplot_build(indat)$layout$panel_params[[1]]$y.sec$breaks)
+  hmax.x <- max(ggplot_build(indat)$layout$panel_params[[1]]$x.sec$breaks)
+  
+  tb <- data.frame(c(nrow(sdata()),min(sdata()$value),
+                     round(mean(sdata()$value),1),round(median(sdata()$value),1),
+                     round(max(sdata()$value),1)))
+  names(tb) <- first(sdata()[,Tax])
+  rownames(tb) <- c('N','Min','Mean','Median','Max')
+  
+  df <- tibble(x = hmax.x, y = hmax.y, tb = list(tb))
+
+  indat +
+    geom_table(data = df, aes(x = x, y = y, label = tb),table.theme=t1,table.rownames = TRUE)
+  
+}
+##########
+
+}else if(as.character(input$layernameInput) == "Assemblages"){
+###############  
+mxy <- max(summary(sdata()$class))
+
+## Build histogram
+indat <- ggplot(sdata(),(aes(x=class))) +
+  geom_bar(fill='#66afad', col='#172957') +
+  geom_text(inherit.aes=FALSE,aes(label = paste('N =',nrow(sdata())), x = 1,
+                                  y = mxy),position = position_nudge(y=mxy/10),size=5,hjust=0) +
+  xlab('Class') +
+  ylab('Number of samples') +
+  theme(axis.title.y = element_text(vjust=0.5,size=12,colour="black"),
+        axis.text.y  = element_text(vjust=0.5, size=12,colour="black"),
+        axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
+        axis.title.x  = element_text(vjust=-1, size=12,colour="black"),
+        plot.title =  element_text(size=12,colour="white", face = "bold",vjust=2),
+        strip.background = element_rect(fill="#f5f1f1"),
+        strip.text.x = element_text(size=12, face="bold"),
+        panel.grid.major = element_line(colour="grey80"),
+        panel.grid.minor = element_line(colour="grey80"),
+        panel.background = element_rect(fill="white"),
+        legend.title = element_blank(),
+        legend.key = element_rect(fill = NA),
+        legend.text = element_text(size=12,colour="black"),
+        plot.margin = ggplot2::margin(3,3,8,3))
+indat
+##########
+}
+############
+})
+
+
+plotOutput('inputdat', width = '50%', height = '50%') 
+
+
+```
+</div>
+
+
+
+
+### Performance  {data-padding=20}
+
+
+<div>
+
+```{r}
+
+#https://github.com/rstudio/flexdashboard/issues/265 get tables on same row
+
+## VALIDATION STATS HEADER
+output$valstatsheader <-  renderUI({
+    if(as.character(input$layernameInput) == "Assemblages"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Abra_alba"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+else if (as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Validation statistics",style=c("color:#044D94")),p("Some text 1"))}
+
+  })
+uiOutput("valstatsheader") 
+
+#br()
+#_______________________________________________________________________________ 
+## SELECT VAL STATS DATA
+perf <- reactive({
+  
+   req(input$layernameInput)## this will supress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      perf2 <- PSs[ which(PSs$Tax=='Sabellaria_spinulosa'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+ else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      perf2 <- PSs[ which(PSs$Tax=='Modiolus_modiolus'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      perf2 <- PSs[ which(PSs$Tax=='Ampelisca_spinipes'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+   else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      perf2 <- PSs[ which(PSs$Tax=='Arctica_islandica'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+   else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      perf2 <- PSs[ which(PSs$Tax=='Crepidula_fornicata'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      perf2 <- PSs[ which(PSs$Tax=='Goniadella_gracilis'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+   else if(as.character(input$layernameInput) == "Abra_alba"){
+      perf2 <- PSs[ which(PSs$Tax=='Abra_alba'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+   else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      perf2 <- PSs[ which(PSs$Tax=='Lagis_koreni'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+  else if(as.character(input$layernameInput) == "Assemblages"){
+      perf2 <- PSas[ which(PSas$Tax=='Assemblages'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+
+  })
+
+#_______________________________________________________________________________
+##  CREATE MODEL PERFORMANCE TABLE
+
+output$valstats <-  function(){
+
+if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")
+}
+else  if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}
+else  if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}
+else  if(as.character(input$layernameInput) == "Arctica_islandica"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}
+else  if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}
+else  if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}
+else  if(as.character(input$layernameInput) == "Abra_alba"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}  
+else  if(as.character(input$layernameInput) == "Lagis_koreni"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}    
+else if(as.character(input$layernameInput) == "Assemblages"){
+  perf() %>%  kbl('html',digits = 2,escape = FALSE, col.names = c('Statistic','Mean \u00B1 SD'),
+      caption='Overall model performance') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1:2, width = "3cm") 
+}}
+
+tableOutput('valstats')
+
+```
+</div>
+
+
+<div>
+
+```{r}
+
+## SELECT DATA FOR CLASS-SPECIFIC PERFORMANCE TABLE (CAT MODELS ONLY)
+
+perf2 <- reactive({
+  
+   req(input$layernameInput)## this will supress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Assemblages"){
+      ctbl <- PScs[Tax=='Assemblages',-1]
+      #perfcs3 <-perf2[,2:3]
+      print(ctbl)}
+})
+#_______________________________________________________________________________
+## PRODUCE CLASS-SPECIFIC PERFORMANCE TABLE
+
+output$valstats2 <-  function(){
+
+  if(as.character(input$layernameInput) == "Assemblages"){
+      
+ 
+perf2() %>% 
+  kbl('html',digits = 2,escape = FALSE, align=c('l',rep('r', 4)),
+      caption='Class-specific performance') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  column_spec(3:5, width = "3cm")
+}
+
+}
+
+tableOutput('valstats2')
+
+
+```
+</div>
+
+
+
+<br>
+
+<div>
+```{r}
+## OBS vs PRED PLOT HEADER
+output$obsvspredheader <-  renderUI({
+if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))} 
+else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))} 
+else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("Some text 1"))}
+else if(as.character(input$layernameInput) == "Assemblages"){list(h2("Confusion Matrix",style=c("color:#044D94")),p("Some text 1"))}
+})
+uiOutput("obsvspredheader") 
+#________________________________________________________________________________
+
+```
+</div>
+
+<div>
+```{r}
+
+## REACTIVE DATA FOR PLOTS
+## OBS vs PRED REACTIVE DATA
+
+predvsobs <- reactive({
+  
+   req(input$layernameInput)## this will supress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Sabellaria_spinulosa'),]
+      print(predvsobs2)}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Arctica_islandica'),]
+      print(predvsobs2)}
+ else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Modiolus_modiolus'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Ampelisca_spinipes'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      predvsobs2 <- OvsPsD[ which(OvsPs$Tax=='Arctica_islandica'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Crepidula_fornicata'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Goniadella_gracilis'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "Abra_alba"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Abra_alba'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Lagis_koreni'),]
+      print(predvsobs2)}
+
+  })
+
+
+
+## CONFUSION MATRIX REACTIVE DATA
+
+res.mat.all <- reactive({
+  
+   req(input$layernameInput)## this will supress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Assemblages"){
+      res.mat.all2 <- CMTX[Name=='assemblage',]
+      print(res.mat.all2)}
+
+  })
+
+
+
+
+
+
+
+
+```
+</div>
+<br>
+
+
+<div id="confumat" style= "height:800px; width: 800px">
+```{r,fig.width=10,fig.asp=1}
+
+#```{r,fig.width=10,fig.asp=1}
+#<div style= "height:800px; width: 800px">
+
+#_______________________________________________________________________________
+## CONFUSION MATRIX PLOT
+output$confusmat<- renderPlot({
+##19/12  ## this stops error message for SDM outputs
+if(as.character(input$layernameInput) == "Assemblages"){
+  ####
+res.mat.num <- res.mat.all()[Pred!="U" & Obs!="P",]
+cl.lvls <- unique(res.mat.num[,Pred])
+numclass <- length(cl.lvls)
+res.mat.num <- transform(res.mat.num, 
+                         Pred = factor(Pred, levels=cl.lvls), 
+                         
+                         Obs = factor(Obs, levels=cl.lvls))
+res.mat.up <- res.mat.all()[Pred=="U" | Obs=="P",]
+res.mat.up <- transform(res.mat.up, 
+                        Pred = factor(Pred, levels = c(cl.lvls,"U","P")),
+                        Obs = factor(Obs, levels = c(cl.lvls,"U","P")))
+res.mat.up[res.mat.up$Comb=="UP","Comb"] <- "OA"
+highlights <- res.mat.num[Pred==Obs,][1:numclass,4:6]
+
+### Define the plot of main confusion matrix
+## Main plot
+p <-  ggplot(res.mat.num,(aes(x=Obs,y=Vals))) +
+  geom_boxplot(width=0.7,fill=cpl['dt']) +
+  facet_grid(Pred~Obs, scales = "free") +
+  xlab("") +
+  ylab("PREDICTED\n ") +
+  ggtitle("OBSERVED\n ") + 
+  theme(axis.title.y = element_text(size=10,colour="black", face = "bold",vjust=2),
+        axis.text.y  = element_text(vjust=0.5,hjust = 1, size=10,colour="black"),
+        axis.text.x  = element_blank(),
+        axis.title.x  = element_blank(),
+        plot.title = element_text(size=10,colour="black", face = "bold",vjust=2),
+        panel.grid.major = element_line(colour=cpl['dbe']),
+        panel.grid.minor = element_line(colour=cpl['dbe']),
+        panel.background = element_rect(fill="white",color=cpl['dbe'], 
+                                        size=0.5, linetype="solid"),
+        strip.background = element_rect(fill=cpl['lbe'],color=cpl['dbe'], 
+                                        size=0.5, linetype="solid"),
+        strip.text.x = element_text(size=11, face="bold"),
+        strip.text.y = element_text(size=11, face="bold"),
+        plot.margin = ggplot2::margin(0, 0.2, 0.1,0.7, "cm"))
+
+
+## Add shading to diagonal
+fillcol <- cpl['lbe'] 
+p1 <- p + geom_rect(data=highlights,aes(xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf), 
+                    fill=fillcol, alpha=0.5) +
+  geom_boxplot(data=res.mat.num,aes(x=Obs,y=Vals),width=0.7,fill=cpl['dt'])
+
+
+### Define plot of the ranges of users accuracies
+p2 <-  ggplot(res.mat.up[grep("U",res.mat.up$Comb),],(aes(x=Comb,y=Vals))) +
+  geom_boxplot(width=0.7,position=position_dodge(width=0.71),fill=cpl['dt']) +
+  expand_limits(y=c(0,100)) +
+  facet_wrap(~Comb, nrow = 1,scales = "free_x") +
+  ylab("USERS \n ACCURACY %") +
+  ggtitle("  ") + 
+  theme(axis.title.y = element_text(size=10,colour="black", face = "bold",vjust=1.7),
+        axis.text.y  = element_text(vjust=0.5, size=10,colour="black"),
+        axis.title.x = element_blank(),
+        axis.text.x  = element_blank(),
+        plot.title =  element_text(size=18,colour="black", face = "bold",vjust=2),
+        strip.text.x = element_blank(),
+        strip.text.y = element_blank(),
+        strip.background = element_blank(),
+        panel.grid.major = element_line(colour=cpl['dbe']),
+        panel.grid.minor = element_line(colour=cpl['dbe']),
+        panel.background = element_rect(fill="white",color=cpl['dbe'], 
+                                        size=0.5, linetype="solid"),
+        plot.margin = ggplot2::margin(0, 0.2, 0.5,0.7, "cm"))
+
+### Define plot of the ranges of producers accuracies
+p3 <-  ggplot(res.mat.up[grep("U",res.mat.up$Comb),],(aes(x=Comb,y=Vals))) +
+  geom_boxplot(width=0.7,position=position_dodge(width=0.71),fill=cpl['dt']) +
+  expand_limits(y=c(0,100)) +
+  facet_wrap(~Comb, ncol=1,scales = "free_x") +
+  ggtitle("PRODUCER'S \n ACCURACY %") + 
+  theme(axis.title.y = element_blank(),
+        axis.text.y  = element_text(vjust=0.5, size=10,colour="black"),
+        axis.title.x = element_blank(),
+        axis.text.x  = element_blank(),
+        plot.title =  element_text(size=10,colour="black", face = "bold",vjust=0,hjust = 0.5),
+        strip.text.x = element_blank(),
+        strip.text.y = element_blank(),
+        strip.background = element_blank(),
+        panel.grid.major = element_line(colour=cpl['dbe']),
+        panel.grid.minor = element_line(colour=cpl['dbe']),
+        panel.background = element_rect(fill="white",color=cpl['dbe'], 
+                                        size=0.5, linetype="solid"),
+        plot.margin = ggplot2::margin(0, 0.7, 0,0.3, "cm"))
+
+### Define plot of the ranges of overall accuracy
+p4 <-  ggplot(res.mat.up[grep("OA",res.mat.up$Comb),],(aes(x=Comb,y=Vals))) +
+  geom_boxplot(width=0.7,position=position_dodge(width=0.71),fill=cpl['dt']) +
+  expand_limits(y=c(0,100)) +
+  facet_wrap(~Comb, ncol=1,scales = "free_x") +
+  ggtitle("OVERALL \n ACCURACY %") + 
+  theme(axis.title.y = element_blank(),
+        axis.text.y  = element_text(vjust=0.5, size=10,colour="black"),
+        axis.title.x = element_blank(),
+        axis.text.x  = element_blank(),
+        plot.title =  element_text(size=10,colour="black", face = "bold",vjust=0,hjust = 0.5),
+        strip.text.x = element_blank(),
+        strip.text.y = element_blank(),
+        strip.background = element_blank(),
+        panel.grid.major = element_line(colour=cpl['dbe']),
+        panel.grid.minor = element_line(colour=cpl['dbe']),
+        panel.background = element_rect(fill="white",color=cpl['dbe'], 
+                                        size=0.5, linetype="solid"),
+        plot.margin = ggplot2::margin(0.1, 0.7, 0,0, "cm"))
+
+
+## Combine the plots into a single layout
+library(patchwork)
+
+sq.main <- length(cl.lvls)*3
+
+p1 + p3 + p2 + p4 + 
+  plot_layout(ncol = 2,
+              widths = c(sq.main,3), 
+              heights = c(sq.main,3))
+#}
+####19/12
+}else if(as.character(input$layernameInput) != "Assemblages"){
+  #_______________________________________________________________________________
+#### OBSERVED VS PREDICTED PLOT ####
+#output$obsvspred <-  renderPlot({
+  
+  ######
+  ##19/12 
+  ## this stops error message for assemblages
+
+  ####
+  
+  #######
+limvals <- max(signif(predvsobs()$observed,1),signif(predvsobs()$predicted,1))
+
+obprplot <- ggplot(predvsobs(),aes(x=predicted,y=observed)) +
+              geom_point(shape = 16, colour = cpl['dbl']) +
+              geom_smooth(inherit.aes=FALSE,aes(x=predicted,y=observed),
+                          method='lm',se=TRUE,col=cpl['dt'],fill=cpl['dbe']) +
+              xlim(c(0,limvals)) +
+              ylim(c(0,limvals)) +
+              ylab("Observed") +
+              xlab("Predicted") +
+              theme(axis.title.y = element_text(vjust=4,  size=12,colour="black"),
+                    axis.text.y  = element_text(vjust=0.5, size=12,colour="black"),
+                    axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
+                    axis.title.x  = element_text(vjust=-4, size=12,colour="black"),
+                    plot.title =  element_text(size=12,colour="white", face = "bold",vjust=2),
+                    strip.background = element_rect(fill=cpl['lbe']),
+                    strip.text.x = element_text(size=12, face="bold"),
+                    panel.grid.major = element_line(colour=cpl['lbe']),
+                    panel.grid.minor = element_line(colour=cpl['lbe']),
+                    panel.background = element_rect(fill="white"),
+                    legend.title = element_blank(),
+                    legend.key = element_rect(fill = NA),
+                    legend.text = element_text(size=12,colour="black"),
+                    plot.margin = ggplot2::margin(0.5, 0.5, 1, 0.5, "cm"))
+obprplot
+
+#
+}
+###
+#})
+
+#plotOutput('obsvspred', width = '100%', height = '100%') 
+
+
+####
+})
+
+#plotOutput('confusmat', width = '100%', height = '100%') 
+plotOutput('confusmat') 
+```
+</div>
+### Variable contribution  {data-padding=20}
+<div style= "height:400px; width: 800px">
+<strong></strong>
+Some text here.
+```{r,fig.asp=0.42,fig.width=7, fig.cap= 'Mean variable importance over 10 random split sample random forest model runs with error bars showing standard error.'}
+imppl <- reactive({
+  
+     req(input$layernameInput)## this will suppress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      imppl2 <- VIs[ which(VIs$Tax=='Sabellaria_spinulosa'),]
+      print(imppl2)}
+ else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      imppl2 <- VIs[ which(VIs$Tax=='Modiolus_modiolus'),]
+      print(imppl2)}
+   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      imppl2 <- VIs[ which(VIs$Tax=='Ampelisca_spinipes'),]
+      print(imppl2)}
+   else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      imppl2 <- VIs[ which(VIs$Tax=='Arctica_islandica'),]
+      print(imppl2)}
+   else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      imppl2 <- VIs[ which(VIs$Tax=='Crepidula_fornicata'),]
+      print(imppl2)}
+   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      imppl2 <- VIs[ which(VIs$Tax=='Goniadella_gracilis'),]
+      print(imppl2)}
+   else if(as.character(input$layernameInput) == "Abra_alba"){
+      imppl2 <- VIs[ which(VIs$Tax=='Abra_alba'),]
+      print(imppl2)}
+   else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      imppl2 <- VIs[ which(VIs$Tax=='Lagis_koreni'),]
+      print(imppl2)}
+  else if(as.character(input$layernameInput) == "Assemblages"){
+      imppl2 <- VIs[ which(VIs$Tax=='Assemblages'),]
+      print(imppl2)}
+
+  })
+
+#### VARIABLE CONTRIBUTION PLOT ####
+
+###################
+## Reactive for ylab
+ylab_react <- reactive({
+req(input$layernameInput)## this will suppress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Assemblages"){
+      ylab_react2 <- "Mean decrease in Gini coefficient"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Abra_alba"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+    else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+})
+##################
+
+
+output$varcon <-  renderPlot({
+impplot <-  ggplot(imppl(),(aes(x=Var,y=Mean))) +
+            geom_bar(stat = 'identity',fill=cpl['dt'], col=cpl['dbl'],) +
+            scale_x_discrete(labels=envlab[levels(imppl()$Var)]) +
+            geom_linerange(inherit.aes=FALSE,
+                           aes(x=Var, ymin=Mean-Se, ymax=Mean+Se), 
+                           colour=cpl['dbl'], alpha=0.9, size=1.3) +
+            #ylab(label = '% Increase in MSE') +
+            ylab(label = ylab_react())+
+            coord_flip() +
+            theme(axis.title.y = element_blank(),
+                  axis.text.y  = element_text(vjust=0.5,hjust = 1, size=12,colour="black"),
+                  axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
+                  axis.title.x  = element_text(vjust=-4, size=12,colour="black"),
+                  panel.grid.major = element_line(colour=cpl['lbe']),
+                  panel.grid.minor = element_line(colour=cpl['lbe']),
+                  panel.background = element_rect(fill="white"),
+                  plot.margin = ggplot2::margin(0.5, 0.5, 1, 0.5, "cm"),)
+impplot
+})
+plotOutput('varcon', width = '100%', height = '100%') 
+```
+</div>
+
+### Partial Response Curves {data-padding=20}
+<div style= "height:1000px; width: 1000px">
+<strong></strong>
+Some text here.
+```{r,fig.width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
+
+cvRP.list <- reactive({
+  
+     req(input$layernameInput)## this will suppress error messages before a selection is made
+  
+  if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+      cvRP.list2 <- response.plots[['Sabellaria_spinulosa']]}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      cvRP.list2 <- response.plots[['Arctica_islandica']]}
+ else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      cvRP.list2 <- response.plots[['Modiolus_modiolus']]}
+   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      cvRP.list2 <- response.plots[['Ampelisca_spinipes']]}
+   else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      cvRP.list2 <- response.plots[['Arctica_islandica']]}
+   else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      cvRP.list2 <- response.plots[['Crepidula_fornicata']]}
+   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      cvRP.list2 <- response.plots[['Goniadella_gracilis']]}
+   else if(as.character(input$layernameInput) == "Abra_alba"){
+      cvRP.list2 <- response.plots[['Abra_alba']]}
+   else if(as.character(input$layernameInput) == "Lagisoreni"){
+      cvRP.list2 <- response.plots[['Lagis_koreni']]}
+else if(as.character(input$layernameInput) == "Assemblages"){
+      cvRP.list2 <- response.plots[['assemblage']]}
+  })
+
+
+#### PARTIAL RESPNSE CURVES PLOT ####
+output$parrespcur <-  renderPlot({
+  
+ggarrange(plotlist=cvRP.list(),ncol=4,nrow=4,common.legend = TRUE, legend="right")
+#grid.arrange(grobs=cvRP.list(),ncol=4)
+})
+plotOutput('parrespcur', width = '100%', height = '100%') 
+```
+</div>
+
+### Confidence
+
+```{r,fig.2width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
+
+
+## Reactive object for selected raster (confidence)
+reactiveRaster_cv <-  reactive({raster::subset(modis.rasters_cv,grep(as.character(input$layernameInput), names(modis.rasters_cv), value = T))})
+#__________________________________________________________________________________________
+
+# Reactive object for raster colours 
+  reactiveColour_cv <- reactive({
+    
+    req(input$layernameInput)## this will suppress error messages before a selection is made
+    
+#if (as.character(input$layernameInput) == "Assemblages") {colours <- c('#9aff9a','#0000ee','#00cd00','#00ffff','#ffff00','#ff0000','#9a32cd','#ff8c00','#b4b404','#b40202','#05aac1')}
+#else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
+#else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
+#else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
+if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colorBin(palette = brewer.pal(n = 4, name = "Oranges"), bins = c(0,0.10,0.25,0.6), domain = c(0,0.10,0.25,0.6),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Arctica_islandica"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Abra_alba"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Lagis_koreni"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Goniadella_gracilis"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Crepidula_fornicata"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Modiolus_modiolus"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Assemblages"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")}    
+      })
+
+#__________________________________________________________________________________________
+## ADJUST POSITION/ZOOM OF MAP 2 TO MATCH MAP1
+#https://github.com/rstudio/leaflet/issues/347
+observe({
+  coords <- input$map1_bounds
+  
+  if(!is.null(coords)){
+    tproxy <- leafletProxy("map3")%>%
+      fitBounds(coords$west,
+                coords$south,
+                coords$east,
+                coords$north)
+  }
+})
+
+################################
+reactivetitle <- reactive({
+#if (as.character(input$layernameInput) == "Assemblages") {colours <- c('#9aff9a','#0000ee','#00cd00','#00ffff','#ffff00','#ff0000','#9a32cd','#ff8c00','#b4b404','#b40202','#05aac1')}
+#else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
+#else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
+#else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
+if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){print("Sabellaria spinulosa CV")}
+else if (as.character(input$layernameInput) == "Arctica_islandica"){print("Arctica islandica CV")}
+else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){print("Ampelisca spinipes CV")}
+else if (as.character(input$layernameInput) == "Abra_alba"){print("Abra alba CV")}
+else if (as.character(input$layernameInput) == "Lagis_koreni"){print("Lagis koreni CV")}
+else if (as.character(input$layernameInput) == "Goniadella_gracilis"){print("Goniadella gracilis CV")}
+else if (as.character(input$layernameInput) == "Crepidula_fornicata"){print("Crepidula fornicata CV")}
+else if (as.character(input$layernameInput) == "Modiolus_modiolus"){print("Modiolus modiolus CV")}
+else if (as.character(input$layernameInput) == "Assemblages"){print("Assemblages CV")}    
+      })
+
+
+###############################
+
+
+output$map3 <- renderLeaflet({
+leaflet() %>% 
+    #addProviderTiles(providers$Esri.WorldImagery)%>%
+    addProviderTiles(providers$Esri.WorldGrayCanvas,options = providerTileOptions(noWrap = TRUE))%>%
+  #addTiles() %>% 
+     addCircleMarkers(data=sites,~as.numeric(samplelong), ~as.numeric(samplelat), radius = 1.4,stroke = T, group = "samples",color = "black",weight = 0.3,fill = TRUE, fillColor = "black",fillOpacity = 0.6)%>%
+      addPolygons(data=euowf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "euowf",popup = paste0("<b>Name: </b>", euowf$name))%>%
+      addPolygons(data=owf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf",popup = paste0("<b>Name: </b>", owf$name_prop, "<br>","<b>Status: </b>", owf$inf_status))%>%
+      addPolygons(data=owf_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf_cab",popup = paste0("<b>Name: </b>", owf_cab$name_prop, "<br>","<b>Status: </b>", owf_cab$infra_stat))%>%
+      addPolygons(data=R4_chara,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_chara",popup = paste0("<b>Name: </b>", R4_chara$name))%>%
+      addPolygons(data=R4_bid,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_bid",popup = paste0("<b>Name: </b>", R4_bid$name, "<br>","<b>Status: </b>", R4_bid$bidding_ar))%>%
+    addPolygons(data=agg,color = "#444444", weight = 2, smoothFactor = 0.5,group = "agg",popup = paste0("<b>Name: </b>", agg$area_name, "<br>",
+                                                                                                          "<b>Number: </b>", agg$area_numbe))%>%
+      addPolygons(data=disp,color = "#444444", weight = 1, smoothFactor = 0.5,group = "disp",popup = paste0("<b>Name: </b>", disp$name_, "<br>","<b>Number: </b>", disp$site_))%>%
+      addPolygons(data=wave,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave",popup = paste0("<b>Name: </b>", wave$name_prop, "<br>","<b>Status: </b>", wave$inf_status))%>%
+      #addPolygons(data=wave_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave_cab",popup = paste0("<b>Name: </b>", wave_cab$name_prop, "<br>","<b>Status: </b>", wave_cab$infra_stat))%>%
+      addPolygons(data=tidal,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal",popup = paste0("<b>Name: </b>", tidal$name_prop, "<br>","<b>Status: </b>", tidal$inf_statUS))%>%
+      addPolygons(data=tidal_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal_cab",popup = paste0("<b>Name: </b>", tidal_cab$name_prop, "<br>","<b>Status: </b>", tidal_cab$infra_stat))%>%
+      addPolygons(data=mcz,color = "#444444", weight = 1, smoothFactor = 0.5,group = "mcz",popup = paste0("<b>Name: </b>", mcz$site_name))%>%
+      addPolygons(data=sac,color = "#444444", weight = 1, smoothFactor = 0.5,group = "sac",popup = paste0("<b>Name: </b>", sac$site_name))%>%
+      addPolygons(data=ncmpa,color = "#444444", weight = 1, smoothFactor = 0.5,group = "ncmpa",popup = paste0("<b>Name: </b>", ncmpa$site_name))%>%
+      addPolygons(data=oga,color = "#444444", weight = 1, smoothFactor = 0.5,group = "oga",popup = paste0("<b>Number: </b>", oga$licref, "<br>","<b>Organisation: </b>", oga$licorggrp))%>%
+    ##################################
+    addRasterImage(reactiveRaster_cv(),col=reactiveColour_cv(),opacity = 1,project = 3857)%>% 
+    addLegend(
+  position = "bottomright",
+  pal = reactiveColour_cv(),
+  opacity = 5, 
+  values = c(0,0.10,0.25,0.5,1), 
+  #title = "Lagis koreni CV")%>%
+   title = reactivetitle())%>%
+    ##################################
+    addLayersControl(
+      overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"),options = layersControlOptions(collapsed = FALSE))%>%#,"wave_cab"
+      hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"))%>%#,"wave_cab"
+      #setView(-3,54.6,zoom=5.6)
+    setView(0.54,55.53,zoom=5.5)%>%
+    addMouseCoordinates()
+  
+})
+
+leafletOutput('map3') 
+#__________________________________________________________________________________________
+
+
+```
+
