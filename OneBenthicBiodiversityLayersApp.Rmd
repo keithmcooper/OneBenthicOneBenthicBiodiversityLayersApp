@@ -1046,7 +1046,7 @@ uiOutput("refheader")
 </div>
 
 <div>
-```{r}
+```{r plogos, echo=F, fig.cap = "Title", out.width ='100%' }
 
 
 #### PARTNER LOGOS ####
