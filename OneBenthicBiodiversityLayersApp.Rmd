@@ -1007,8 +1007,8 @@ uiOutput("test")
 <br>
 
 <div>
-```{r partners}
-
+```{r }
+## PARTNER HEADER
 #####################################
 output$refheader <-  renderUI({
     if(as.character(input$layernameInput) == "Assemblages"){list(h2("Partners",style=c("color:#044D94")))}
@@ -1039,6 +1039,15 @@ uiOutput("refheader")
 
 
   
+
+
+```
+
+</div>
+
+<div>
+```{r}
+
 
 #### PARTNER LOGOS ####
 output$img10 <- renderImage({  #This is where the image is set 
