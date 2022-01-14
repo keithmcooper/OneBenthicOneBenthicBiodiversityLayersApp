@@ -1061,21 +1061,21 @@ output$img10 <- renderImage({  #This is where the image is set
  #else if(as.character(input$layernameInput) == "Richness"){            
  #     list(src = "www/cefas&defralogo.png",width ='50%')}
    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
        else if(as.character(input$layernameInput) == "Arctica_islandica"){
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
     else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
        else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
-     list(src = "www/logos2.png",width ='90%')}
+     list(src = "www/logos2.PNG",width ='90%')}
       else if(as.character(input$layernameInput) == "Abra_alba"){
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
        else if(as.character(input$layernameInput) == "Lagis_koreni"){
-      list(src = "www/logos2.png",width ='90%')}
+      list(src = "www/logos2.PNG",width ='90%')}
   }, deleteFile = F)
 
 imageOutput('img10')
