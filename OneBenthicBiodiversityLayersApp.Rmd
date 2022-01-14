@@ -728,7 +728,7 @@ br()
 ## Header: Funders
 h2("Funders",style=c("color:#044D94"))
 br()
-p("This tool was developed by Cefas within funding from The Crown Estate's Offshore Wind Evidence and Change Programme.")
+p("This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
 
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
 knitr::include_graphics("www/layersappfunderslogos.png")
