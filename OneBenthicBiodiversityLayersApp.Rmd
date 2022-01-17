@@ -711,7 +711,12 @@ knitr::include_graphics("www/NEWLOGOCROPPED.png")#this works
 <br>
 
 <img src="www/output-onlinegiftools.gif"></center>
+```{r}
+## Header: Funders
 
+#knitr::include_graphics("www/output-onlinegiftools.gif")#this works
+knitr::include_graphics("www/layersappfunderslogos.png")
+```
 </div>
 
 
