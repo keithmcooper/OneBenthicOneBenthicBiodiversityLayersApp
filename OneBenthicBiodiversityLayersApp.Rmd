@@ -53,11 +53,11 @@ require(tibble)
 require(kableExtra)
 library(patchwork)
 library(ggpubr)
-
+library(shinybusy)
 #options(show.error.messages = FALSE)
 #__________________________________________________________________________________________
 ## Colour palette
-cpl <- c('#d4ebe7','#cbbcbb','#f5f1f1','#172957','#66afad')
+cpl <- c('#d4ebe7','#cbbcbb','#f5f1f1','#172957','#66afad') 
 names(cpl) <- c('lt','dbe','lbe','dbl','dt')
 #__________________________________________________________________________________________
 #### CREATE A CONNECTION TO OneBenthic LIVE ####
@@ -418,6 +418,14 @@ envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitra
 names(envlab) <- c('bathy3','chla3','cur3','iron3','light3','lsf3','nitr3','oxy3','phos3','phyto3','Predicted_Gravel_Fraction','Predicted_Mud_Fraction','prod3','rsp3','sal3','sil3','SPM_MEAN','temp3','Wave_veloc','GearType')
 
 ```
+
+```{r}
+## Add busy spinner from shinybusy package
+#https://dreamrs.github.io/shinybusy/
+#https://cran.r-project.org/web/packages/shinybusy/shinybusy.pdf
+add_busy_spinner(spin = "fading-circle",position = "bottom-left",margins = c(40, 60),color = "#044D94",timeout = 300,height = "70px",width = "70px")##FFFFFF #0D4581
+```
+
 
 Column {.sidebar data-width=200}
 -----------------------------------------------------------------------
@@ -2047,7 +2055,6 @@ plotOutput('parrespcur', width = '100%', height = '100%')
 ### Confidence
 
 ```{r,fig.2width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
-
 
 ## Reactive object for selected raster (confidence)
 reactiveRaster_cv <-  reactive({raster::subset(modis.rasters_cv,grep(as.character(input$layernameInput), names(modis.rasters_cv), value = T))})
