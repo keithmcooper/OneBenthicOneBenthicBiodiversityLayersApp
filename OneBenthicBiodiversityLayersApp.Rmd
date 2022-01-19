@@ -711,11 +711,11 @@ knitr::include_graphics("www/NEWLOGOCROPPED.png")#this works
 <br>
 
 <img src="www/output-onlinegiftools.gif"></center>
-```{r}
+```{r,out.width = "1000px"}
 ## Header: Funders
 
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
-knitr::include_graphics("www/layersappfunderslogos.png")
+knitr::include_graphics("www/layersappfunderslogos2.png")
 ```
 </div>
 
@@ -730,32 +730,33 @@ knitr::include_graphics("www/layersappfunderslogos.png")
 
 ## Header: Modelling Methodology
 h2("Purpose",style=c("color:#044D94"))
-p("This app provides modelled layers of benthic biodiversity. Models are based on Random Forest modelling of point sample data from the ",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative. Each model is accompanied by an associated confidence map based on methodology ", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "here"))
+p("This app provides modelled layers for different aspects of benthic biodiversity. Models are based on ",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest") ," modelling of point sample data from the ",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative. Each model is accompanied by an associated confidence map based on methodology ", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "here.")," Understanding of benthic biodiversity is vital for effective decision concerning marine spatial planning, marine licensing, conservation, ",tags$a(href="https://www.marine-ecosystems.org.uk/Research_outcomes/Natural_Capital", "marine natural capital,"),
+"  and ",tags$a(href="https://www.researchgate.net/publication/334250681_Marine_Net_Gain_Moving_towards_a_practical_framework_and_metric_for_the_marine_environment", "net gain."))
 #p("This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
 ## Header: How to use this app
 h2("How to use this app",style=c("color:#044D94"))
-p("Using the drop-down boxes on the left of the screen, select a category of modelled layer (Structure or Species distibution model (SDM)). Next select an individual layer to display.","The map window will then update. A variety of associated model outputs are shown in tabs (",tags$b("Layer Info, Characteristics, Input data, Performance, Variable contribution, Partial Response Curves, Confidence"),") on the right of the screen to aid interpretation. Necessarily these outputs are technical in nature, although accompanying text can help with interpretation. FOr a non technical summary of the modelling methodology see 'Background' section below. This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
+p("Using the drop-down boxes on the left of the screen, select a category of modelled layer (currently Structure or Species distibution model (SDM)). Next select an individual layer to display.","The map window will then update. A variety of associated model outputs are shown in tabs (",tags$b("Layer Info, Characteristics, Input data, Performance, Variable contribution, Partial Response Curves, Confidence"),") on the right of the screen. Necessarily these outputs are technical in nature, although accompanying text is provided. A non-technical summary of the modelling methodology is provided in the 'Background' section below. This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
 ##########
 h2("Background",style=c("color:#044D94"))
-p("Seabed sediments cover large parts of continental shelf and support a huge diversity of animal life, collectively known as the ",tags$a(href="https://en.wikipedia.org/wiki/Benthos", "benthos.")," These organisms play an important role in the functioning of marine ecosystems.",
+p("Seabed sediments, covering large parts of the continental shelf, support a huge diversity of animal life, collectively known as the ",tags$a(href="https://en.wikipedia.org/wiki/Benthos", "benthos.")," These organisms play an important role in the functioning of marine ecosystems.",
 br(),
 br(),
-"Understanding of the benthos comes from seabed sediment samples collected using ",tags$i("inter alia"),"grab, core and trawl devices. These samplers, deployed from survey vessles, bring back a few litres of material which are then processed, resulting in a species by sample matrix for counts and/or biomass.",
+"Understanding of the benthos comes from seabed sediment samples collected using ",tags$i("inter alia"),"grab, core and trawl devices. These samplers, deployed from survey vessles, bring back material which is then processed, resulting in a species-by-sample matrix for counts and/or biomass.",
 br(),
 br(),
 "Resulting data are typically used to generate ",tags$a(href="http://www.coastalwiki.org/wiki/Measurements_of_biodiversity", "biodiversity indices,"),
-"the simplest of which include the number of species or taxa and abundances by sample. In addition, data can also put through a clustering process to identify groups of animals which are often found together. These groups are referred to as assemblages.",
+"the simplest of which include number of taxa and abundance. In addition, data can also put through a clustering process to identify groups of samples which support a similar complement of animals, otherwise known as an assemblage.",
 br(),
 br(),
-"Thus we know a lot about the benthos at these point sampled locations. However, even with the 44,603 samples available through the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative (Jan 2022), this still only gives us 4,4603 m",tags$sup("2"),", an area approximately 60 % of a football pitch. In order to make informed decisions around licensing and conservation, it's vital that we  know something about seabed biodiversity in the places where we don't have data. This is where modelling comes in.",
+"Thus we know a lot about the benthos at these point sampled locations. However, even with the 44,603 grab and core samples available through the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative (Jan 2022), this still only equates to 4,4603 m",tags$sup("2"),", approximately two thirds the area of a football pitch. In order to make informed decisions around marine licensing and conservation, it's vital that there is an understanding of seabed biodiversity across all areas, not just those where we have data. This is where modelling comes in.",
 br(),
 br(),
-"Here's how it works. We start with a variety of maps for different environmental variables which are known or thought to be important for the benthos (e.g. depth, temperature, salinity, sediment type). These layers are called",tags$b("predictor variables")," and are available in raster format. Rasters are simply gridded maps in which each grid cell contains a value. For a full list of the raster predictor layers used for modelling see the ",tags$b("data tab"), "Next we overlay our point sample data", tags$b("(response variable(s))")," on the stack of raster predictor layers. We can then look down through the stack and extract values for each predictor variable. Thus we have a good understanding of the environmental conditions associated with point sample response variable(s). Note that the point sample data could be counts or classes. We then use this understandning to look back up through the raster stack and predict what the response variable is likely to be in places where we have no data. The modelling approach used in this tool is called",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest."))
+"Here's how it works. We start with a variety of maps for different environmental variables which are considered to be important for the benthos (e.g. depth, temperature, salinity, sediment type). These layers are called",tags$b("predictor variables")," and are available in raster format. Rasters are simply gridded maps in which each grid cell contains a value. For a full list of the raster predictor layers used for modelling see the ",tags$b("data tab."), "Next we overlay point sample data", tags$b("(response variable(s)")," on the stack of raster predictor layers. We can then look down through the stack and extract values for each predictor variable. Thus we have a good understanding of the environmental conditions associated with point sample response variable(s). Note that the point sample data could be counts or classes. We then use this understandning to look back up through the raster stack and predict what the response variable is likely to be in places where we have no data. The modelling approach used in this tool is called",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest."))
 br()
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
 knitr::include_graphics("www/modelling_infographic.png")
 br()
-p("When looking at any model it's important to consider how well if performs (i.e how well it represents reality). To do this we hold back some of the point sample data purely for testing. Are the values from our samples the same or similar to those predicted by the model? Furthermore, we run the model multiple times using random subsets of the data. These multiple model outputs can then be compared. Where there is agreement between  model runs then this gives high confidence. Where models differ then we have less confidence.",
+p("When looking at any model it's important to consider performance (i.e how well it represents reality). To do this we hold back some of the point sample data purely for testing. Are the values from our samples the same or similar to those predicted by the model? Furthermore, we run the model multiple times using random subsets of the data. These multiple model outputs can then be compared. Where there is agreement between  model runs then this gives high confidence. Where models differ then we have less confidence.",
 br(),
 br(),  
 "To help interpret model outputs we provide a variety of outputs shown in tabs. The important thing to remember is to look at both the model and the confidence. " )
@@ -2147,7 +2148,7 @@ else if (as.character(input$layernameInput) == "Lagis_koreni"){print("Lagis kore
 else if (as.character(input$layernameInput) == "Goniadella_gracilis"){print("Goniadella gracilis CV")}
 else if (as.character(input$layernameInput) == "Crepidula_fornicata"){print("Crepidula fornicata CV")}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){print("Modiolus modiolus CV")}
-else if (as.character(input$layernameInput) == "Assemblages"){print("Assemblages CV")}    
+else if (as.character(input$layernameInput) == "Assemblages"){print("Assemblages Confidence")}    
       })
 
 
