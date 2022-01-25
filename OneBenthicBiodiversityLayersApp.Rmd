@@ -285,7 +285,8 @@ data <- data.frame(cat, layer)
 euowf <- readLines("https://ows.emodnet-humanactivities.eu/wfs?SERVICE=WFS&VERSION=1.1.0&request=GetFeature&typeName=windfarmspoly&OUTPUTFORMAT=json") %>% paste(collapse = "\n") %>% geojson_sf()
 agg <- readLines("https://opendata.arcgis.com/datasets/d734d753d04649e2a7e1c64b820a5df9_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
 owf <- readLines("https://opendata.arcgis.com/datasets/4da955de094e475d8d902ee446e38d58_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
-owf_cab <- readLines("https://opendata.arcgis.com/datasets/ceb51568455e4a9ba85bfd7c2da36fdc_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+#owf_cab <- readLines("https://opendata.arcgis.com/datasets/ceb51568455e4a9ba85bfd7c2da36fdc_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
+owf_cab <- readLines("https://opendata.arcgis.com/datasets/c15c075302eb40c9922244a3794d73b1_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
 wave <- readLines("https://opendata.arcgis.com/datasets/d9f9dbc0e29b410c87ba544f6082a0d0_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
 #wave_cab <- readLines("https://opendata.arcgis.com/datasets/bf376b05c6ae489b8b8687d6b7d6525d_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf() # layer depricated
 tidal <- readLines("https://opendata.arcgis.com/datasets/db94124b152641a992d4e8dfa14d59f2_0.geojson") %>% paste(collapse = "\n") %>% geojson_sf()
@@ -730,7 +731,7 @@ knitr::include_graphics("www/layersappfunderslogos2.png")
 
 ## Header: Modelling Methodology
 h2("Purpose",style=c("color:#044D94"))
-p("This app provides modelled layers for different aspects of benthic biodiversity. Models are based on ",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest") ," modelling of point sample data from the ",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative. Each model is accompanied by an associated confidence map based on methodology ", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "here.")," Understanding of benthic biodiversity is vital for effective decision concerning marine spatial planning, marine licensing, conservation, ",tags$a(href="https://www.marine-ecosystems.org.uk/Research_outcomes/Natural_Capital", "marine natural capital,"),
+p("This app provides modelled layers for different aspects of benthic biodiversity. Models are based on ",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest") ," modelling of point sample data from the ",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative.  Understanding of benthic biodiversity is vital for effective decision concerning marine spatial planning, marine licensing, conservation, ",tags$a(href="https://www.marine-ecosystems.org.uk/Research_outcomes/Natural_Capital", "marine natural capital,"),
 "  and ",tags$a(href="https://www.researchgate.net/publication/334250681_Marine_Net_Gain_Moving_towards_a_practical_framework_and_metric_for_the_marine_environment", "net gain."))
 #p("This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
 ## Header: How to use this app
@@ -751,15 +752,18 @@ br(),
 "Thus we know a lot about the benthos at these point sampled locations. However, even with the 44,603 grab and core samples available through the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative (Jan 2022), this still only equates to 4,4603 m",tags$sup("2"),", approximately two thirds the area of a football pitch. In order to make informed decisions around marine licensing and conservation, it's vital that there is an understanding of seabed biodiversity across all areas, not just those where we have data. This is where modelling comes in.",
 br(),
 br(),
-"Here's how it works. We start with a variety of maps for different environmental variables which are considered to be important for the benthos (e.g. depth, temperature, salinity, sediment type). These layers are called",tags$b("predictor variables")," and are available in raster format. Rasters are simply gridded maps in which each grid cell contains a value. For a full list of the raster predictor layers used for modelling see the ",tags$b("data tab."), "Next we overlay point sample data", tags$b("(response variable(s)")," on the stack of raster predictor layers. We can then look down through the stack and extract values for each predictor variable. Thus we have a good understanding of the environmental conditions associated with point sample response variable(s). Note that the point sample data could be counts or classes. We then use this understandning to look back up through the raster stack and predict what the response variable is likely to be in places where we have no data. The modelling approach used in this tool is called",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest."))
-br()
+"Here's how it works. We start with a variety of maps for different environmental variables which are considered to be important for the benthos (e.g. depth, temperature, salinity, sediment type). These layers are called",tags$b("predictor variables")," and are available in raster format. Rasters are simply gridded maps in which each grid cell contains a value. For a full list of the raster predictor layers used for modelling see the ",tags$b("Data tab."),
+br(),
+br(),
+"Next the point sample data ", tags$b("(response variable(s)")," are split into 'train' and 'test' subsets. The test subset is held back from modelling and used to assess model performance (i.e how well it represents reality). Train data are overlaid on the raster stack of predictor layers. Looking down through the stack we then extract values for each predictor variable. Thus we have a good understanding of the environmental conditions associated with point sample response variable(s). Note that the point sample data could be counts or classes. We then use this understandning to look back up through the raster stack and predict what the response variable is likely to be in places where we have no point sample data. The modelling approach used in this tool is called",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest."),
+br(),
+br(),
+"The process is repeated several time, using different subsets of train and test data, resulting in multiple versions of the model. Different model outputs are then comared. Where there is agreement between  model runs then this gives high confidence. Where models differ then we have less confidence. The test set is then overlaid on the final consensus model output to determine performance. For a more in depth description of the methodology see ", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "here."))
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
 knitr::include_graphics("www/modelling_infographic.png")
 br()
-p("When looking at any model it's important to consider performance (i.e how well it represents reality). To do this we hold back some of the point sample data purely for testing. Are the values from our samples the same or similar to those predicted by the model? Furthermore, we run the model multiple times using random subsets of the data. These multiple model outputs can then be compared. Where there is agreement between  model runs then this gives high confidence. Where models differ then we have less confidence.",
-br(),
-br(),  
-"To help interpret model outputs we provide a variety of outputs shown in tabs. The important thing to remember is to look at both the model and the confidence. " )
+br()  
+p("To help interpret model outputs we provide a variety of outputs shown in tabs. The important thing to remember is to look at both the model and the confidence.") 
 ############
 
 
@@ -773,6 +777,31 @@ br(),
 
 
 ##############################
+tabexplan <- data.frame(
+  Tab=c("Layer Info",
+         "Characteristics",
+               "Input data",
+               "Performance",
+               "Variable contribution",
+               "Partial Response Curves",
+               "Confidence"),
+  Explanation=c("Description",
+         "Modelled class characteristics (categorical data only)",
+               "Data used for model",
+               "Measure of model performance",
+               "Relative contribution of predictor variables to the model",
+               "Effect of predictor varaibles on response variable",
+               "Model confidence"
+               ))
+
+## Create a table for rasters
+library(knitr)
+  library(kableExtra)
+
+    kable(tabexplan, escape=FALSE,format = "html") %>%
+      #column_spec (1, bold = T)%>%
+      kable_styling(bootstrap_options = c("striped","hover", "condensed"))
+br()
 ```
 </div>
 
