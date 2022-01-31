@@ -4,6 +4,7 @@ author: ''
 output:
   flexdashboard::flex_dashboard:
     theme: cerulean
+    css: style.css
     #social: menu
     #source_code: embed
 runtime: shiny
@@ -689,7 +690,6 @@ addLegend(
 
 Column {.tabset .tabset-fade}
 -----------------------------------------------------------------------
-
 ### Welcome  {data-padding=20}
 
 <div>
@@ -697,11 +697,9 @@ Column {.tabset .tabset-fade}
 <br>
 <br>
 <br>
-<br>
-<br>
 <center>
 <strong style="color: #044D94;font-size: 50px;">OneBenthic Layers<center>
-```{r picturetest, echo = F, out.width = '15%'}
+```{r picturetest, echo = F, out.width = '12%'}
 
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
 knitr::include_graphics("www/NEWLOGOCROPPED.png")#this works
@@ -711,8 +709,8 @@ knitr::include_graphics("www/NEWLOGOCROPPED.png")#this works
 <br>
 <br>
 
-<img src="www/output-onlinegiftools.gif"></center>
-```{r,out.width = "1000px"}
+<img src="www/output-onlinegiftools.gif" width="500"></center>
+```{r,out.width = "750px"}
 ## Header: Funders
 
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
@@ -730,15 +728,15 @@ knitr::include_graphics("www/layersappfunderslogos2.png")
 
 
 ## Header: Modelling Methodology
-h2("Purpose",style=c("color:#044D94"))
+h3("Purpose",style=c("color:#044D94"))
 p("This app provides modelled layers for different aspects of benthic biodiversity. Models are based on ",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest") ," modelling of point sample data from the ",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative.  Understanding of benthic biodiversity is vital for effective decision concerning marine spatial planning, marine licensing, conservation, ",tags$a(href="https://www.marine-ecosystems.org.uk/Research_outcomes/Natural_Capital", "marine natural capital,"),
 "  and ",tags$a(href="https://www.researchgate.net/publication/334250681_Marine_Net_Gain_Moving_towards_a_practical_framework_and_metric_for_the_marine_environment", "net gain."))
 #p("This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
 ## Header: How to use this app
-h2("How to use this app",style=c("color:#044D94"))
+h3("How to use this app",style=c("color:#044D94"))
 p("Using the drop-down boxes on the left of the screen, select a category of modelled layer (currently Structure or Species distibution model (SDM)). Next select an individual layer to display.","The map window will then update. A variety of associated model outputs are shown in tabs (",tags$b("Layer Info, Characteristics, Input data, Performance, Variable contribution, Partial Response Curves, Confidence"),") on the right of the screen. Necessarily these outputs are technical in nature, although accompanying text is provided. A non-technical summary of the modelling methodology is provided in the 'Background' section below. This tool was developed by Cefas within funding from The Crown Estate's ",tags$a(href="https://www.thecrownestate.co.uk/en-gb/what-we-do/on-the-seabed/offshore-wind-evidence-and-change-programme/", "Offshore Wind Evidence and Change Programme."))
 ##########
-h2("Background",style=c("color:#044D94"))
+h3("Background",style=c("color:#044D94"))
 p("Seabed sediments, covering large parts of the continental shelf, support a huge diversity of animal life, collectively known as the ",tags$a(href="https://en.wikipedia.org/wiki/Benthos", "benthos.")," These organisms play an important role in the functioning of marine ecosystems.",
 br(),
 br(),
@@ -812,12 +810,12 @@ br()
 ```{r rtable, echo = F, results='asis'}
 
 ## Header: Benthic data
-h2("Benthic data",style=c("color:#044D94"))
-p("Modelled layers were created using data from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative.","To explore the dataset in more detail see the",tags$a(href="https://openscience.cefas.co.uk/", "OneBenthic Dashboard."))
+h3("Benthic data",style=c("color:#044D94"))
+p("Modelled layers were created using data from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative which includes selected data from the ",tags$a(href="https://www.eurobis.org/", "EurOBIS")," data repository supplied by ",tags$a(href="http://www.vliz.be/en", "VLIZ."), "To explore the dataset in more detail see the",tags$a(href="https://openscience.cefas.co.uk/", "OneBenthic Dashboard."))
 br()
 br()
  ## Header: Rasters
-h2("Rasters",style=c("color:#044D94"))
+h3("Rasters",style=c("color:#044D94"))
 pred_var <- data.frame(
   Variable=c("temp",
          "sal",
@@ -891,7 +889,7 @@ br()
 
 
 ## Header: Map overlays
-h2("Map overlays",style=c("color:#044D94"))
+h3("Map overlays",style=c("color:#044D94"))
 #uiOutput("refheader") 
 ## Table of overlay layers
 
@@ -921,7 +919,7 @@ map_overlays <- data.frame(
       >Offshore Wind Site Agreements (England, Wales & NI), The Crown Estate</a></p>',
          '<p><a href="https://opendata.arcgis.com/datasets/ceb51568455e4a9ba85bfd7c2da36fdc_0.geojson"
       >Offshore Wind Cable Agreements (England, Wales & NI), The Crown Estate</a></p>',
-         '<p><a href="https://opendata.arcgis.com/datasets/c0e61d8972e4438ab1c39304b7f28608_0.geojson"
+         '<p><a href="https://opendata.arcgis.com/datasets/c15c075302eb40c9922244a3794d73b1_0.geojson"
      >Offshore Wind Leasing Round 4 Characterisation Areas (England, Wales and NI), The Crown Estate</a></p>',
          '<p><a href="https://opendata.arcgis.com/datasets/54dce8a263324a85b36523e31fff20cc_0.geojson"
       >Offshore Wind Leasing Round 4 Bidding Areas (England, Wales and NI), The Crown Estate</a></p>',
@@ -991,7 +989,7 @@ library(knitr)
  output$desc <-  renderUI({
    
     if(as.character(input$layernameInput) == "Assemblages"){
-      list(h2("Description",style=c("color:#044D94")),"This layer shows benthic  macrofaunal assemblages (biotopes) based on the methodology in ",tags$a(href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2664.13381", "Cooper et al. (2019)"),", but using an expanded dataset (see Cooper, Downie and Curtis (2021) for further details. In summary, macrofaunal abundance data from comparable surveys (0.1m2 grab or core, processed over a 1mm sieve, and not taken from known impact sites) were fourth-root transformed prior to k-means clustering. Cluster group distribution was then modelled using a random forest approach.")}
+      list(h3("Description",style=c("color:#044D94")),"This layer shows benthic  macrofaunal assemblages (biotopes) based on the methodology in ",tags$a(href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2664.13381", "Cooper et al. (2019)"),", but using an expanded dataset (see Cooper, Downie and Curtis (2021) for further details. In summary, macrofaunal abundance data from comparable surveys (0.1m2 grab or core, processed over a 1mm sieve, and not taken from known impact sites) were fourth-root transformed prior to k-means clustering. Cluster group distribution was then modelled using a random forest approach.")}
     #else if(as.character(input$layernameInput) == "Richness"){
      #list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
     #else if(as.character(input$layernameInput) == "Evenness"){
@@ -1005,21 +1003,21 @@ library(knitr)
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
    else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Modiolus modiolus")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Modiolus modiolus")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab. Note that the high abundance predicted in the deep waters on the shelf break and in the Norwegian Trench are expected to be model artefacts as there is no data supporting the predicted distribution in those areas.")}
     else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Ampelisca spinipes")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Ampelisca spinipes")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Arctica_islandica"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Arctica islandica")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Arctica islandica")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Crepidula fornicata")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Crepidula fornicata")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Goniadella gracilis")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Goniadella gracilis")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Abra_alba"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Abra alba")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Abra alba")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
           else if(as.character(input$layernameInput) == "Lagis_koreni"){
-      list(h2("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Lagis koreni")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Lagis koreni")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
 
   })
 uiOutput("desc")   
@@ -1037,7 +1035,7 @@ uiOutput("desc")
  output$test <-  renderUI({
    
     if(as.character(input$layernameInput) == "Assemblages"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.",br(),br(),
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.",br(),br(),
                      "Cooper, K.M., Bolam, S. G., Downie, A. L. and Barry, J. (2019), Biological‐based habitat classification approaches promote cost‐efficient monitoring: an example using seabed assemblages. J Appl Ecol. 56:1085–1098. doi:10.1111/1365-2664.13381")}
     #else if(as.character(input$layernameInput) == "Richness"){
     # list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
@@ -1052,21 +1050,21 @@ uiOutput("desc")
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
        else if(as.character(input$layernameInput) == "Arctica_islandica"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
     else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
        else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
        else if(as.character(input$layernameInput) == "Abra_alba"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
        else if(as.character(input$layernameInput) == "Lagis_koreni"){
-      list(h2("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.")}
       
   })
 uiOutput("test")   
@@ -1081,7 +1079,7 @@ uiOutput("test")
 ## PARTNER HEADER
 #####################################
 output$refheader <-  renderUI({
-    if(as.character(input$layernameInput) == "Assemblages"){list(h2("Partners",style=c("color:#044D94")))}
+    if(as.character(input$layernameInput) == "Assemblages"){list(h3("Partners",style=c("color:#044D94")))}
     #else if(as.character(input$layernameInput) == "Richness"){
     # list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
     #else if(as.character(input$layernameInput) == "Evenness"){
@@ -1094,14 +1092,14 @@ output$refheader <-  renderUI({
     #  list("six")}
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
-    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Partners",style=c("color:#044D94")))}
-       else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Partners",style=c("color:#044D94")))}
-       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Partners",style=c("color:#044D94")))}
-       else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Partners",style=c("color:#044D94")))}
-    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Partners",style=c("color:#044D94")))}
-       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Partners",style=c("color:#044D94")))}
-       else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Partners",style=c("color:#044D94")))}
-       else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Partners",style=c("color:#044D94")))}
+    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Partners",style=c("color:#044D94")))}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Partners",style=c("color:#044D94")))}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Partners",style=c("color:#044D94")))}
       
   })
 uiOutput("refheader") 
@@ -1252,21 +1250,21 @@ imageOutput('img1')
 ```
 </div>
 
-### Input data {data-padding=20}
+### Input Data {data-padding=20}
 
 <div>
 ```{r}
 ## RECORDS HEADER
 output$recordsheader <-  renderUI({
-if(as.character(input$layernameInput) == "Assemblages"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+if(as.character(input$layernameInput) == "Assemblages"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   })
 uiOutput("recordsheader")
 #_______________________________________________________________________________
@@ -1316,15 +1314,15 @@ imageOutput('abund_obs')
 ## PLOT HEADER
 output$plotheader <-  renderUI({
 #if(as.character(input$layernameInput) == "Assemblages"){list(h2("Histogram",style=c("color:#044D94")),p("Some text 1"))}
-if(as.character(input$layernameInput) == "Assemblages"){list(h2("Plot",style=c("color:#044D94")),p("A bar graph illustrating the distribution of the model input data over the 11 assemblage cluster groups."))}
-else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}  
-  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-  else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-  else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+if(as.character(input$layernameInput) == "Assemblages"){list(h3("Plot",style=c("color:#044D94")),p("A bar graph illustrating the distribution of the model input data over the 11 assemblage cluster groups."))}
+else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}  
+  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+  else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+  else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+  else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
   })
 uiOutput("plotheader")
 
@@ -1489,15 +1487,15 @@ plotOutput('inputdat', width = '50%', height = '50%')
 
 ## VALIDATION STATS HEADER
 output$valstatsheader <-  renderUI({
-    if(as.character(input$layernameInput) == "Assemblages"){list(h2("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model with the total number of samples used in the training data set and the Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement; and (2) the individual assemblage cluster classes with Sensitivity, Specificity and Balanced Accuracy scores."))}
-else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Abra_alba"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-else if (as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+    if(as.character(input$layernameInput) == "Assemblages"){list(h3("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model with the total number of samples used in the training data set and the Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement; and (2) the individual assemblage cluster classes with Sensitivity, Specificity and Balanced Accuracy scores."))}
+else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Abra_alba"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. RMSE and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 
   })
 uiOutput("valstatsheader") 
@@ -1680,16 +1678,16 @@ tableOutput('valstats2')
 ```{r}
 ## OBS vs PRED PLOT HEADER
 output$obsvspredheader <-  renderUI({
-if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
-else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
-else if(as.character(input$layernameInput) == "Abra_alba"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h2("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Assemblages"){list(h2("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
+if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
+else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
+else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+else if(as.character(input$layernameInput) == "Assemblages"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
 })
 uiOutput("obsvspredheader") 
 #________________________________________________________________________________
@@ -1946,7 +1944,7 @@ obprplot
 plotOutput('confusmat') 
 ```
 </div>
-### Variable contribution  {data-padding=20}
+### Variable Contribution  {data-padding=20}
 
 <div>
 ```{r}
@@ -2071,7 +2069,7 @@ plotOutput('varcon', width = '100%', height = '100%')
 ```
 </div>
 
-### Partial Response Curves {data-padding=20}
+### Resp. Curves {data-padding=20}
 <div style= "height:1000px; width: 1000px">
 <strong></strong>
 Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.
