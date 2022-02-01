@@ -696,7 +696,6 @@ Column {.tabset .tabset-fade}
 <br>
 <br>
 <br>
-<br>
 <center>
 <strong style="color: #044D94;font-size: 50px;">OneBenthic Layers<center>
 ```{r picturetest, echo = F, out.width = '12%'}
@@ -1764,7 +1763,7 @@ res.mat.all <- reactive({
 <br>
 
 
-<div id="confumat" style= "height:800px; width: 800px">
+<div id="confumat" style= "height:750px; width: 750px">
 ```{r,fig.width=10,fig.asp=1}
 
 #```{r,fig.width=10,fig.asp=1}
@@ -2073,7 +2072,7 @@ plotOutput('varcon', width = '100%', height = '100%')
 </div>
 
 ### Partial Response Curves {data-padding=20}
-<div style= "height:800px; width: 800px">
+<div style= "height:750px; width: 750px">
 
 
 
