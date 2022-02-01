@@ -4,7 +4,7 @@ author: ''
 output:
   flexdashboard::flex_dashboard:
     theme: cerulean
-    css: style3.css
+    css: style.css
     #social: menu
     #source_code: embed
 runtime: shiny
