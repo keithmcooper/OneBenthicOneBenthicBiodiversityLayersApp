@@ -501,7 +501,7 @@ leaflet() %>%
       overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","mcz","sac","ncmpa","oga"),options = layersControlOptions(collapsed = FALSE))%>%#"wave_cab",
       hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","mcz","sac","ncmpa","oga"))%>%#"wave_cab",
       #setView(-3,54.6,zoom=5.6)%>%
-      setView(0.54,55.53,zoom=5.5)%>%
+      setView(0.54,55.53,zoom=5.3)%>%
       addMouseCoordinates()
 })
 
@@ -747,21 +747,22 @@ br(),
 "the simplest of which include number of taxa and abundance. In addition, data can also put through a clustering process to identify groups of samples which support a similar complement of animals, otherwise known as an assemblage.",
 br(),
 br(),
-"Thus we know a lot about the benthos at these point sampled locations. However, even with the 44,603 grab and core samples available through the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative (Jan 2022), this still only equates to 4,4603 m",tags$sup("2"),", approximately two thirds the area of a football pitch. In order to make informed decisions around marine licensing and conservation, it's vital that there is an understanding of seabed biodiversity across all areas, not just those where we have data. This is where modelling comes in.",
-br(),
-br(),
-"Here's how it works. We start with a variety of maps for different environmental variables which are considered to be important for the benthos (e.g. depth, temperature, salinity, sediment type). These layers are called",tags$b("predictor variables")," and are available in raster format. Rasters are simply gridded maps in which each grid cell contains a value. For a full list of the raster predictor layers used for modelling see the ",tags$b("Data tab."),
+"Thus we know a lot about the benthos at these point sampled locations. However, even with the 44,603 grab and core samples available through the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative (Jan 2022), this still only equates to 4,4603 m",tags$sup("2"),", approximately two thirds the area of a football pitch. In order to make informed decisions around marine licensing and conservation, it's vital that there is an understanding of seabed biodiversity across all areas, not just those where we have data. This is where modelling comes in.")
+knitr::include_graphics("www/modelling_infographic.png")
+br()
+br()
+p("Here's how it works. We start with a variety of maps for different environmental variables which are considered to be important for the benthos (e.g. depth, temperature, salinity, sediment type). These layers are called",tags$b("predictor variables")," and are available in raster format. Rasters are simply gridded maps in which each grid cell contains a value. For a full list of the raster predictor layers used for modelling see the ",tags$b("Data tab."),
 br(),
 br(),
 "Next the point sample data ", tags$b("(response variable(s)")," are split into 'train' and 'test' subsets. The test subset is held back from modelling and used to assess model performance (i.e how well it represents reality). Train data are overlaid on the raster stack of predictor layers. Looking down through the stack we then extract values for each predictor variable. Thus we have a good understanding of the environmental conditions associated with point sample response variable(s). Note that the point sample data could be counts or classes. We then use this understandning to look back up through the raster stack and predict what the response variable is likely to be in places where we have no point sample data. The modelling approach used in this tool is called",tags$a(href="https://en.wikipedia.org/wiki/Random_forest", "random forest."),
 br(),
 br(),
-"The process is repeated several time, using different subsets of train and test data, resulting in multiple versions of the model. Different model outputs are then comared. Where there is agreement between  model runs then this gives high confidence. Where models differ then we have less confidence. The test set is then overlaid on the final consensus model output to determine performance. For a more in depth description of the methodology see ", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "here."))
+"The process is repeated several time, using different subsets of train and test data, resulting in multiple versions of the model. Different model outputs are then comared. Where there is agreement between  model runs then this gives high confidence. Where models differ then we have less confidence. The test set is then overlaid on the final consensus model output to determine performance. For a more in depth description of the methodology see ", tags$a(href="https://doi.org/10.1016/j.envsoft.2018.07.014", "here."),
 #knitr::include_graphics("www/output-onlinegiftools.gif")#this works
-knitr::include_graphics("www/modelling_infographic.png")
+br(),
+br(), 
+p("To help interpret model outputs we provide a variety of outputs shown in various tabs (see table below). The important thing to remember is to look at both the model and the confidence."))
 br()
-br()  
-p("To help interpret model outputs we provide a variety of outputs shown in various tabs (see table below). The important thing to remember is to look at both the model and the confidence.") 
 ############
 
 
@@ -799,7 +800,6 @@ library(knitr)
     kable(tabexplan, escape=FALSE,format = "html") %>%
       #column_spec (1, bold = T)%>%
       kable_styling(bootstrap_options = c("striped","hover", "condensed"))
-br()
 
 #######################
 h3("Disclaimer",style=c("color:#044D94"))
@@ -822,7 +822,7 @@ p("Get in touch to tell us how you've used the app, or to report technical issue
 h3("Benthic data",style=c("color:#044D94"))
 p("Modelled layers were created using data from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," big data initiative which includes selected data from the ",tags$a(href="https://www.eurobis.org/", "EurOBIS")," data repository supplied by ",tags$a(href="http://www.vliz.be/en", "VLIZ."), "To explore the dataset in more detail see the",tags$a(href="https://openscience.cefas.co.uk/", "OneBenthic Dashboard."))
 br()
-br()
+#br()
  ## Header: Rasters
 h3("Rasters",style=c("color:#044D94"))
 pred_var <- data.frame(
@@ -891,10 +891,7 @@ library(knitr)
       column_spec (1, bold = T)%>%
       kable_styling(bootstrap_options = c("striped","hover", "condensed"))
 br()
-br()
-              
-
-
+#br()
 
 
 ## Header: Map overlays
@@ -2076,10 +2073,14 @@ plotOutput('varcon', width = '100%', height = '100%')
 </div>
 
 ### Partial Response Curves {data-padding=20}
-<div style= "height:1000px; width: 1000px">
-<strong></strong>
-Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.
+<div style= "height:800px; width: 800px">
+
+
+
 ```{r,fig.width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
+#<strong></strong>
+p("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")
+br()
 
 cvRP.list <- reactive({
   
@@ -2114,13 +2115,13 @@ output$parrespcur <-  renderPlot({
 ggarrange(plotlist=cvRP.list(),ncol=4,nrow=4,common.legend = TRUE, legend="right")
 #grid.arrange(grobs=cvRP.list(),ncol=4)
 })
-plotOutput('parrespcur', width = '100%', height = '100%') 
+plotOutput('parrespcur', width = '85%', height = '85%') 
 ```
 </div>
 
 ### Confidence
 
-```{r,fig.2width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
+```{r,fig.width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
 
 ## Reactive object for selected raster (confidence)
 reactiveRaster_cv <-  reactive({raster::subset(modis.rasters_cv,grep(as.character(input$layernameInput), names(modis.rasters_cv), value = T))})
@@ -2224,7 +2225,7 @@ leaflet() %>%
       overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"),options = layersControlOptions(collapsed = FALSE))%>%#,"wave_cab"
       hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"))%>%#,"wave_cab"
       #setView(-3,54.6,zoom=5.6)
-    setView(0.54,55.53,zoom=5.5)%>%
+    setView(0.54,55.53,zoom=5.3)%>%
     addMouseCoordinates()
   
 })
