@@ -4,7 +4,7 @@ author: ''
 output:
   flexdashboard::flex_dashboard:
     theme: cerulean
-    css: style.css
+    css: style3.css
     #social: menu
     #source_code: embed
 runtime: shiny
@@ -441,7 +441,7 @@ observeEvent(input$layertypeInput,{
                       choices=unique(data$layer[data$cat==input$layertypeInput]))})
 ```
 
-Column {data-width=675}
+Column {data-width=673}
 -----------------------------------------------------------------------
 
 ### Map
@@ -693,6 +693,7 @@ Column {.tabset .tabset-fade}
 ### Welcome  {data-padding=20}
 
 <div>
+<br>
 <br>
 <br>
 <br>
@@ -1946,7 +1947,7 @@ obprplot
 plotOutput('confusmat') 
 ```
 </div>
-### Variable Contribution  {data-padding=20}
+### Var. Contrib.  {data-padding=20}
 
 <div>
 ```{r}
@@ -2071,8 +2072,8 @@ plotOutput('varcon', width = '100%', height = '100%')
 ```
 </div>
 
-### Partial Response Curves {data-padding=20}
-<div style= "height:750px; width: 750px">
+### Par. Resp. Curves {data-padding=20}
+<div style= "height:660px; width: 750px">
 
 
 
@@ -2114,7 +2115,7 @@ output$parrespcur <-  renderPlot({
 ggarrange(plotlist=cvRP.list(),ncol=4,nrow=4,common.legend = TRUE, legend="right")
 #grid.arrange(grobs=cvRP.list(),ncol=4)
 })
-plotOutput('parrespcur', width = '85%', height = '85%') 
+plotOutput('parrespcur', width = '85%', height = '80%') 
 ```
 </div>
 
