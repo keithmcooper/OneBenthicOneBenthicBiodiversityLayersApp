@@ -1008,7 +1008,10 @@ uiOutput("desc")
    
     if(as.character(input$layernameInput) == "Assemblages"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 34 pp.",br(),br(),
-                     "Cooper, K.M., Bolam, S. G., Downie, A. L. and Barry, J. (2019), Biological‐based habitat classification approaches promote cost‐efficient monitoring: an example using seabed assemblages. J Appl Ecol. 56:1085–1098. doi:10.1111/1365-2664.13381")}
+                     "Cooper, K.M., Bolam, S. G., Downie, A. L. and Barry, J. (2019), Biological‐based habitat classification approaches promote cost‐efficient monitoring: an example using seabed assemblages. J Appl Ecol. 56:1085–1098. doi:10.1111/1365-2664.13381",
+br(),br(),
+"Download layers (model and associated confidence) in shapefile format ", tags$a(href="https://doi.org/10.14466/cefasdatahub.125", "here.")
+           )}
     #else if(as.character(input$layernameInput) == "Richness"){
     # list("Modelled layer for taxon richness based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
     #else if(as.character(input$layernameInput) == "Evenness"){
