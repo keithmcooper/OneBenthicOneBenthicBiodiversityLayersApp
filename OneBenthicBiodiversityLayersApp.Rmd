@@ -1231,15 +1231,15 @@ imageOutput('img1')
 ```{r}
 ## RECORDS HEADER
 output$recordsheader <-  renderUI({
-if(as.character(input$layernameInput) == "Assemblages"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+if(as.character(input$layernameInput) == "Assemblages"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
 else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   else if(as.character(input$layernameInput) == "Arctica_islandica"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
+  else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   })
 uiOutput("recordsheader")
 #_______________________________________________________________________________
