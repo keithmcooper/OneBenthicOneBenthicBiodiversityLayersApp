@@ -735,7 +735,7 @@ p("This app provides modelled layers for different aspects of benthic biodiversi
 ## Header: How to use this app
 
 h3("How to use this app",style=c("color:#044D94"))
-p("Using the drop-down boxes on the left of the screen, select a category of modelled layer (currently Structure or Species distibution model (SDM)). Next select an individual layer to display.","The map window will then update. On the right of the screen are various tabs for model outputs (see table below).")
+p("Using the drop-down boxes on the left of the screen, select a category of modelled layer (currently Structure or Species distibution model (SDM)). Next select an individual layer to display.","The map window will then update. On the right of the screen are various tabs for model outputs (see table below). These are technical in nature and aimed at users with knowledge of the modelling approaches used.")
 
 ##############################
 tabexplan <- data.frame(
@@ -746,12 +746,12 @@ tabexplan <- data.frame(
                "Variable contribution",
                "Partial Response Curves",
                "Confidence"),
-  Explanation=c("Description of the modelled layer, a reference (if appropriate) and details of funders or partners involved in the production of the layer",
+  Explanation=c("Description of the modelled layer, a reference (if appropriate), download links (if appropriate), and details of funders or partners involved in the production of the layer",
          "Modelled class characteristics (categorical data only)",
                "Map of distribution records and a histogram (numeric models) or bar chart (categorical models) for the data used in the model",
                "Various metrics of model performance, together with a confusion matrix (class models) or scatterplot (continuous models)",
                "Predictor variable contribution to the model (in the presence of all other variables)",
-               "Effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor/categorical variable, most common) value",
+               "Effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor/categorical variable, most common) value.",
                "Map showing spatial confidence in the model, based on multiple model runs. For categorical variables (e.g. faunal cluster group), the map shows confidence, with high values (darker shades) indicating areas of high confidence. For numerical variables (e.g. species abundance), the map shows the coefficient of variation (CV). In this case, high values (darker shades) indicate higher variability and thus lower confidence in the model."
                ))
 
@@ -1007,7 +1007,7 @@ uiOutput("desc")
  output$test <-  renderUI({
    
     if(as.character(input$layernameInput) == "Assemblages"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."),br(),br(),
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."),br(),br(),
                      "Cooper, K.M., Bolam, S. G., Downie, A. L. and Barry, J. (2019), Biological‐based habitat classification approaches promote cost‐efficient monitoring: an example using seabed assemblages. J Appl Ecol. 56:1085–1098. doi:10.1111/1365-2664.13381",
 br(),br(),
 "Download layers (model and associated confidence) in shapefile format ", tags$a(href="https://doi.org/10.14466/cefasdatahub.125", "here.")
@@ -1025,21 +1025,21 @@ br(),br(),
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Arctica_islandica"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
     else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Abra_alba"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Lagis_koreni"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 56 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
       
   })
 uiOutput("test")   
@@ -2045,14 +2045,41 @@ plotOutput('varcon', width = '100%', height = '100%')
 </div>
 
 ### Par. Resp. Curves {data-padding=20}
+
+<div>
+```{r}
+
+#### Partial Response Curves text ####
+
+ output$prc_text <-  renderUI({
+   
+if(as.character(input$layernameInput) == "Assemblages"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted (based on all cross-validation runs) to predictions made at 100 evenly spaced values along the range of the predictor variable.")}
+else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+else if(as.character(input$layernameInput) == "Arctica_islandica"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
+else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
+else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
+else if(as.character(input$layernameInput) == "Abra_alba"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
+else if(as.character(input$layernameInput) == "Lagis_koreni"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
+  })
+uiOutput("prc_text")   
+
+```
+</div>
+
 <div style= "height:660px; width: 750px">
-
-
-
 ```{r,fig.width=7, fig.cap='Partial response curves derived from 10 random split sample random forest model runs with a LOESS fit line through all predicted data points.'}
 #<strong></strong>
-p("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")
-br()
 
 cvRP.list <- reactive({
   
@@ -2087,7 +2114,7 @@ output$parrespcur <-  renderPlot({
 ggarrange(plotlist=cvRP.list(),ncol=4,nrow=4,common.legend = TRUE, legend="right")
 #grid.arrange(grobs=cvRP.list(),ncol=4)
 })
-plotOutput('parrespcur', width = '85%', height = '80%') 
+plotOutput('parrespcur', width = '85%', height = '90%') 
 ```
 </div>
 
