@@ -1015,7 +1015,7 @@ uiOutput("desc")
  output$test <-  renderUI({
    
     if(as.character(input$layernameInput) == "Assemblages"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."),br(),br(),
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."),br(),br(),
                      "Cooper, K.M., Bolam, S. G., Downie, A. L. and Barry, J. (2019), Biological‐based habitat classification approaches promote cost‐efficient monitoring: an example using seabed assemblages. J Appl Ecol. 56:1085–1098. doi:10.1111/1365-2664.13381",
 br(),br(),
 "Download layers (model and associated confidence) in shapefile format ", tags$a(href="https://doi.org/10.14466/cefasdatahub.125", "here.")
@@ -1033,21 +1033,21 @@ br(),br(),
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Arctica_islandica"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
     else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
        else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Abra_alba"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Lagis_koreni"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2021). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 55 pp. Access the report", tags$a(href="https://www.cefas.co.uk/data-and-publications/publications/search/#/search", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
       
   })
 uiOutput("test")   
@@ -2203,17 +2203,17 @@ leaflet() %>%
   #addTiles() %>% 
      addCircleMarkers(data=sites,~as.numeric(samplelong), ~as.numeric(samplelat), radius = 1.4,stroke = T, group = "samples",color = "black",weight = 0.3,fill = TRUE, fillColor = "black",fillOpacity = 0.6)%>%
       addPolygons(data=euowf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "euowf",popup = paste0("<b>Name: </b>", euowf$name))%>%
-      addPolygons(data=owf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf",popup = paste0("<b>Name: </b>", owf$name_prop, "<br>","<b>Status: </b>", owf$inf_status))%>%
-      addPolygons(data=owf_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf_cab",popup = paste0("<b>Name: </b>", owf_cab$name_prop, "<br>","<b>Status: </b>", owf_cab$infra_stat))%>%
-      addPolygons(data=R4_chara,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_chara",popup = paste0("<b>Name: </b>", R4_chara$name))%>%
-      addPolygons(data=R4_bid,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_bid",popup = paste0("<b>Name: </b>", R4_bid$name, "<br>","<b>Status: </b>", R4_bid$bidding_ar))%>%
-    addPolygons(data=agg,color = "#444444", weight = 2, smoothFactor = 0.5,group = "agg",popup = paste0("<b>Name: </b>", agg$area_name, "<br>",
-                                                                                                          "<b>Number: </b>", agg$area_numbe))%>%
+      addPolygons(data=owf,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf",popup = paste0("<b>Name: </b>", owf$Name_Prop, "<br>","<b>Status: </b>", owf$Inf_Status))%>%
+      addPolygons(data=owf_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf_cab",popup = paste0("<b>Name: </b>", owf_cab$Name_Prop, "<br>","<b>Status: </b>", owf_cab$Infra_Stat))%>%
+      addPolygons(data=R4_chara,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_chara",popup = paste0("<b>Name: </b>", R4_chara$Name))%>%
+      addPolygons(data=R4_bid,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_bid",popup = paste0("<b>Name: </b>", R4_bid$Name, "<br>","<b>Status: </b>", R4_bid$Bidding_Ar))%>%
+    addPolygons(data=agg,color = "#444444", weight = 2, smoothFactor = 0.5,group = "agg",popup = paste0("<b>Name: </b>", agg$Area_Name, "<br>",
+                                                                                                          "<b>Number: </b>", agg$Area_Numbe))%>%
       addPolygons(data=disp,color = "#444444", weight = 1, smoothFactor = 0.5,group = "disp",popup = paste0("<b>Name: </b>", disp$name_, "<br>","<b>Number: </b>", disp$site_))%>%
-      addPolygons(data=wave,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave",popup = paste0("<b>Name: </b>", wave$name_prop, "<br>","<b>Status: </b>", wave$inf_status))%>%
+      addPolygons(data=wave,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave",popup = paste0("<b>Name: </b>", wave$Name_Prop, "<br>","<b>Status: </b>", wave$Inf_Status))%>%
       #addPolygons(data=wave_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave_cab",popup = paste0("<b>Name: </b>", wave_cab$name_prop, "<br>","<b>Status: </b>", wave_cab$infra_stat))%>%
-      addPolygons(data=tidal,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal",popup = paste0("<b>Name: </b>", tidal$name_prop, "<br>","<b>Status: </b>", tidal$inf_statUS))%>%
-      addPolygons(data=tidal_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal_cab",popup = paste0("<b>Name: </b>", tidal_cab$name_prop, "<br>","<b>Status: </b>", tidal_cab$infra_stat))%>%
+      addPolygons(data=tidal,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal",popup = paste0("<b>Name: </b>", tidal$Name_Prop, "<br>","<b>Status: </b>", tidal$Inf_Status))%>%
+      addPolygons(data=tidal_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "tidal_cab",popup = paste0("<b>Name: </b>", tidal_cab$Name_Prop, "<br>","<b>Status: </b>", tidal_cab$Infra_Stat))%>%
       addPolygons(data=mcz,color = "#444444", weight = 1, smoothFactor = 0.5,group = "mcz",popup = paste0("<b>Name: </b>", mcz$site_name))%>%
       addPolygons(data=sac,color = "#444444", weight = 1, smoothFactor = 0.5,group = "sac",popup = paste0("<b>Name: </b>", sac$site_name))%>%
       addPolygons(data=ncmpa,color = "#444444", weight = 1, smoothFactor = 0.5,group = "ncmpa",popup = paste0("<b>Name: </b>", ncmpa$site_name))%>%
