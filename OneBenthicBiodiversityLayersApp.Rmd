@@ -105,16 +105,46 @@ Assemblages = ratify(r)
 
 ######################
 ## RICHNESS
-#s.agg <- raster("C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/S.tif")
-#Richness <- raster('www/Richness.tif')
+#s <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/richness_Mean_SQ.tif")
 #s.agg <- aggregate(s, fact=5,fun = modal)
-#writeRaster(s.agg,'DATA/s.aggSmall.tif',overwrite=TRUE,format = "GTiff")
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(s.agg,'www/Richness.tif',overwrite=TRUE,format = "GTiff")
+Richness <- raster('www/Richness.tif')
 
 ## ABUNDANCE
-#n <- raster("C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/N2.tif")
-#Abundance <- raster('www/Abundance.tif')
+#n <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/abundSqrt_Mean_SQ.tif")
 #n.agg <- aggregate(n, fact=5,fun = modal)
-#writeRaster(n.agg,'DATA/Abundance.tif',overwrite=TRUE,format = "GTiff")
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(n.agg,'www/Abundance.tif',overwrite=TRUE,format = "GTiff")
+Abundance <- raster('www/Abundance.tif')
+
+## EVENNESS
+#e <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/evenness_Mean_SQ.tif")
+#e.agg <- aggregate(e, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(e.agg,'www/Evenness.tif',overwrite=TRUE,format = "GTiff")
+Evenness <- raster('www/Evenness.tif')
+
+## ALPHA
+#a <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/alpha_Mean_SQ.tif")
+#a.agg <- aggregate(a, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(a.agg,'www/Alpha.tif',overwrite=TRUE,format = "GTiff")
+Alpha <- raster('www/Alpha.tif')
+
+## BETA
+#b <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/beta_Mean_SQ.tif")
+#b.agg <- aggregate(b, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(b.agg,'www/Beta.tif',overwrite=TRUE,format = "GTiff")
+Beta <- raster('www/Beta.tif')
+
+## GAMMA
+#g <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/gamma_Mean_SQ.tif")
+#g.agg <- aggregate(g, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(g.agg,'www/Gamma.tif',overwrite=TRUE,format = "GTiff")
+Gamma <- raster('www/Gamma.tif')
 
 ## EVENNESS
 # <- raster("C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/J.tif")
@@ -198,6 +228,48 @@ Modiolus_modiolus <- raster('www/Modiolus_modiolus.tif')
 #__________________________________________________________________________________________
 #### CONFIDENCE LAYERS ####
 
+## Richness_cv
+#Richness_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/richness_CV_SQ.tif')
+#Richness_cv.agg <- aggregate(Richness_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Richness_cv.agg,'www/Richness_cv.tif',overwrite=TRUE,format = "GTiff")
+Richness_cv <- raster('www/Richness_cv.tif')
+
+## Abundance_cv
+#Abundance_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/abundSqrt_CV_SQ.tif')
+#Abundance_cv.agg <- aggregate(Abundance_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Abundance_cv.agg,'www/Abundance_cv.tif',overwrite=TRUE,format = "GTiff")
+Abundance_cv <- raster('www/Abundance_cv.tif')
+
+## Evenness_cv
+#Evenness_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/evenness_CV_SQ.tif')
+#Evenness_cv.agg <- aggregate(Evenness_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Evenness_cv.agg,'www/Evenness_cv.tif',overwrite=TRUE,format = "GTiff")
+Evenness_cv <- raster('www/Evenness_cv.tif')
+
+## Alpha_cv
+#Alpha_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/alpha_CV_SQ.tif')
+#Alpha_cv.agg <- aggregate(Alpha_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Alpha_cv.agg,'www/Alpha_cv.tif',overwrite=TRUE,format = "GTiff")
+Alpha_cv <- raster('www/Alpha_cv.tif')
+
+## Beta_cv
+#Beta_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/beta_CV_SQ.tif')
+#Beta_cv.agg <- aggregate(Beta_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Beta_cv.agg,'www/Beta_cv.tif',overwrite=TRUE,format = "GTiff")
+Beta_cv <- raster('www/Beta_cv.tif')
+
+## Gamma_cv
+#Gamma_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/gamma_CV_SQ.tif')
+#Gamma_cv.agg <- aggregate(Gamma_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Gamma_cv.agg,'www/Gamma_cv.tif',overwrite=TRUE,format = "GTiff")
+Gamma_cv <- raster('www/Gamma_cv.tif')
+
 ## Sabellaria_spinulosa_cv
 #Sabellaria_spinulosa_cv <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Sabellaria_spinulosa_CV_SQ.tif')
 #Sabellaria_spinulosa_cv.agg <- aggregate(Sabellaria_spinulosa_cv, fact=5,fun = modal)
@@ -262,20 +334,20 @@ Abra_alba_cv <- raster('www/Abra_alba_cv.tif')
 Assemblages_cv <- raster('www/Assemblages_cv.tif')
 #__________________________________________________________________________________________
 #### CREATE RASTER STACK ####
-myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus) #,Richness,Biodiversity_Cluster,Abundance,Evenness,Response,Effects
+myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus,Richness,Abundance,Evenness,Gamma,Beta,Alpha) #,Richness,Biodiversity_Cluster,Abundance,Evenness,Response,Effects
 
 modis.rasters <- stack(myras) 
 #__________________________________________________________________________________________
 #### CREATE RASTER STACK (CONFIDENCE MAPS) ####
-myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv) 
+myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv,Richness_cv,Abundance_cv,Evenness_cv,Alpha_cv,Beta_cv,Gamma_cv) 
 modis.rasters_cv <- stack(myras_cv) 
 
 ## Update layer names
-names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages')
+names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages','Richness', 'Abundance','Evenness', 'Alpha','Beta','Gamma')
 #__________________________________________________________________________________________
 #### DATAFRAME FOR SELECTION BOXES ####
-cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM")#"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits",
-layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni")#"Richness","Abundance","Evenness","Biodiversity_Cluster","Response","Effects",
+cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity")#"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits",
+layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni","Richness","Abundance",'Evenness','Alpha','Beta','Gamma')#"Richness","Abundance","Evenness","Biodiversity_Cluster","Response","Effects",
 
 data <- data.frame(cat, layer)
 #__________________________________________________________________________________________
@@ -451,10 +523,15 @@ reactiveRaster <-  reactive({raster::subset(modis.rasters,grep(as.character(inpu
 ## Reactive object for raster colours 
   reactiveColour <- reactive({if (as.character(input$layernameInput) == "Assemblages") {colours <- #c('#9aff9a','#0000ee','#00cd00','#00ffff','#ffff00','#ff0000','#9a32cd','#ff8c00','#b4b404','#b40202','#05aac1')}
 c('#0000ee','#00ffff','#05aac1','#9a32cd','#00cd00','#9aff9a','#b40202','#ff0000','#ff8c00','#ffff00','#b4b404')}    
-    #else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
+    else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
     #else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
-    #else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
-    #else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+    else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
+    else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+    else if (as.character(input$layernameInput) == "Alpha"){colours <- jet(100)}
+    else if (as.character(input$layernameInput) == "Beta"){colours <- jet(100)}
+    else if (as.character(input$layernameInput) == "Gamma"){colours <- jet(100)}
+    
+        #else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
     #else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
     #else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
     #else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colours <- scale_fill_brewer(palette = "RdYlGn",n=6)}
@@ -466,6 +543,7 @@ c('#0000ee','#00ffff','#05aac1','#9a32cd','#00cd00','#9aff9a','#b40202','#ff0000
     else if (as.character(input$layernameInput) == "Goniadella_gracilis"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.063,0.783,1.125,1.492,1.887,2.930), domain = c(0.063,0.783,1.125,1.492,1.887,2.930),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Crepidula_fornicata"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.03,0.54,1.26,2.39,5.29,10.29), domain = c(0.03,0.54,1.26,2.39,5.29,10.29),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Modiolus_modiolus"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,1,2,3,4,5), domain = c(0,1,2,3,4,5),na.color = "transparent")}
+    
   })
 #__________________________________________________________________________________________
 ## Create map
@@ -529,24 +607,52 @@ addLegend(
 #labels = c('1','2','3','4','5','6'),        
 #opacity = 3,
 #title = "biodiv")}
-#else if (as.character(input$layernameInput) == "Richness"){
-#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
-#leafletProxy ('map1')%>%
-#clearImages()%>%
-#clearControls()%>%
-#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Richness), title = "Richness")}
-#else if (as.character(input$layernameInput) == "Abundance"){
-#pal <- colorNumeric(jet(100), values(Abundance),na.color = "transparent")
-#leafletProxy ('map1')%>%
-#clearImages()%>%
-#clearControls()%>%
-#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-#addLegend(
-#position = "bottomright",
-#pal = pal,
-#values = values(Abundance),
-#title = "Abundance")}
+else if (as.character(input$layernameInput) == "Richness"){
+pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Richness), title = "Richness")}
+else if (as.character(input$layernameInput) == "Abundance"){
+pal <- colorNumeric(jet(100), values(Abundance),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+position = "bottomright",
+pal = pal,
+values = values(Abundance),
+title = "Abundance")}
+  else if (as.character(input$layernameInput) == "Evenness"){
+pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Evenness), title = "Evenness")}
+ else if (as.character(input$layernameInput) == "Alpha"){
+pal <- colorNumeric(jet(100), values(Alpha),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Alpha), title = "Alpha")}
+  else if (as.character(input$layernameInput) == "Beta"){
+pal <- colorNumeric(jet(100), values(Beta),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Beta), title = "Beta")}
+ else if (as.character(input$layernameInput) == "Gamma"){
+pal <- colorNumeric(jet(100), values(Gamma),na.color = "transparent")
+leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Gamma), title = "Gamma")}
 #else if (as.character(input$layernameInput) == "Evenness"){
 #pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
 #leafletProxy ('map1')%>%
@@ -2140,12 +2246,7 @@ reactiveRaster_cv <-  reactive({raster::subset(modis.rasters_cv,grep(as.characte
     req(input$layernameInput)## this will suppress error messages before a selection is made
     
 #if (as.character(input$layernameInput) == "Assemblages") {colours <- c('#9aff9a','#0000ee','#00cd00','#00ffff','#ffff00','#ff0000','#9a32cd','#ff8c00','#b4b404','#b40202','#05aac1')}
-#else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
-#else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
-#else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
-#else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
-#else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
-#else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
+
 if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colorBin(palette = brewer.pal(n = 4, name = "Oranges"), bins = c(0,0.10,0.25,0.6), domain = c(0,0.10,0.25,0.6),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Arctica_islandica"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
@@ -2154,7 +2255,20 @@ else if (as.character(input$layernameInput) == "Lagis_koreni"){colorBin(palette 
 else if (as.character(input$layernameInput) == "Goniadella_gracilis"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Crepidula_fornicata"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-else if (as.character(input$layernameInput) == "Assemblages"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")}    
+else if (as.character(input$layernameInput) == "Assemblages"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")} 
+else if (as.character(input$layernameInput) == "Richness"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Abundance"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Evenness"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}    
+else if (as.character(input$layernameInput) == "Alpha"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Beta"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "Gamma"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
+
+#else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+#else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
+#else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}   
+    
+    
       })
 
 #__________________________________________________________________________________________
@@ -2189,7 +2303,13 @@ else if (as.character(input$layernameInput) == "Lagis_koreni"){print("Lagis kore
 else if (as.character(input$layernameInput) == "Goniadella_gracilis"){print("Goniadella gracilis CV")}
 else if (as.character(input$layernameInput) == "Crepidula_fornicata"){print("Crepidula fornicata CV")}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){print("Modiolus modiolus CV")}
-else if (as.character(input$layernameInput) == "Assemblages"){print("Assemblages Confidence")}    
+else if (as.character(input$layernameInput) == "Assemblages"){print("Assemblages Confidence")} 
+else if (as.character(input$layernameInput) == "Richness"){print("Richness CV")} 
+else if (as.character(input$layernameInput) == "Abundance"){print("Abundance CV")} 
+  else if (as.character(input$layernameInput) == "Evenness"){print("Evenness CV")}
+  else if (as.character(input$layernameInput) == "Alpha"){print("Alpha CV")}
+  else if (as.character(input$layernameInput) == "Beta"){print("Beta CV")}
+  else if (as.character(input$layernameInput) == "Gamma"){print("Gamma CV")}
       })
 
 
