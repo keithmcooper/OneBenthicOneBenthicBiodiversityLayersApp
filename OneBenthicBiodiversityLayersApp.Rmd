@@ -428,12 +428,14 @@ st_crs(disp) <- 4326
 #load("www/CollectorsVs2.RData")
 #load("www/CollectorsVs3.RData")
 #load("www/CollectorsVs4.RData")
-load("www/CollectorsVs5.RData")
+#load("www/CollectorsVs5.RData")
+load("www/CollectorsVs7.RData")
+
 ## Load response plots
 #load("Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/ResponsePlots.RData")
 #load("www/ResponsePlots.RData")
-load("www/ResponsePlotsVs2.RData")
-
+#load("www/ResponsePlotsVs2.RData")
+load("www/ResponsePlotsVs3.RData")
 
 # Set model diagnostic type from map type input - it needs to be either 'continuous' or 'class'
 # Make this a reactive value based on the app inputs - using dummy here
@@ -451,6 +453,13 @@ RD$Tax[RD$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 RD$Tax[RD$Tax == 'Abra alba']<-"Abra_alba"
 RD$Tax[RD$Tax == 'Lagis koreni']<-"Lagis_koreni"
 RD$Tax[RD$Tax == 'assemblage']<-"Assemblages"
+RD$Tax[RD$Tax == 'richness']<-"Richness"
+RD$Tax[RD$Tax == 'Abundance']<-"Abundance"
+RD$Tax[RD$Tax == 'Evenness']<-"Evenness"
+RD$Tax[RD$Tax == 'alpha']<-"Alpha"
+RD$Tax[RD$Tax == 'beta']<-"Beta"
+RD$Tax[RD$Tax == 'Gamma']<-"Gamma"
+RD$Tax[RD$Tax == 'TaxDist']<-"TaxDist"
 
 PSs$Tax[PSs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
 PSs$Tax[PSs$Tax == 'Arctica islandica']<-"Arctica_islandica"
@@ -460,6 +469,13 @@ PSs$Tax[PSs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 PSs$Tax[PSs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 PSs$Tax[PSs$Tax == 'Abra alba']<-"Abra_alba"
 PSs$Tax[PSs$Tax == 'Lagis koreni']<-"Lagis_koreni"
+PSs$Tax[PSs$Tax == 'richness']<-"Richness"
+PSs$Tax[PSs$Tax == 'Abundance']<-"Abundance"
+PSs$Tax[PSs$Tax == 'Evenness']<-"Evenness"
+PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
+PSs$Tax[PSs$Tax == 'Beta']<-"Beta"
+PSs$Tax[PSs$Tax == 'Gamma']<-"Gamma"
+PSs$Tax[PSs$Tax == 'TaxDist']<-"TaxDist"
 ##################################
 
 PScs$Tax[PScs$Tax == 'assemblage']<-"Assemblages"
@@ -476,6 +492,14 @@ OvsPs$Tax[OvsPs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 OvsPs$Tax[OvsPs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 OvsPs$Tax[OvsPs$Tax == 'Abra alba']<-"Abra_alba"
 OvsPs$Tax[OvsPs$Tax == 'Lagis koreni']<-"Lagis_koreni"
+OvsPs$Tax[OvsPs$Tax == 'richness']<-"Richness"
+OvsPs$Tax[OvsPs$Tax == 'Abundance']<-"Abundance"
+OvsPs$Tax[OvsPs$Tax == 'Evenness']<-"Evenness"
+OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
+OvsPs$Tax[OvsPs$Tax == 'Beta']<-"Beta"
+OvsPs$Tax[OvsPs$Tax == 'Gamma']<-"Gamma"
+OvsPs$Tax[OvsPs$Tax == 'TaxDist']<-"TaxDist"
+
 
 VIs$Tax[VIs$Tax == 'assemblage']<-"Assemblages"
 VIs$Tax[VIs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
@@ -486,8 +510,15 @@ VIs$Tax[VIs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 VIs$Tax[VIs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 VIs$Tax[VIs$Tax == 'Abra alba']<-"Abra_alba"
 VIs$Tax[VIs$Tax == 'Lagis koreni']<-"Lagis_koreni"
+VIs$Tax[VIs$Tax == 'richness']<-"Richness"
+VIs$Tax[VIs$Tax == 'Abundance']<-"Abundance"
+VIs$Tax[VIs$Tax == 'Evenness']<-"Evenness"
+VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
+VIs$Tax[VIs$Tax == 'Beta']<-"Beta"
+VIs$Tax[VIs$Tax == 'Gamma']<-"Gamma"
+VIs$Tax[VIs$Tax == 'TaxDist']<-"TaxDist"
 
-names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage")
+names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist")
 
 ## Labels for environmental variables in plots
 envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitrate','Oxygen','Phosphate','Phytoplankton','Gravel','Mud','Productivity','Rel. Slope Pos.','Salinity','Silicate','Suspended Matter','Temperature','Wave velocity','Gear type')
@@ -1103,6 +1134,20 @@ library(knitr)
     #  list("six")}
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
+    else if(as.character(input$layernameInput) == "Richness"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+       else if(as.character(input$layernameInput) == "Abundance"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+       else if(as.character(input$layernameInput) == "Evenness"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+       else if(as.character(input$layernameInput) == "Alpha"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+       else if(as.character(input$layernameInput) == "Beta"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+       else if(as.character(input$layernameInput) == "Gamma"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+       else if(as.character(input$layernameInput) == "TaxDist"){
+      list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
    else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1153,6 +1198,8 @@ br(),br(),
     #  list("six")}
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
+   else if(as.character(input$layernameInput) == "Richness"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1196,6 +1243,7 @@ output$refheader <-  renderUI({
     #  list("six")}
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
+   else if(as.character(input$layernameInput) == "Richness"){list(h3("Partners",style=c("color:#044D94")))}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Partners",style=c("color:#044D94")))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Partners",style=c("color:#044D94")))}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Partners",style=c("color:#044D94")))}
@@ -1232,6 +1280,8 @@ output$img10 <- renderImage({  #This is where the image is set
        list(src = "www/logos2.PNG",width ='90%')}
  #else if(as.character(input$layernameInput) == "Richness"){            
  #     list(src = "www/cefas&defralogo.png",width ='50%')}
+  else if(as.character(input$layernameInput) == "Richness"){            
+      list(src = "www/logos2.PNG",width ='90%')}
    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www/logos2.PNG",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1278,6 +1328,20 @@ imageOutput('img10')
    #   list("")}
    # else if(as.character(input$layernameInput) == "Effects"){
    #   list("")}
+   else if(as.character(input$layernameInput) == "Richness"){
+       list("Not applicable for numerical models")}
+      else if(as.character(input$layernameInput) == "Abundance"){
+       list("Not applicable for numerical models")}
+      else if(as.character(input$layernameInput) == "Evenness"){
+       list("Not applicable for numerical models")}
+      else if(as.character(input$layernameInput) == "Alpha"){
+       list("Not applicable for numerical models")}
+      else if(as.character(input$layernameInput) == "Beta"){
+       list("Not applicable for numerical models")}
+      else if(as.character(input$layernameInput) == "Gamma"){
+       list("Not applicable for numerical models")}
+      else if(as.character(input$layernameInput) == "TaxDist"){
+       list("Not applicable for numerical models")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
        list("Not applicable for numerical models")}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1330,6 +1394,20 @@ uiOutput("noterechr")
    #     list(src = "www/blank.png",height ='90%')}
    # else if(as.character(input$layernameInput) == "Evenness"){
    #     list(src = "www/blank.png",height ='90%')}
+      else if(as.character(input$layernameInput) == "Richness"){            
+      list(src = "www//blank.png",width ='90%')}
+          else if(as.character(input$layernameInput) == "Abundance"){            
+      list(src = "www//blank.png",width ='90%')}
+          else if(as.character(input$layernameInput) == "Evenness"){            
+      list(src = "www//blank.png",width ='90%')}
+          else if(as.character(input$layernameInput) == "Alpha"){            
+      list(src = "www//blank.png",width ='90%')}
+          else if(as.character(input$layernameInput) == "Beta"){            
+      list(src = "www//blank.png",width ='90%')}
+          else if(as.character(input$layernameInput) == "Gamma"){            
+      list(src = "www//blank.png",width ='90%')}
+          else if(as.character(input$layernameInput) == "TaxDist"){            
+      list(src = "www//blank.png",width ='90%')}
   else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www//blank.png",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1361,6 +1439,7 @@ imageOutput('img1')
 ## RECORDS HEADER
 output$recordsheader <-  renderUI({
 if(as.character(input$layernameInput) == "Assemblages"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+    else if(as.character(input$layernameInput) == "Richness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
 else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
@@ -1443,6 +1522,15 @@ sdata <- reactive({
   
 if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       sdata2 <- RD[ which(RD$Tax=='Sabellaria_spinulosa'),]
+      print(sdata2)}
+    else if(as.character(input$layernameInput) == "Richness"){
+      sdata2 <- RD[ which(RD$Tax=='Richness'),]
+      print(sdata2)}
+      else if(as.character(input$layernameInput) == "Alpha"){
+      sdata2 <- RD[ which(RD$Tax=='Alpha'),]
+      print(sdata2)}
+      else if(as.character(input$layernameInput) == "Beta"){
+      sdata2 <- RD[ which(RD$Tax=='Beta'),]
       print(sdata2)}
   else if(as.character(input$layernameInput) == "Arctica_islandica"){
       sdata2 <- RD[ which(RD$Tax=='Arctica_islandica'),]
