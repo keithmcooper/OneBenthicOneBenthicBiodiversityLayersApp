@@ -458,7 +458,7 @@ RD$Tax[RD$Tax == 'Abundance']<-"Abundance"
 RD$Tax[RD$Tax == 'Evenness']<-"Evenness"
 RD$Tax[RD$Tax == 'alpha']<-"Alpha"
 RD$Tax[RD$Tax == 'beta']<-"Beta"
-RD$Tax[RD$Tax == 'Gamma']<-"Gamma"
+RD$Tax[RD$Tax == 'gamma']<-"Gamma"
 RD$Tax[RD$Tax == 'TaxDist']<-"TaxDist"
 
 PSs$Tax[PSs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
@@ -474,7 +474,7 @@ PSs$Tax[PSs$Tax == 'Abundance']<-"Abundance"
 PSs$Tax[PSs$Tax == 'Evenness']<-"Evenness"
 PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
 PSs$Tax[PSs$Tax == 'Beta']<-"Beta"
-PSs$Tax[PSs$Tax == 'Gamma']<-"Gamma"
+PSs$Tax[PSs$Tax == 'gamma']<-"Gamma"
 PSs$Tax[PSs$Tax == 'TaxDist']<-"TaxDist"
 ##################################
 
@@ -497,7 +497,7 @@ OvsPs$Tax[OvsPs$Tax == 'Abundance']<-"Abundance"
 OvsPs$Tax[OvsPs$Tax == 'Evenness']<-"Evenness"
 OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
 OvsPs$Tax[OvsPs$Tax == 'Beta']<-"Beta"
-OvsPs$Tax[OvsPs$Tax == 'Gamma']<-"Gamma"
+OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
 OvsPs$Tax[OvsPs$Tax == 'TaxDist']<-"TaxDist"
 
 
@@ -515,7 +515,7 @@ VIs$Tax[VIs$Tax == 'Abundance']<-"Abundance"
 VIs$Tax[VIs$Tax == 'Evenness']<-"Evenness"
 VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
 VIs$Tax[VIs$Tax == 'Beta']<-"Beta"
-VIs$Tax[VIs$Tax == 'Gamma']<-"Gamma"
+VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
 VIs$Tax[VIs$Tax == 'TaxDist']<-"TaxDist"
 
 names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist")
@@ -1531,6 +1531,9 @@ if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       print(sdata2)}
       else if(as.character(input$layernameInput) == "Beta"){
       sdata2 <- RD[ which(RD$Tax=='Beta'),]
+      print(sdata2)}
+        else if(as.character(input$layernameInput) == "Gamma"){
+      sdata2 <- RD[ which(RD$Tax=='Gamma'),]
       print(sdata2)}
   else if(as.character(input$layernameInput) == "Arctica_islandica"){
       sdata2 <- RD[ which(RD$Tax=='Arctica_islandica'),]
