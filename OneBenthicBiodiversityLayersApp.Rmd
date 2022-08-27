@@ -470,12 +470,12 @@ PSs$Tax[PSs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 PSs$Tax[PSs$Tax == 'Abra alba']<-"Abra_alba"
 PSs$Tax[PSs$Tax == 'Lagis koreni']<-"Lagis_koreni"
 PSs$Tax[PSs$Tax == 'richness']<-"Richness"
-PSs$Tax[PSs$Tax == 'Abundance']<-"Abundance"
-PSs$Tax[PSs$Tax == 'Evenness']<-"Evenness"
+PSs$Tax[PSs$Tax == 'abundSqrt']<-"Abundance"
+PSs$Tax[PSs$Tax == 'evenness']<-"Evenness"
 PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
-PSs$Tax[PSs$Tax == 'Beta']<-"Beta"
+PSs$Tax[PSs$Tax == 'beta']<-"Beta"
 PSs$Tax[PSs$Tax == 'gamma']<-"Gamma"
-PSs$Tax[PSs$Tax == 'TaxDist']<-"TaxDist"
+PSs$Tax[PSs$Tax == 'taxdist']<-"TaxDist"
 ##################################
 
 PScs$Tax[PScs$Tax == 'assemblage']<-"Assemblages"
@@ -493,12 +493,12 @@ OvsPs$Tax[OvsPs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 OvsPs$Tax[OvsPs$Tax == 'Abra alba']<-"Abra_alba"
 OvsPs$Tax[OvsPs$Tax == 'Lagis koreni']<-"Lagis_koreni"
 OvsPs$Tax[OvsPs$Tax == 'richness']<-"Richness"
-OvsPs$Tax[OvsPs$Tax == 'Abundance']<-"Abundance"
-OvsPs$Tax[OvsPs$Tax == 'Evenness']<-"Evenness"
+OvsPs$Tax[OvsPs$Tax == 'abundSqrt']<-"Abundance"
+OvsPs$Tax[OvsPs$Tax == 'evenness']<-"Evenness"
 OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
-OvsPs$Tax[OvsPs$Tax == 'Beta']<-"Beta"
+OvsPs$Tax[OvsPs$Tax == 'beta']<-"Beta"
 OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
-OvsPs$Tax[OvsPs$Tax == 'TaxDist']<-"TaxDist"
+OvsPs$Tax[OvsPs$Tax == 'taxdist']<-"TaxDist"
 
 
 VIs$Tax[VIs$Tax == 'assemblage']<-"Assemblages"
@@ -511,12 +511,12 @@ VIs$Tax[VIs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 VIs$Tax[VIs$Tax == 'Abra alba']<-"Abra_alba"
 VIs$Tax[VIs$Tax == 'Lagis koreni']<-"Lagis_koreni"
 VIs$Tax[VIs$Tax == 'richness']<-"Richness"
-VIs$Tax[VIs$Tax == 'Abundance']<-"Abundance"
-VIs$Tax[VIs$Tax == 'Evenness']<-"Evenness"
+VIs$Tax[VIs$Tax == 'abundSqrt']<-"Abundance"
+VIs$Tax[VIs$Tax == 'evenness']<-"Evenness"
 VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
-VIs$Tax[VIs$Tax == 'Beta']<-"Beta"
+VIs$Tax[VIs$Tax == 'beta']<-"Beta"
 VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
-VIs$Tax[VIs$Tax == 'TaxDist']<-"TaxDist"
+VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
 
 names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist")
 
@@ -570,10 +570,8 @@ c('#0000ee','#00ffff','#05aac1','#9a32cd','#00cd00','#9aff9a','#b40202','#ff0000
     else if (as.character(input$layernameInput) == "Beta"){colours <- jet(100)}
     else if (as.character(input$layernameInput) == "Gamma"){colours <- jet(100)}
     else if (as.character(input$layernameInput) == "TaxDist"){colours <- jet(100)}
-        #else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
-    #else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
+       #else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
     #else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
-    #else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colours <- scale_fill_brewer(palette = "RdYlGn",n=6)}
     else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,2.5,5,10,15,30), domain = c(0,2.5,5,10,15,30),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Arctica_islandica"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.084,0.572,0.865,1.105,1.296,2.348), domain = c(0.084,0.572,0.865,1.105,1.296,2.348),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.228,0.774,1.018,1.268,1.640,5.371), domain = c(0.228,0.774,1.018,1.268,1.640,5.371),na.color = "transparent")}
@@ -653,6 +651,7 @@ clearImages()%>%
 clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Richness), title = "Richness")}
+
 else if (as.character(input$layernameInput) == "Abundance"){
 pal <- colorNumeric(jet(100), values(Abundance),na.color = "transparent")
 leafletProxy ('map1')%>%
@@ -664,52 +663,47 @@ position = "bottomright",
 pal = pal,
 values = values(Abundance),
 title = "Abundance")}
-  else if (as.character(input$layernameInput) == "Evenness"){
+
+else if (as.character(input$layernameInput) == "Evenness"){
 pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
 clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Evenness), title = "Evenness")}
- else if (as.character(input$layernameInput) == "Alpha"){
+
+else if (as.character(input$layernameInput) == "Alpha"){
 pal <- colorNumeric(jet(100), values(Alpha),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
 clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Alpha), title = "Alpha")}
-  else if (as.character(input$layernameInput) == "Beta"){
+ 
+else if (as.character(input$layernameInput) == "Beta"){
 pal <- colorNumeric(jet(100), values(Beta),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
 clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Beta), title = "Beta")}
- else if (as.character(input$layernameInput) == "Gamma"){
+ 
+else if (as.character(input$layernameInput) == "Gamma"){
 pal <- colorNumeric(jet(100), values(Gamma),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
 clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Gamma), title = "Gamma")}
-   else if (as.character(input$layernameInput) == "TaxDist"){
+  
+else if (as.character(input$layernameInput) == "TaxDist"){
 pal <- colorNumeric(jet(100), values(TaxDist),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
 clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(TaxDist), title = "TaxDist")}
-#else if (as.character(input$layernameInput) == "Evenness"){
-#pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
-#leafletProxy ('map1')%>%
-#clearImages()%>%
-#clearControls()%>%
-#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-#addLegend(position = "bottomright",
-#pal = pal,
-#opacity = 5,
-#values = values(Evenness),
-#title = "Evenness")}
+
 #else if (as.character(input$layernameInput) == "Response"){leafletProxy ('map1')%>%
 #clearImages()%>%
 #clearControls()%>%
@@ -720,7 +714,8 @@ addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(TaxDis
 #labels = c('1','2','3','4','5','6'),        
 #opacity = 5,
 #title = "Response")}
-#else if (as.character(input$layernameInput) == "Effects"){leafletProxy ('map1')%>%
+
+  #else if (as.character(input$layernameInput) == "Effects"){leafletProxy ('map1')%>%
 #clearImages()%>%
 #clearControls()%>%
 #addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
@@ -730,6 +725,7 @@ addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(TaxDis
 #labels = c('1','2','3','4','5','6'),        
 #opacity = 5,
 #title = "Effects")}
+
 else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
@@ -742,7 +738,8 @@ addLegend(
   opacity = 5, 
   values = c(0,2.5,5,10,15,30), 
   title = "Sabellaria spinulosa (sqrt)")}
-else if (as.character(input$layernameInput) == "Arctica_islandica"){
+
+  else if (as.character(input$layernameInput) == "Arctica_islandica"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -754,7 +751,8 @@ addLegend(
   opacity = 5, 
   values = c(0.084,0.572,0.865,1.105,1.296,2.348), 
   title = "Arctica islandica (sqrt)")} 
-else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){
+
+  else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -766,7 +764,8 @@ addLegend(
   opacity = 5, 
   values = c(0.228,0.774,1.018,1.268,1.640,5.371), 
   title = "Ampelisca spinipes (sqrt)")}  
-else if (as.character(input$layernameInput) == "Abra_alba"){
+
+  else if (as.character(input$layernameInput) == "Abra_alba"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -778,7 +777,8 @@ addLegend(
   opacity = 5, 
   values = c(0.11,1.21,1.86,2.80,5.0,15.51), 
   title = "Abra alba (sqrt)")}   
-else if (as.character(input$layernameInput) == "Lagis_koreni"){
+
+  else if (as.character(input$layernameInput) == "Lagis_koreni"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -790,7 +790,8 @@ addLegend(
   opacity = 5, 
   values = c(0,1,2.5,5,10,55), 
   title = "Lagis koreni (sqrt)")} 
-else if (as.character(input$layernameInput) == "Goniadella_gracilis"){
+
+  else if (as.character(input$layernameInput) == "Goniadella_gracilis"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -802,7 +803,8 @@ addLegend(
   opacity = 5, 
   values = c(0.063,0.783,1.125,1.492,1.887,2.930), 
   title = "Goniadella gracilis (sqrt)")}  
-else if (as.character(input$layernameInput) == "Crepidula_fornicata"){
+
+  else if (as.character(input$layernameInput) == "Crepidula_fornicata"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -814,7 +816,8 @@ addLegend(
   opacity = 5, 
   values = c(0.03,0.54,1.26,2.39,5.29,10.29), 
   title = "Crepidula fornicata (sqrt)")}  
-     else if (as.character(input$layernameInput) == "Modiolus_modiolus"){
+
+  else if (as.character(input$layernameInput) == "Modiolus_modiolus"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
 leafletProxy ('map1')%>%
 clearImages()%>%
@@ -1199,7 +1202,19 @@ br(),br(),
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
    else if(as.character(input$layernameInput) == "Richness"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
+      else if(as.character(input$layernameInput) == "Abundance"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
+      else if(as.character(input$layernameInput) == "Evenness"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
+      else if(as.character(input$layernameInput) == "Alpha"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
+      else if(as.character(input$layernameInput) == "Beta"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
+      else if(as.character(input$layernameInput) == "Gamma"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
+      else if(as.character(input$layernameInput) == "TaxDist"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. Title. Journal. Access the report", tags$a(href="https://www.", "here."))}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1244,6 +1259,12 @@ output$refheader <-  renderUI({
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
    else if(as.character(input$layernameInput) == "Richness"){list(h3("Partners",style=c("color:#044D94")))}
+  else if(as.character(input$layernameInput) == "Abundance"){list(h3("Partners",style=c("color:#044D94")))}
+  else if(as.character(input$layernameInput) == "Evenness"){list(h3("Partners",style=c("color:#044D94")))}
+  else if(as.character(input$layernameInput) == "Alpha"){list(h3("Partners",style=c("color:#044D94")))}
+  else if(as.character(input$layernameInput) == "Beta"){list(h3("Partners",style=c("color:#044D94")))}
+  else if(as.character(input$layernameInput) == "Gamma"){list(h3("Partners",style=c("color:#044D94")))}
+  else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Partners",style=c("color:#044D94")))}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Partners",style=c("color:#044D94")))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Partners",style=c("color:#044D94")))}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Partners",style=c("color:#044D94")))}
@@ -1281,7 +1302,19 @@ output$img10 <- renderImage({  #This is where the image is set
  #else if(as.character(input$layernameInput) == "Richness"){            
  #     list(src = "www/cefas&defralogo.png",width ='50%')}
   else if(as.character(input$layernameInput) == "Richness"){            
-      list(src = "www/logos2.PNG",width ='90%')}
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
+    else if(as.character(input$layernameInput) == "Abundance"){            
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
+    else if(as.character(input$layernameInput) == "Evenness"){            
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
+    else if(as.character(input$layernameInput) == "Alpha"){            
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
+    else if(as.character(input$layernameInput) == "Beta"){            
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
+    else if(as.character(input$layernameInput) == "Gamma"){            
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
+    else if(as.character(input$layernameInput) == "TaxDist"){            
+      list(src = "www/defra_cefas_logos.png",width ='50%')}
    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www/logos2.PNG",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1440,6 +1473,12 @@ imageOutput('img1')
 output$recordsheader <-  renderUI({
 if(as.character(input$layernameInput) == "Assemblages"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
     else if(as.character(input$layernameInput) == "Richness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+   else if(as.character(input$layernameInput) == "Abundance"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+   else if(as.character(input$layernameInput) == "Evenness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+   else if(as.character(input$layernameInput) == "Alpha"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+   else if(as.character(input$layernameInput) == "Beta"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+   else if(as.character(input$layernameInput) == "Gamma"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+   else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
 else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
@@ -1526,6 +1565,12 @@ if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
     else if(as.character(input$layernameInput) == "Richness"){
       sdata2 <- RD[ which(RD$Tax=='Richness'),]
       print(sdata2)}
+      else if(as.character(input$layernameInput) == "Abundance"){
+      sdata2 <- RD[ which(RD$Tax=='Abundance'),]
+      print(sdata2)}
+      else if(as.character(input$layernameInput) == "Evenness"){
+      sdata2 <- RD[ which(RD$Tax=='Evenness'),]
+      print(sdata2)}
       else if(as.character(input$layernameInput) == "Alpha"){
       sdata2 <- RD[ which(RD$Tax=='Alpha'),]
       print(sdata2)}
@@ -1534,6 +1579,9 @@ if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       print(sdata2)}
         else if(as.character(input$layernameInput) == "Gamma"){
       sdata2 <- RD[ which(RD$Tax=='Gamma'),]
+      print(sdata2)}
+          else if(as.character(input$layernameInput) == "TaxDist"){
+      sdata2 <- RD[ which(RD$Tax=='TaxDist'),]
       print(sdata2)}
   else if(as.character(input$layernameInput) == "Arctica_islandica"){
       sdata2 <- RD[ which(RD$Tax=='Arctica_islandica'),]
@@ -1683,6 +1731,7 @@ plotOutput('inputdat', width = '50%', height = '50%')
 ## VALIDATION STATS HEADER
 output$valstatsheader <-  renderUI({
     if(as.character(input$layernameInput) == "Assemblages"){list(h3("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model and (2) the individual assemblage cluster classes. The table for the full model shows the total number of samples used in the training data sets and the overall Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement. The table for individual classes shows the number of observations per class and the class-specific Sensitivity, Specificity and Balanced Accuracy scores."))}
+  else if (as.character(input$layernameInput) == "Richness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
