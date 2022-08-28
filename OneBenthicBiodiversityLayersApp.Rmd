@@ -2322,6 +2322,13 @@ else if(as.character(input$layernameInput) == "Crepidula_fornicata"){p("Variable
 else if(as.character(input$layernameInput) == "Goniadella_gracilis"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")} 
 else if(as.character(input$layernameInput) == "Abra_alba"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 else if(as.character(input$layernameInput) == "Lagis_koreni"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+  else if(as.character(input$layernameInput) == "Richness"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+    else if(as.character(input$layernameInput) == "Abundance"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+    else if(as.character(input$layernameInput) == "Evenness"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+      else if(as.character(input$layernameInput) == "Alpha"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+      else if(as.character(input$layernameInput) == "Beta"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+        else if(as.character(input$layernameInput) == "Gamma"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+        else if(as.character(input$layernameInput) == "TaxDist"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 else if(as.character(input$layernameInput) == "Assemblages"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the mean decrease in the ",tags$a(href="https://en.wikipedia.org/wiki/Gini_coefficient", "Gini coefficient"), "when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 })
 uiOutput("varcontribheader") 
@@ -2360,6 +2367,27 @@ imppl <- reactive({
       print(imppl2)}
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       imppl2 <- VIs[ which(VIs$Tax=='Lagis_koreni'),]
+      print(imppl2)}
+     else if(as.character(input$layernameInput) == "Richness"){
+      imppl2 <- VIs[ which(VIs$Tax=='Richness'),]
+      print(imppl2)}
+       else if(as.character(input$layernameInput) == "Abundance"){
+      imppl2 <- VIs[ which(VIs$Tax=='Abundance'),]
+      print(imppl2)}
+       else if(as.character(input$layernameInput) == "Evenness"){
+      imppl2 <- VIs[ which(VIs$Tax=='Evenness'),]
+      print(imppl2)}
+       else if(as.character(input$layernameInput) == "Alpha"){
+      imppl2 <- VIs[ which(VIs$Tax=='Alpha'),]
+      print(imppl2)}
+       else if(as.character(input$layernameInput) == "Beta"){
+      imppl2 <- VIs[ which(VIs$Tax=='Beta'),]
+      print(imppl2)}
+       else if(as.character(input$layernameInput) == "Gamma"){
+      imppl2 <- VIs[ which(VIs$Tax=='Gamma'),]
+      print(imppl2)}
+       else if(as.character(input$layernameInput) == "TaxDist"){
+      imppl2 <- VIs[ which(VIs$Tax=='TaxDist'),]
       print(imppl2)}
   else if(as.character(input$layernameInput) == "Assemblages"){
       imppl2 <- VIs[ which(VIs$Tax=='Assemblages'),]
@@ -2402,6 +2430,27 @@ req(input$layernameInput)## this will suppress error messages before a selection
       ylab_react2 <- "% Increase in MSE"
       print(ylab_react2)}
     else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+      else if(as.character(input$layernameInput) == "Richness"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+        else if(as.character(input$layernameInput) == "Abundance"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+        else if(as.character(input$layernameInput) == "Evenness"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+        else if(as.character(input$layernameInput) == "Alpha"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+        else if(as.character(input$layernameInput) == "Beta"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+        else if(as.character(input$layernameInput) == "Gamma"){
+      ylab_react2 <- "% Increase in MSE"
+      print(ylab_react2)}
+        else if(as.character(input$layernameInput) == "TaxDist"){
       ylab_react2 <- "% Increase in MSE"
       print(ylab_react2)}
 })
@@ -2458,7 +2507,21 @@ list("Partial response curves show the effect each predictor variable has on the
 else if(as.character(input$layernameInput) == "Abra_alba"){
 list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
 else if(as.character(input$layernameInput) == "Lagis_koreni"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+   else if(as.character(input$layernameInput) == "Richness"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")} 
+      else if(as.character(input$layernameInput) == "Abundance"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+      else if(as.character(input$layernameInput) == "Evenness"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+         else if(as.character(input$layernameInput) == "Alpha"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+         else if(as.character(input$layernameInput) == "Beta"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+         else if(as.character(input$layernameInput) == "Gamma"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+            else if(as.character(input$layernameInput) == "TaxDist"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
   })
 uiOutput("prc_text")   
 
@@ -2489,8 +2552,22 @@ cvRP.list <- reactive({
       cvRP.list2 <- response.plots[['Goniadella_gracilis']]}
    else if(as.character(input$layernameInput) == "Abra_alba"){
       cvRP.list2 <- response.plots[['Abra_alba']]}
-   else if(as.character(input$layernameInput) == "Lagisoreni"){
+   else if(as.character(input$layernameInput) == "Lagis_koreni"){
       cvRP.list2 <- response.plots[['Lagis_koreni']]}
+     else if(as.character(input$layernameInput) == "Richness"){
+      cvRP.list2 <- response.plots[['Richness']]}
+     else if(as.character(input$layernameInput) == "Abundance"){
+      cvRP.list2 <- response.plots[['Abundance']]}
+     else if(as.character(input$layernameInput) == "Evenness"){
+      cvRP.list2 <- response.plots[['Evenness']]}
+       else if(as.character(input$layernameInput) == "Alpha"){
+      cvRP.list2 <- response.plots[['Alpha']]}
+     else if(as.character(input$layernameInput) == "Beta"){
+      cvRP.list2 <- response.plots[['Beta']]}
+     else if(as.character(input$layernameInput) == "Gamma"){
+      cvRP.list2 <- response.plots[['Gamma']]}
+       else if(as.character(input$layernameInput) == "TaxDist"){
+      cvRP.list2 <- response.plots[['TaxDist']]}
 else if(as.character(input$layernameInput) == "Assemblages"){
       cvRP.list2 <- response.plots[['assemblage']]}
   })
