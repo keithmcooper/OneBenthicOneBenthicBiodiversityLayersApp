@@ -1731,7 +1731,13 @@ plotOutput('inputdat', width = '50%', height = '50%')
 ## VALIDATION STATS HEADER
 output$valstatsheader <-  renderUI({
     if(as.character(input$layernameInput) == "Assemblages"){list(h3("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model and (2) the individual assemblage cluster classes. The table for the full model shows the total number of samples used in the training data sets and the overall Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement. The table for individual classes shows the number of observations per class and the class-specific Sensitivity, Specificity and Balanced Accuracy scores."))}
-  else if (as.character(input$layernameInput) == "Richness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if (as.character(input$layernameInput) == "Richness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+  else if (as.character(input$layernameInput) == "Abundance"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+  else if (as.character(input$layernameInput) == "Evenness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+  else if (as.character(input$layernameInput) == "Alpha"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+  else if (as.character(input$layernameInput) == "Beta"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+  else if (as.character(input$layernameInput) == "Gamma"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+  else if (as.character(input$layernameInput) == "TaxDist"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
@@ -1781,6 +1787,34 @@ perf <- reactive({
       print(perf3)}
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       perf2 <- PSs[ which(PSs$Tax=='Lagis_koreni'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+     else if(as.character(input$layernameInput) == "Richness"){
+      perf2 <- PSs[ which(PSs$Tax=='Richness'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+       else if(as.character(input$layernameInput) == "Abundance"){
+      perf2 <- PSs[ which(PSs$Tax=='Abundance'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+       else if(as.character(input$layernameInput) == "Evenness"){
+      perf2 <- PSs[ which(PSs$Tax=='Evenness'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+       else if(as.character(input$layernameInput) == "Alpha"){
+      perf2 <- PSs[ which(PSs$Tax=='Alpha'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+       else if(as.character(input$layernameInput) == "Beta"){
+      perf2 <- PSs[ which(PSs$Tax=='Beta'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+       else if(as.character(input$layernameInput) == "Gamma"){
+      perf2 <- PSs[ which(PSs$Tax=='Gamma'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+       else if(as.character(input$layernameInput) == "TaxDist"){
+      perf2 <- PSs[ which(PSs$Tax=='TaxDist'),]
       perf3 <-perf2[,2:3]
       print(perf3)}
   else if(as.character(input$layernameInput) == "Assemblages"){
@@ -1859,7 +1893,32 @@ perf() %>%
   kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
   row_spec(0, bold = T)  %>%
   column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")}    
+  column_spec(2,width = "7cm")} 
+  else  if(as.character(input$layernameInput) == "Richness"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")} 
+    else  if(as.character(input$layernameInput) == "Abundance"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")} 
+    else  if(as.character(input$layernameInput) == "Evenness"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")} 
+  
 else if(as.character(input$layernameInput) == "Assemblages"){
   perf() %>%  kbl('html',digits = 2,escape = FALSE, col.names = c('Statistic','Mean \u00B1 SD'),
       caption='Overall model performance') %>%
