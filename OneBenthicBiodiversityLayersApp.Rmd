@@ -455,11 +455,11 @@ RD$Tax[RD$Tax == 'Lagis koreni']<-"Lagis_koreni"
 RD$Tax[RD$Tax == 'assemblage']<-"Assemblages"
 RD$Tax[RD$Tax == 'richness']<-"Richness"
 RD$Tax[RD$Tax == 'Abundance']<-"Abundance"
-RD$Tax[RD$Tax == 'Evenness']<-"Evenness"
+RD$Tax[RD$Tax == 'evenness']<-"Evenness"
 RD$Tax[RD$Tax == 'alpha']<-"Alpha"
 RD$Tax[RD$Tax == 'beta']<-"Beta"
 RD$Tax[RD$Tax == 'gamma']<-"Gamma"
-RD$Tax[RD$Tax == 'TaxDist']<-"TaxDist"
+RD$Tax[RD$Tax == 'taxdist']<-"TaxDist"
 
 PSs$Tax[PSs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
 PSs$Tax[PSs$Tax == 'Arctica islandica']<-"Arctica_islandica"
@@ -1545,6 +1545,13 @@ else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("P
   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
   else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
   else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    else if(as.character(input$layernameInput) == "Richness"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+      else if(as.character(input$layernameInput) == "Abundance"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+      else if(as.character(input$layernameInput) == "Evenness"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+      else if(as.character(input$layernameInput) == "Alpha"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+      else if(as.character(input$layernameInput) == "Beta"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+      else if(as.character(input$layernameInput) == "Gamma"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+      else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed biomass of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
   })
 uiOutput("plotheader")
 
@@ -1645,6 +1652,7 @@ if (mod.type=='continuous') {
     indat <- ggplot(sdata(),(aes(x=value))) +
             geom_histogram(fill=cpl['dt'], col=cpl['dbl']) +
             xlab(lab.x) +
+      ylab('Number of samples') + # added 28082022
             theme(axis.title.y = element_text(vjust=0.5, size=12,colour="black"),
                   axis.text.y  = element_text(vjust=0.5, size=12,colour="black"),
                   axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
