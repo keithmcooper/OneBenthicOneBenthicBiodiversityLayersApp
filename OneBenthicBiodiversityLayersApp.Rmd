@@ -1934,7 +1934,22 @@ perf() %>%
   row_spec(0, bold = T)  %>%
   column_spec(1, width = "7cm") %>%
   column_spec(2,width = "7cm")}
-  
+  else  if(as.character(input$layernameInput) == "Gamma"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")} 
+   else  if(as.character(input$layernameInput) == "TaxDist"){
+perf() %>% 
+  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1, width = "7cm") %>%
+  column_spec(2,width = "7cm")}
 else if(as.character(input$layernameInput) == "Assemblages"){
   perf() %>%  kbl('html',digits = 2,escape = FALSE, col.names = c('Statistic','Mean \u00B1 SD'),
       caption='Overall model performance') %>%
@@ -2006,6 +2021,15 @@ else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Ob
 else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
 else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
 else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+  ############
+else if(as.character(input$layernameInput) == "Richness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+  else if(as.character(input$layernameInput) == "Abundance"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
+   else if(as.character(input$layernameInput) == "Evenness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
+     else if(as.character(input$layernameInput) == "Alpha"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+       else if(as.character(input$layernameInput) == "Beta"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+       else if(as.character(input$layernameInput) == "Gamma"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+       else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+  ##############
 else if(as.character(input$layernameInput) == "Assemblages"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
 })
 uiOutput("obsvspredheader") 
@@ -2051,7 +2075,27 @@ predvsobs <- reactive({
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Lagis_koreni'),]
       print(predvsobs2)}
-
+   else if(as.character(input$layernameInput) == "Richness"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Richness'),]
+      print(predvsobs2)}
+     else if(as.character(input$layernameInput) == "Abundance"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Abundance'),]
+      print(predvsobs2)}
+     else if(as.character(input$layernameInput) == "Evenness"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Evenness'),]
+      print(predvsobs2)}
+  else if(as.character(input$layernameInput) == "Alpha"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Alpha'),]
+      print(predvsobs2)}
+  else if(as.character(input$layernameInput) == "Beta"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Beta'),]
+      print(predvsobs2)}
+  else if(as.character(input$layernameInput) == "Gamma"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Gamma'),]
+      print(predvsobs2)}
+   else if(as.character(input$layernameInput) == "TaxDist"){
+      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='TaxDist'),]
+      print(predvsobs2)} 
   })
 
 
