@@ -1302,19 +1302,19 @@ output$img10 <- renderImage({  #This is where the image is set
  #else if(as.character(input$layernameInput) == "Richness"){            
  #     list(src = "www/cefas&defralogo.png",width ='50%')}
   else if(as.character(input$layernameInput) == "Richness"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "Abundance"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "Evenness"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "Alpha"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "Beta"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "Gamma"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "TaxDist"){            
-      list(src = "www/defra_cefas_logos.png",width ='50%')}
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www/logos2.PNG",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
