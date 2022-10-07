@@ -55,6 +55,7 @@ require(kableExtra)
 library(patchwork)
 library(ggpubr)
 library(shinybusy)
+library(patchwork)
 #options(show.error.messages = FALSE)
 #__________________________________________________________________________________________
 ## Colour palette
@@ -1138,19 +1139,19 @@ library(knitr)
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
     else if(as.character(input$layernameInput) == "Richness"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted taxon richness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted taxon richness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Abundance"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted square-root Abundance based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted square-root Abundance based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Evenness"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted Pileou's Evenness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted Pileou's Evenness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Alpha"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted Alpha Diversity (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted Alpha Diversity (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Beta"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted Beta Diversity (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+      list(h3("Description",style=c("color:#044D94")),"Predicted Beta Diversity (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Gamma"){
-            list(h3("Description",style=c("color:#044D94")),"Predicted Gamma Diversity (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+            list(h3("Description",style=c("color:#044D94")),"Predicted Gamma Diversity (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "TaxDist"){
-            list(h3("Description",style=c("color:#044D94")),"Predicted Taxonomic Distance (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents ane average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+            list(h3("Description",style=c("color:#044D94")),"Predicted Taxonomic Distance (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 90% training and 10% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       list(h3("Description",style=c("color:#044D94")),"Predicted abundance (square-root transformed count in grab / core samples) of",em("Sabellaria spinulosa")," presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," Database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model data set. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
    else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1683,19 +1684,35 @@ if (mod.type=='continuous') {
                   plot.margin = ggplot2::margin(3,3,8,3))
 
   ## Get the locations of the panel grid lines for fitting table
-  hmax.y <- max(ggplot_build(indat)$layout$panel_params[[1]]$y.sec$breaks)
-  hmax.x <- max(ggplot_build(indat)$layout$panel_params[[1]]$x.sec$breaks)
+  #hmax.y <- max(ggplot_build(indat)$layout$panel_params[[1]]$y.sec$breaks)
+  #hmax.x <- max(ggplot_build(indat)$layout$panel_params[[1]]$x.sec$breaks)
   
-  tb <- data.frame(c(nrow(sdata()),min(sdata()$value),
+  #tb <- data.frame(c(nrow(sdata()),min(sdata()$value),
+ #                    round(mean(sdata()$value),1),round(median(sdata()$value),1),
+ #                    round(max(sdata()$value),1)))
+ # names(tb) <- first(sdata()[,Tax])
+ # rownames(tb) <- c('N','Min','Mean','Median','Max')
+  
+ # df <- tibble(x = hmax.x, y = hmax.y, tb = list(tb))
+
+ # indat +
+ #   geom_table(data = df, aes(x = x, y = y, label = tb),table.theme=t1,table.rownames = TRUE)
+  
+  ##################################
+    # Anna's revised code:
+  #Table to add to plot
+ tb <- data.frame(c(nrow(sdata()),min(sdata()$value),
                      round(mean(sdata()$value),1),round(median(sdata()$value),1),
                      round(max(sdata()$value),1)))
   names(tb) <- first(sdata()[,Tax])
   rownames(tb) <- c('N','Min','Mean','Median','Max')
   
-  df <- tibble(x = hmax.x, y = hmax.y, tb = list(tb))
-
-  indat +
-    geom_table(data = df, aes(x = x, y = y, label = tb),table.theme=t1,table.rownames = TRUE)
+  gt <- gridExtra::tableGrob(tb, theme =t1,cols = NULL)
+  
+  # Plot with inset
+  indat + inset_element(gt, left = 0.6, bottom = 0.6, right = 1, top = 1,clip = FALSE) + theme_void()
+  
+  ###########################
   
 }
 ##########
@@ -1782,62 +1799,77 @@ perf <- reactive({
   if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       perf2 <- PSs[ which(PSs$Tax=='Sabellaria_spinulosa'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
  else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
       perf2 <- PSs[ which(PSs$Tax=='Modiolus_modiolus'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
    else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
       perf2 <- PSs[ which(PSs$Tax=='Ampelisca_spinipes'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
    else if(as.character(input$layernameInput) == "Arctica_islandica"){
       perf2 <- PSs[ which(PSs$Tax=='Arctica_islandica'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
       perf2 <- PSs[ which(PSs$Tax=='Crepidula_fornicata'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
    else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
       perf2 <- PSs[ which(PSs$Tax=='Goniadella_gracilis'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
    else if(as.character(input$layernameInput) == "Abra_alba"){
       perf2 <- PSs[ which(PSs$Tax=='Abra_alba'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       perf2 <- PSs[ which(PSs$Tax=='Lagis_koreni'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
      else if(as.character(input$layernameInput) == "Richness"){
       perf2 <- PSs[ which(PSs$Tax=='Richness'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
        else if(as.character(input$layernameInput) == "Abundance"){
       perf2 <- PSs[ which(PSs$Tax=='Abundance'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
        else if(as.character(input$layernameInput) == "Evenness"){
       perf2 <- PSs[ which(PSs$Tax=='Evenness'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
        else if(as.character(input$layernameInput) == "Alpha"){
       perf2 <- PSs[ which(PSs$Tax=='Alpha'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
        else if(as.character(input$layernameInput) == "Beta"){
       perf2 <- PSs[ which(PSs$Tax=='Beta'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
        else if(as.character(input$layernameInput) == "Gamma"){
       perf2 <- PSs[ which(PSs$Tax=='Gamma'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
        else if(as.character(input$layernameInput) == "TaxDist"){
       perf2 <- PSs[ which(PSs$Tax=='TaxDist'),]
       perf3 <-perf2[,2:3]
+      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
   else if(as.character(input$layernameInput) == "Assemblages"){
       perf2 <- PSas[ which(PSas$Tax=='Assemblages'),]
