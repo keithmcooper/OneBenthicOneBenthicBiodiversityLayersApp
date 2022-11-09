@@ -161,10 +161,10 @@ TaxDist <- raster('www/TaxDist.tif')
 #writeRaster(biodiv.agg,'DATA/BiodivSmall.tif',overwrite=TRUE,format = "GTiff")
 
 ## RESPONSE TRAITS
-Response<- raster('Y:/C8381_OWEC_POSEIDON/Working_Area/SDM/OUTPUT/OneBenthicModelPredictionsApril22/ResponseTraitMaxClass_Apr22.tif') # RESPONSE TRAITS OR
-Response.agg <- aggregate(Response, fact=5,fun = modal)
-setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
-writeRaster(Response.agg,'www/Response.tif',overwrite=TRUE,format = "GTiff")
+#Response<- raster('Y:/C8381_OWEC_POSEIDON/Working_Area/SDM/OUTPUT/OneBenthicModelPredictionsApril22/ResponseTraitMaxClass_Apr22.tif') # RESPONSE TRAITS OR
+#Response.agg <- aggregate(Response, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Response.agg,'www/Response.tif',overwrite=TRUE,format = "GTiff")
 Response <- raster('www/Response.tif')
 
 ## EFFECTS TRAITS
