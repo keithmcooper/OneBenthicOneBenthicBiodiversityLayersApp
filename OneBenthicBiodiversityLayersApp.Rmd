@@ -161,16 +161,18 @@ TaxDist <- raster('www/TaxDist.tif')
 #writeRaster(biodiv.agg,'DATA/BiodivSmall.tif',overwrite=TRUE,format = "GTiff")
 
 ## RESPONSE TRAITS
-#Response<- raster('C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/ResponseTraitsCluster.tif') # RESPONSE TRAITS OR
-#Response.agg <- aggregate(Response, fact=5,fun = modal)
-#writeRaster(Response.agg,'DATA/Response.tif',overwrite=TRUE,format = "GTiff")
-#Response <- raster('www/Response.tif')
+Response<- raster('Y:/C8381_OWEC_POSEIDON/Working_Area/SDM/OUTPUT/OneBenthicModelPredictionsApril22/ResponseTraitMaxClass_Apr22.tif') # RESPONSE TRAITS OR
+Response.agg <- aggregate(Response, fact=5,fun = modal)
+setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+writeRaster(Response.agg,'www/Response.tif',overwrite=TRUE,format = "GTiff")
+Response <- raster('www/Response.tif')
 
 ## EFFECTS TRAITS
-#Effects<- raster('C:/Users/KMC00/OneDrive - CEFAS/R_PROJECTS/TraitsMapping/DATA/EffectsTraitsCluster.tif') # EFFECTS TRAITS
+#Effects<- raster('Y:/C8381_OWEC_POSEIDON/Working_Area/SDM/OUTPUT/OneBenthicModelPredictionsApril22/EffectsTraitMaxClass_Apr22.tif') # EFFECTS TRAITS
 #Effects.agg <- aggregate(Effects, fact=5,fun = modal)
-#writeRaster(Effects.agg,'DATA/Effects.tif',overwrite=TRUE,format = "GTiff")
-#Effects <- raster('www/Effects.tif')
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Effects.agg,'www/Effects.tif',overwrite=TRUE,format = "GTiff")
+Effects <- raster('www/Effects.tif')
 
 ## Sabellaria_spinulosa
 #Sabellaria_spinulosa <- raster('Y:/C8210_OneBenthic/Working_Area/SDM/OUTPUT/Sabellaria_spinulosa_Mean_SQ.tif')
@@ -341,22 +343,36 @@ Abra_alba_cv <- raster('www/Abra_alba_cv.tif')
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Assemblages_cv.agg,'www/Assemblages_cv.tif',overwrite=TRUE,format = "GTiff")
 Assemblages_cv <- raster('www/Assemblages_cv.tif')
+
+## RESPONSE TRAITS_cv
+#Response_cv<- raster('Y:/C8381_OWEC_POSEIDON/Working_Area/SDM/OUTPUT/OneBenthicModelPredictionsApril22/ResponseTraitConfidence_Apr22.tif') # RESPONSE TRAITS OR
+#Response_cv.agg <- aggregate(Response_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Response_cv.agg,'www/Response_cv.tif',overwrite=TRUE,format = "GTiff")
+Response_cv <- raster('www/Response_cv.tif')
+
+## EFFECTS TRAITS_cv
+#Effects_cv<- raster('Y:/C8381_OWEC_POSEIDON/Working_Area/SDM/OUTPUT/OneBenthicModelPredictionsApril22/EffectsTraitConfidence_Apr22.tif') # EFFECTS TRAITS
+#Effects_cv.agg <- aggregate(Effects_cv, fact=5,fun = modal)
+#setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
+#writeRaster(Effects_cv.agg,'www/Effects_cv.tif',overwrite=TRUE,format = "GTiff")
+Effects_cv <- raster('www/Effects_cv.tif')
 #__________________________________________________________________________________________
 #### CREATE RASTER STACK ####
-myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus,Richness,Abundance,Evenness,Alpha,Beta,Gamma,TaxDist) #,Richness,Biodiversity_Cluster,Abundance,Evenness,Response,Effects
+myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus,Richness,Abundance,Evenness,Alpha,Beta,Gamma,TaxDist,Response,Effects) #,Richness,Biodiversity_Cluster,Abundance,Evenness,Response,Effects
 
 modis.rasters <- stack(myras) 
 #__________________________________________________________________________________________
 #### CREATE RASTER STACK (CONFIDENCE MAPS) ####
-myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv,Richness_cv,Abundance_cv,Evenness_cv,Alpha_cv,Beta_cv,Gamma_cv,TaxDist_cv) 
+myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv,Richness_cv,Abundance_cv,Evenness_cv,Alpha_cv,Beta_cv,Gamma_cv,TaxDist_cv,Response_cv,Effects_cv) 
 modis.rasters_cv <- stack(myras_cv) 
 
 ## Update layer names
-names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages','Richness', 'Abundance','Evenness', 'Alpha','Beta','Gamma','TaxDist')
+names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages','Richness', 'Abundance','Evenness', 'Alpha','Beta','Gamma','TaxDist','Response','Effects')
 #__________________________________________________________________________________________
 #### DATAFRAME FOR SELECTION BOXES ####
-cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity")#"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits",
-layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni","Richness","Abundance",'Evenness','Alpha','Beta','Gamma','TaxDist')#"Richness","Abundance","Evenness","Biodiversity_Cluster","Response","Effects",
+cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits")#"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits",
+layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni","Richness","Abundance",'Evenness','Alpha','Beta','Gamma','TaxDist','Response','Effects')#"Richness","Abundance","Evenness","Biodiversity_Cluster","Response","Effects",
 
 data <- data.frame(cat, layer)
 #__________________________________________________________________________________________
@@ -571,8 +587,8 @@ c('#0000ee','#00ffff','#05aac1','#9a32cd','#00cd00','#9aff9a','#b40202','#ff0000
     else if (as.character(input$layernameInput) == "Beta"){colours <- jet(100)}
     else if (as.character(input$layernameInput) == "Gamma"){colours <- jet(100)}
     else if (as.character(input$layernameInput) == "TaxDist"){colours <- jet(100)}
-       #else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
-    #else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
+       else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4', '#00E600', '#91bfdb', '#e0f3f8','#fee090','#fc8d59')}#'#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59'
+    else if (as.character(input$layernameInput) == "Effects"){colours <- c('#5ab4ac', '#d8b365', '#c7eae5', '#8c510a','#f6e8c3', '#FF0000')}#'#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e'
     else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,2.5,5,10,15,30), domain = c(0,2.5,5,10,15,30),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Arctica_islandica"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.084,0.572,0.865,1.105,1.296,2.348), domain = c(0.084,0.572,0.865,1.105,1.296,2.348),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0.228,0.774,1.018,1.268,1.640,5.371), domain = c(0.228,0.774,1.018,1.268,1.640,5.371),na.color = "transparent")}
@@ -705,27 +721,27 @@ clearControls()%>%
 addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
 addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(TaxDist), title = "TaxDist")}
 
-#else if (as.character(input$layernameInput) == "Response"){leafletProxy ('map1')%>%
-#clearImages()%>%
-#clearControls()%>%
-#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-#addLegend(
-#position = "bottomright",
-#colors = c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59'),# NB have to use hex cols
-#labels = c('1','2','3','4','5','6'),        
-#opacity = 5,
-#title = "Response")}
+else if (as.character(input$layernameInput) == "Response"){leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+position = "bottomright",
+colors = c('#4575b4', '#00E600', '#91bfdb', '#e0f3f8','#fee090','#fc8d59'),# NB have to use hex cols# '#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59'
+labels = c('1','2','3','4','5','6'),        
+opacity = 5,
+title = "Response")}
 
-  #else if (as.character(input$layernameInput) == "Effects"){leafletProxy ('map1')%>%
-#clearImages()%>%
-#clearControls()%>%
-#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-#addLegend(
-#position = "bottomright",
-#colors = c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e'),# NB have to use hex cols
-#labels = c('1','2','3','4','5','6'),        
-#opacity = 5,
-#title = "Effects")}
+  else if (as.character(input$layernameInput) == "Effects"){leafletProxy ('map1')%>%
+clearImages()%>%
+clearControls()%>%
+addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+addLegend(
+position = "bottomright",
+colors = c('#5ab4ac', '#d8b365', '#c7eae5', '#8c510a','#f6e8c3', '#FF0000'),# NB have to use hex cols #'#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e'
+labels = c('1','2','3','4','5','6'),        
+opacity = 5,
+title = "Effects")}
 
 else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){
 #pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
