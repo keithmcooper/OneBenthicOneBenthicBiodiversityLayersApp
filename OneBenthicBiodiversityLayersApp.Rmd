@@ -477,6 +477,8 @@ RD$Tax[RD$Tax == 'alpha']<-"Alpha"
 RD$Tax[RD$Tax == 'beta']<-"Beta"
 RD$Tax[RD$Tax == 'gamma']<-"Gamma"
 RD$Tax[RD$Tax == 'taxdist']<-"TaxDist"
+RD$Tax[RD$Tax == 'resptrait']<-"Response"
+RD$Tax[RD$Tax == 'efftrait']<-"Effects"
 
 PSs$Tax[PSs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
 PSs$Tax[PSs$Tax == 'Arctica islandica']<-"Arctica_islandica"
@@ -497,8 +499,10 @@ PSs$Tax[PSs$Tax == 'taxdist']<-"TaxDist"
 
 PScs$Tax[PScs$Tax == 'assemblage']<-"Assemblages"
 PSas$Tax[PSas$Tax == 'assemblage']<-"Assemblages"
-
-
+PScs$Tax[PScs$Tax == 'resptrait']<-"Response"
+PSas$Tax[PSas$Tax == 'resptrait']<-"Response"
+PScs$Tax[PScs$Tax == 'efftrait']<-"Effects"
+PSas$Tax[PSas$Tax == 'efftrait']<-"Effects"
 #############################################
 
 OvsPs$Tax[OvsPs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
@@ -516,7 +520,8 @@ OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
 OvsPs$Tax[OvsPs$Tax == 'beta']<-"Beta"
 OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
 OvsPs$Tax[OvsPs$Tax == 'taxdist']<-"TaxDist"
-
+OvsPs$Tax[OvsPs$Tax == 'resptrait']<-"Response"
+OvsPs$Tax[OvsPs$Tax == 'efftrait']<-"Effects"
 
 VIs$Tax[VIs$Tax == 'assemblage']<-"Assemblages"
 VIs$Tax[VIs$Tax == 'Sabellaria spinulosa']<-"Sabellaria_spinulosa"
@@ -534,8 +539,10 @@ VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
 VIs$Tax[VIs$Tax == 'beta']<-"Beta"
 VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
 VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
+VIs$Tax[VIs$Tax == 'resptrait']<-"Response"
+VIs$Tax[VIs$Tax == 'efftrait']<-"Effects"
 
-names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist")
+names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist","Response","Effects")
 
 ## Labels for environmental variables in plots
 envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitrate','Oxygen','Phosphate','Phytoplankton','Gravel','Mud','Productivity','Rel. Slope Pos.','Salinity','Silicate','Suspended Matter','Temperature','Wave velocity','Gear type')
@@ -1564,7 +1571,7 @@ output$abund_obs <- renderImage({  #This is where the image is set
        else if(as.character(input$layernameInput) == "Response"){
       list(src = "www/resptrait datamap-1.png",width ='130%')}
       else if(as.character(input$layernameInput) == "Effects"){
-      list(src = "wwwefftrait datamap-1.png",width ='130%')} 
+      list(src = "www/efftrait datamap-1.png",width ='130%')} 
   
   }, deleteFile = F)
    
@@ -1594,6 +1601,8 @@ else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("P
       else if(as.character(input$layernameInput) == "Beta"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Beta Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
       else if(as.character(input$layernameInput) == "Gamma"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Gamma Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
       else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Taxonomic Distance, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+else if(as.character(input$layernameInput) == "Response"){list(h3("Plot",style=c("color:#044D94")),p("A bar graph illustrating the distribution of the model input data over the 6 cluster groups."))}
+else if(as.character(input$layernameInput) == "Effect"){list(h3("Plot",style=c("color:#044D94")),p("A bar graph illustrating the distribution of the model input data over the 6 cluster groups."))}
   })
 uiOutput("plotheader")
 
@@ -1675,10 +1684,10 @@ if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
 
 output$inputdat <-  renderPlot({
 
-    ######
-  ##19/12 
+
   ## this stops error message for assemblages
-if(as.character(input$layernameInput) != "Assemblages"){
+#if(as.character(input$layernameInput) != "Assemblages"){
+if(as.character(input$layernameInput) != "Assemblages" & as.character(input$layernameInput) != "Response" & as.character(input$layernameInput) != "Effects"){
   ####
   ## Table settings
 t1 <- ttheme_minimal(core=list(bg_params = list(fill = '#f5f1f1', col=cpl['dbl']),
@@ -1688,6 +1697,8 @@ t1 <- ttheme_minimal(core=list(bg_params = list(fill = '#f5f1f1', col=cpl['dbl']
                        rowhead=list(fg_params=list(col="#172957", fontface=2L),
                                     bg_params = list(fill = '#f5f1f1', col=cpl['dbl'])),
                        padding = unit(c(5, 5), "mm"))
+
+
 
 ## Present info according to model type
 if (mod.type=='continuous') {
@@ -1750,7 +1761,8 @@ if (mod.type=='continuous') {
 ##########
 
 }else if(as.character(input$layernameInput) == "Assemblages"){
-###############  
+
+
 mxy <- max(summary(sdata()$class))
 
 ## Build histogram
@@ -1775,9 +1787,69 @@ indat <- ggplot(sdata(),(aes(x=class))) +
         legend.text = element_text(size=12,colour="black"),
         plot.margin = ggplot2::margin(3,3,8,3))
 indat
-##########
+
 }
-############
+########################
+else if(as.character(input$layernameInput) == "Response"){
+
+
+mxy <- max(summary(sdata()$class))
+
+## Build histogram
+indat <- ggplot(sdata(),(aes(x=class))) +
+  geom_bar(fill='#66afad', col='#172957') +
+  geom_text(inherit.aes=FALSE,aes(label = paste('N =',nrow(sdata())), x = 1,
+                                  y = mxy),position = position_nudge(y=mxy/10),size=5,hjust=0) +
+  xlab('Class') +
+  ylab('Number of samples') +
+  theme(axis.title.y = element_text(vjust=0.5,size=12,colour="black"),
+        axis.text.y  = element_text(vjust=0.5, size=12,colour="black"),
+        axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
+        axis.title.x  = element_text(vjust=-1, size=12,colour="black"),
+        plot.title =  element_text(size=12,colour="white", face = "bold",vjust=2),
+        strip.background = element_rect(fill="#f5f1f1"),
+        strip.text.x = element_text(size=12, face="bold"),
+        panel.grid.major = element_line(colour="grey80"),
+        panel.grid.minor = element_line(colour="grey80"),
+        panel.background = element_rect(fill="white"),
+        legend.title = element_blank(),
+        legend.key = element_rect(fill = NA),
+        legend.text = element_text(size=12,colour="black"),
+        plot.margin = ggplot2::margin(3,3,8,3))
+indat
+
+}else if(as.character(input$layernameInput) == "Effects"){
+
+
+mxy <- max(summary(sdata()$class))
+
+## Build histogram
+indat <- ggplot(sdata(),(aes(x=class))) +
+  geom_bar(fill='#66afad', col='#172957') +
+  geom_text(inherit.aes=FALSE,aes(label = paste('N =',nrow(sdata())), x = 1,
+                                  y = mxy),position = position_nudge(y=mxy/10),size=5,hjust=0) +
+  xlab('Class') +
+  ylab('Number of samples') +
+  theme(axis.title.y = element_text(vjust=0.5,size=12,colour="black"),
+        axis.text.y  = element_text(vjust=0.5, size=12,colour="black"),
+        axis.text.x  = element_text(vjust=0.5, size=12,colour="black"),
+        axis.title.x  = element_text(vjust=-1, size=12,colour="black"),
+        plot.title =  element_text(size=12,colour="white", face = "bold",vjust=2),
+        strip.background = element_rect(fill="#f5f1f1"),
+        strip.text.x = element_text(size=12, face="bold"),
+        panel.grid.major = element_line(colour="grey80"),
+        panel.grid.minor = element_line(colour="grey80"),
+        panel.background = element_rect(fill="white"),
+        legend.title = element_blank(),
+        legend.key = element_rect(fill = NA),
+        legend.text = element_text(size=12,colour="black"),
+        plot.margin = ggplot2::margin(3,3,8,3))
+indat
+
+}
+  
+  
+  ###########################
 })
 
 
