@@ -1889,6 +1889,8 @@ else if (as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("V
 else if (as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Abra_alba"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+else if(as.character(input$layernameInput) == "Response"){list(h3("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model and (2) the individual traits assemblage cluster classes. The table for the full model shows the total number of samples used in the training data sets and the overall Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement. The table for individual classes shows the number of observations per class and the class-specific Sensitivity, Specificity and Balanced Accuracy scores."))}
+else if(as.character(input$layernameInput) == "Effects"){list(h3("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model and (2) the individual trait assemblage cluster classes. The table for the full model shows the total number of samples used in the training data sets and the overall Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement. The table for individual classes shows the number of observations per class and the class-specific Sensitivity, Specificity and Balanced Accuracy scores."))}
 
   })
 uiOutput("valstatsheader") 
@@ -1979,7 +1981,14 @@ perf <- reactive({
       perf2 <- PSas[ which(PSas$Tax=='Assemblages'),]
       perf3 <-perf2[,2:3]
       print(perf3)}
-
+  else if(as.character(input$layernameInput) == "Response"){
+      perf2 <- PSas[ which(PSas$Tax=='Response'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
+    else if(as.character(input$layernameInput) == "Effects"){
+      perf2 <- PSas[ which(PSas$Tax=='Effects'),]
+      perf3 <-perf2[,2:3]
+      print(perf3)}
   })
 
 #_______________________________________________________________________________
@@ -2113,8 +2122,24 @@ else if(as.character(input$layernameInput) == "Assemblages"){
       caption='Overall model performance') %>%
   kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
   row_spec(0, bold = T)  %>%
+  column_spec(1:2, width = "3cm")}
+  else if(as.character(input$layernameInput) == "Response"){
+  perf() %>%  kbl('html',digits = 2,escape = FALSE, col.names = c('Statistic','Mean \u00B1 SD'),
+      caption='Overall model performance') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1:2, width = "3cm")}
+  else if(as.character(input$layernameInput) == "Effects"){
+  perf() %>%  kbl('html',digits = 2,escape = FALSE, col.names = c('Statistic','Mean \u00B1 SD'),
+      caption='Overall model performance') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
   column_spec(1:2, width = "3cm") 
-}}
+}
+  
+  
+  
+  }
 
 tableOutput('valstats')
 
@@ -2136,6 +2161,18 @@ perf2 <- reactive({
       ctbl <- PScs[Tax=='Assemblages',-1]
       #perfcs3 <-perf2[,2:3]
       print(ctbl)}
+  
+  ########################
+  else if(as.character(input$layernameInput) == "Response"){
+      ctbl <- PScs[Tax=='Response',-1]
+      #perfcs3 <-perf2[,2:3]
+      print(ctbl)}
+  
+   else if(as.character(input$layernameInput) == "Effects"){
+      ctbl <- PScs[Tax=='Response',-1]
+      #perfcs3 <-perf2[,2:3]
+      print(ctbl)} 
+  ###################
 })
 #_______________________________________________________________________________
 ## PRODUCE CLASS-SPECIFIC PERFORMANCE TABLE
@@ -2154,6 +2191,31 @@ perf2() %>%
   column_spec(3:5, width = "3cm")
 }
 
+else if(as.character(input$layernameInput) == "Response"){
+      
+ 
+perf2() %>% 
+  kbl('html',digits = 2,escape = FALSE, align=c('l',rep('r', 4)),
+      caption='Class-specific performance') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  column_spec(3:5, width = "3cm")
+  }
+   
+  else if(as.character(input$layernameInput) == "Effects"){
+      
+ 
+perf2() %>% 
+  kbl('html',digits = 2,escape = FALSE, align=c('l',rep('r', 4)),
+      caption='Class-specific performance') %>%
+  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+  row_spec(0, bold = T)  %>%
+  column_spec(1:2, width = "1.5cm") %>%
+  column_spec(3:5, width = "3cm")
+}
+  
+  
 }
 
 tableOutput('valstats2')
@@ -2179,7 +2241,6 @@ else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Ob
 else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
 else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
 else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-  ############
 else if(as.character(input$layernameInput) == "Richness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
   else if(as.character(input$layernameInput) == "Abundance"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
    else if(as.character(input$layernameInput) == "Evenness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
@@ -2187,8 +2248,9 @@ else if(as.character(input$layernameInput) == "Richness"){list(h3("Observed vs p
        else if(as.character(input$layernameInput) == "Beta"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
        else if(as.character(input$layernameInput) == "Gamma"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
        else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-  ##############
 else if(as.character(input$layernameInput) == "Assemblages"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
+  else if(as.character(input$layernameInput) == "Response"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
+    else if(as.character(input$layernameInput) == "Effects"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
 })
 uiOutput("obsvspredheader") 
 #________________________________________________________________________________
@@ -2268,6 +2330,16 @@ res.mat.all <- reactive({
       res.mat.all2 <- CMTX[Name=='assemblage',]
       print(res.mat.all2)}
 
+  
+  #############
+  
+   else if(as.character(input$layernameInput) == "Response"){
+      res.mat.all2 <- CMTX[Name=='resptrait',]
+      print(res.mat.all2)}
+     else if(as.character(input$layernameInput) == "Effects"){
+      res.mat.all2 <- CMTX[Name=='efftrait',]
+      print(res.mat.all2)}
+  ###############
   })
 
 
@@ -2292,7 +2364,11 @@ res.mat.all <- reactive({
 ## CONFUSION MATRIX PLOT
 output$confusmat<- renderPlot({
 ##19/12  ## this stops error message for SDM outputs
-if(as.character(input$layernameInput) == "Assemblages"){
+#if(as.character(input$layernameInput) == "Assemblages"){
+  ####
+  library (dplyr)
+ v <- c('Assemblages','Effects','Response') 
+ if(as.character(input$layernameInput) %in% v)   {
   ####
 res.mat.num <- res.mat.all()[Pred!="U" & Obs!="P",]
 cl.lvls <- unique(res.mat.num[,Pred])
@@ -2413,6 +2489,7 @@ p1 + p3 + p2 + p4 +
 #}
 ####19/12
 }else if(as.character(input$layernameInput) != "Assemblages"){
+
   #_______________________________________________________________________________
 #### OBSERVED VS PREDICTED PLOT ####
 #output$obsvspred <-  renderPlot({
@@ -2488,6 +2565,9 @@ else if(as.character(input$layernameInput) == "Lagis_koreni"){p("Variable import
         else if(as.character(input$layernameInput) == "Gamma"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
         else if(as.character(input$layernameInput) == "TaxDist"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 else if(as.character(input$layernameInput) == "Assemblages"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the mean decrease in the ",tags$a(href="https://en.wikipedia.org/wiki/Gini_coefficient", "Gini coefficient"), "when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+  
+  else if(as.character(input$layernameInput) == "Response"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the mean decrease in the ",tags$a(href="https://en.wikipedia.org/wiki/Gini_coefficient", "Gini coefficient"), "when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+  else if(as.character(input$layernameInput) == "Effects"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the mean decrease in the ",tags$a(href="https://en.wikipedia.org/wiki/Gini_coefficient", "Gini coefficient"), "when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 })
 uiOutput("varcontribheader") 
 #________________________________________________________________________________
@@ -2550,7 +2630,12 @@ imppl <- reactive({
   else if(as.character(input$layernameInput) == "Assemblages"){
       imppl2 <- VIs[ which(VIs$Tax=='Assemblages'),]
       print(imppl2)}
-
+  else if(as.character(input$layernameInput) == "Response"){
+      imppl2 <- VIs[ which(VIs$Tax=='Response'),]
+      print(imppl2)}
+    else if(as.character(input$layernameInput) == "Effects"){
+      imppl2 <- VIs[ which(VIs$Tax=='Effects'),]
+      print(imppl2)}
   })
 
 #### VARIABLE CONTRIBUTION PLOT ####
@@ -2561,6 +2646,12 @@ ylab_react <- reactive({
 req(input$layernameInput)## this will suppress error messages before a selection is made
   
   if(as.character(input$layernameInput) == "Assemblages"){
+      ylab_react2 <- "Mean decrease in Gini coefficient"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Response"){
+      ylab_react2 <- "Mean decrease in Gini coefficient"
+      print(ylab_react2)}
+  else if(as.character(input$layernameInput) == "Effects"){
       ylab_react2 <- "Mean decrease in Gini coefficient"
       print(ylab_react2)}
   else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
@@ -2650,6 +2741,10 @@ plotOutput('varcon', width = '100%', height = '100%')
    
 if(as.character(input$layernameInput) == "Assemblages"){
 list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted (based on all cross-validation runs) to predictions made at 100 evenly spaced values along the range of the predictor variable.")}
+else  if(as.character(input$layernameInput) == "Response"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted (based on all cross-validation runs) to predictions made at 100 evenly spaced values along the range of the predictor variable.")}
+else  if(as.character(input$layernameInput) == "Effects"){
+list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted (based on all cross-validation runs) to predictions made at 100 evenly spaced values along the range of the predictor variable.")}
 else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
 list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
 else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -2728,6 +2823,10 @@ cvRP.list <- reactive({
       cvRP.list2 <- response.plots[['TaxDist']]}
 else if(as.character(input$layernameInput) == "Assemblages"){
       cvRP.list2 <- response.plots[['assemblage']]}
+  else if(as.character(input$layernameInput) == "Response"){
+      cvRP.list2 <- response.plots[['Response']]}
+  else if(as.character(input$layernameInput) == "Effects"){
+      cvRP.list2 <- response.plots[['Effects']]}
   })
 
 
