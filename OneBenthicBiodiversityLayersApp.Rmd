@@ -1154,6 +1154,8 @@ library(knitr)
     #  list("six")}
     #else if(as.character(input$layernameInput) == "Effects"){
     #  list("seven")}
+       else if(as.character(input$layernameInput) == "Response"){list(h3("Description",style=c("color:#044D94")),"Add text here.")}
+       else if(as.character(input$layernameInput) == "Effects"){list(h3("Description",style=c("color:#044D94")),"Add text here.")}
     else if(as.character(input$layernameInput) == "Richness"){
       list(h3("Description",style=c("color:#044D94")),"Predicted taxon richness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a data set extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
        else if(as.character(input$layernameInput) == "Abundance"){
@@ -1214,10 +1216,10 @@ br(),br(),
     #  list("Modelled layer for taxon abundance based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
     #else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
     #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
-    #else if(as.character(input$layernameInput) == "Response"){
-    #  list("six")}
-    #else if(as.character(input$layernameInput) == "Effects"){
-    #  list("seven")}
+    else if(as.character(input$layernameInput) == "Response"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K.M., Downie, A-L. Mapping marine benthic biological traits to facilitate future sustainable development. Ecological Applications (submitted).")}
+    else if(as.character(input$layernameInput) == "Effects"){
+      list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K.M., Downie, A-L. Mapping marine benthic biological traits to facilitate future sustainable development. Ecological Applications (submitted).")}
    else if(as.character(input$layernameInput) == "Richness"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
       else if(as.character(input$layernameInput) == "Abundance"){
@@ -1271,10 +1273,8 @@ output$refheader <-  renderUI({
     #  list("Modelled layer for taxon abundance based on family level macrofaunal data from 0.1m2 grab and core devices. Samples processed over a 1mm sieve.")}
     #else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
     #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
-    #else if(as.character(input$layernameInput) == "Response"){
-    #  list("six")}
-    #else if(as.character(input$layernameInput) == "Effects"){
-    #  list("seven")}
+    else if(as.character(input$layernameInput) == "Response"){list(h3("Partners",style=c("color:#044D94")))}
+    else if(as.character(input$layernameInput) == "Effects"){list(h3("Partners",style=c("color:#044D94")))}
    else if(as.character(input$layernameInput) == "Richness"){list(h3("Partners",style=c("color:#044D94")))}
   else if(as.character(input$layernameInput) == "Abundance"){list(h3("Partners",style=c("color:#044D94")))}
   else if(as.character(input$layernameInput) == "Evenness"){list(h3("Partners",style=c("color:#044D94")))}
@@ -1332,6 +1332,10 @@ output$img10 <- renderImage({  #This is where the image is set
       list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "TaxDist"){            
       list(src = "www/defra_cefas_logos.png",width ='80%')}
+      else if(as.character(input$layernameInput) == "Response"){            
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
+    else if(as.character(input$layernameInput) == "Effects"){            
+      list(src = "www/defra_cefas_logos.png",width ='80%')}
    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www/logos2.PNG",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1374,10 +1378,10 @@ imageOutput('img10')
    #   list("NA")}
    # else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
    #   list("")}
-   # else if(as.character(input$layernameInput) == "Response"){
-   #   list("")}
-   # else if(as.character(input$layernameInput) == "Effects"){
-   #   list("")}
+    else if(as.character(input$layernameInput) == "Response"){
+      list("Response trait characteristics of cluster groups identified through a k-means clustering of trait data.")}
+    else if(as.character(input$layernameInput) == "Effects"){
+      list("Effects traits characteristics of cluster groups identified through a k-means clustering of trait data.")}
    else if(as.character(input$layernameInput) == "Richness"){
        list("Not applicable for numerical models")}
       else if(as.character(input$layernameInput) == "Abundance"){
@@ -1428,12 +1432,12 @@ uiOutput("noterechr")
     if(as.character(input$layernameInput) == "Assemblages"){            
       list(src = "www/structure_univariate_summary_tablev2.png",width ='90%')#, height =1000, width = 900
     }
-   # else if(as.character(input$layernameInput) == "Effects"){
-   #     list(src = "www/et_characterising_traits_table.png",height ='90%')
-   # }
-   # else if(as.character(input$layernameInput) == "Response"){
-   #     list(src = "www/rt_characterising_traits_tablev1.png",height ='90%')
-   # }
+    else if(as.character(input$layernameInput) == "Effects"){
+        list(src = "www/et_characterising_traits_table.png",width ='50%')
+    }
+    else if(as.character(input$layernameInput) == "Response"){
+        list(src = "www/rt_characterising_traits_tablev1.png",width ='50%')
+    }
    # else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
    #     list(src = "www/biodiversity_univariate_summary_tablev1.png",height ='90%')
    # }
@@ -1504,6 +1508,8 @@ else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("R
   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
+else if(as.character(input$layernameInput) == "Response"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+ else if(as.character(input$layernameInput) == "Effects"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   })
 uiOutput("recordsheader")
 #_______________________________________________________________________________
@@ -1555,6 +1561,11 @@ output$abund_obs <- renderImage({  #This is where the image is set
       list(src = "www/Evenness datamap-1.png",width ='130%')}
       else if(as.character(input$layernameInput) == "TaxDist"){
       list(src = "www/Taxdist datamap-1.png",width ='130%')}
+       else if(as.character(input$layernameInput) == "Response"){
+      list(src = "www/resptrait datamap-1.png",width ='130%')}
+      else if(as.character(input$layernameInput) == "Effects"){
+      list(src = "wwwefftrait datamap-1.png",width ='130%')} 
+  
   }, deleteFile = F)
    
 imageOutput('abund_obs')
@@ -1648,7 +1659,12 @@ if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
    else if(as.character(input$layernameInput) == "Assemblages"){
      sdata2 <- RD[ which(RD$Tax=='Assemblages'),]
       print(sdata2)}
-
+   else if(as.character(input$layernameInput) == "Response"){
+      sdata2 <- RD[ which(RD$Tax=='Response'),]
+      print(sdata2)}
+   else if(as.character(input$layernameInput) == "Effects"){
+     sdata2 <- RD[ which(RD$Tax=='Effects'),]
+      print(sdata2)}
   })
 ```
 
@@ -2683,13 +2699,14 @@ else if (as.character(input$layernameInput) == "Evenness"){colorBin(palette = br
 else if (as.character(input$layernameInput) == "Alpha"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Beta"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Gamma"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-    else if (as.character(input$layernameInput) == "TaxDist"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+else if (as.character(input$layernameInput) == "TaxDist"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 #else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
-
+else if (as.character(input$layernameInput) == "Response"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")}
+    else if (as.character(input$layernameInput) == "Effects"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")}
 #else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
 #else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
 #else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}   
-    
+
     
       })
 
@@ -2715,9 +2732,9 @@ reactivetitle <- reactive({
 #else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
 #else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
 #else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
-#else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59')}
-#else if (as.character(input$layernameInput) == "Effects"){colours <- c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')}
-if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){print("Sabellaria spinulosa CV")}
+if (as.character(input$layernameInput) == "Response"){print("Response CV")}
+else if (as.character(input$layernameInput) == "Effects"){print("Effects CV")}
+else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){print("Sabellaria spinulosa CV")}
 else if (as.character(input$layernameInput) == "Arctica_islandica"){print("Arctica islandica CV")}
 else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){print("Ampelisca spinipes CV")}
 else if (as.character(input$layernameInput) == "Abra_alba"){print("Abra alba CV")}
