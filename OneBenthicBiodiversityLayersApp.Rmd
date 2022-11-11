@@ -542,7 +542,7 @@ VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
 VIs$Tax[VIs$Tax == 'resptrait']<-"Response"
 VIs$Tax[VIs$Tax == 'efftrait']<-"Effects"
 
-names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist","Response","Effects")
+names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist","resptrait","efftrait")
 
 ## Labels for environmental variables in plots
 envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitrate','Oxygen','Phosphate','Phytoplankton','Gravel','Mud','Productivity','Rel. Slope Pos.','Salinity','Silicate','Suspended Matter','Temperature','Wave velocity','Gear type')
@@ -1427,6 +1427,8 @@ uiOutput("noterechr")
 ```
 </div>
 
+
+
 <div>
 ```{r chara, echo=F, fig.cap = "Title", out.width ='150%'}
 
@@ -1491,7 +1493,54 @@ imageOutput('img1')
 
 
 ```
+<div>
+
+<div>
+```{r dendro note}
+
+#### LAYER DESCRIPTIONS ####
+
+ output$notedendro <-  renderUI({
+   
+    if(as.character(input$layernameInput) == "Assemblages"){
+      list("Dendrogram associated with the k-means clustering of macrofaunal data. Labels and colours reflect the relationship (similarity/dissimilarity) between the different cluster groups.")}
+    else if(as.character(input$layernameInput) == "Response"){
+      list("Dendrogram showing the relative similarities of the six habitat clusters formed following classification of the five response traits. Colours have been selected to reflect the relative similarities in cluster groups to ease interpretation of subsequent result outputs.")}
+    else if(as.character(input$layernameInput) == "Effects"){
+      list("Dendrogram showing the relative similarities of the six habitat clusters formed following classification of the five response traits. Colours have been selected to reflect the elative similarities in cluster groups to ease interpretation of subsequent result outputs.")}
+   
+  })
+uiOutput("notedendro")   
+
+#img(src="www/The_Crown_Estate_logo_black.png",height = 500, width =900)
+```
 </div>
+
+</div>
+```{r dendro, echo=F, fig.cap = "Title", out.width ='100%'}
+
+#### MODELLED CATEGORY CHARACTERISTICS #### 
+
+  output$dendro <- renderImage({  #This is where the image is set 
+    
+    req(input$layernameInput)## this will suppress error messages before a selection is made
+    
+    if(as.character(input$layernameInput) == "Assemblages"){            
+      list(src = "www/structure_dendro.png",width ='90%')#, height =1000, width = 900
+    }
+    else if(as.character(input$layernameInput) == "Effects"){
+        list(src = "www/et_dendro.png",width ='50%')
+    }
+    else if(as.character(input$layernameInput) == "Response"){
+        list(src = "www/rt_dendro.png",width ='50%')
+    }
+   
+  }, deleteFile = F)
+   
+imageOutput('dendro') 
+
+
+```
 
 ### Input Data {data-padding=20}
 
@@ -2788,7 +2837,7 @@ uiOutput("prc_text")
 cvRP.list <- reactive({
   
      req(input$layernameInput)## this will suppress error messages before a selection is made
-  
+
   if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       cvRP.list2 <- response.plots[['Sabellaria_spinulosa']]}
   else if(as.character(input$layernameInput) == "Arctica_islandica"){
@@ -2824,9 +2873,9 @@ cvRP.list <- reactive({
 else if(as.character(input$layernameInput) == "Assemblages"){
       cvRP.list2 <- response.plots[['assemblage']]}
   else if(as.character(input$layernameInput) == "Response"){
-      cvRP.list2 <- response.plots[['Response']]}
+      cvRP.list2 <- response.plots[['resptrait']]}
   else if(as.character(input$layernameInput) == "Effects"){
-      cvRP.list2 <- response.plots[['Effects']]}
+      cvRP.list2 <- response.plots[['efftrait']]}
   })
 
 
