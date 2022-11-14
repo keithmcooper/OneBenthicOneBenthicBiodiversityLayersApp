@@ -1428,9 +1428,8 @@ uiOutput("noterechr")
 </div>
 
 
-
 <div>
-```{r chara, echo=F, fig.cap = "Title", out.width ='150%'}
+```{r chara, echo=F, fig.cap = "Title", out.width ='100%'}
 
 #### MODELLED CATEGORY CHARACTERISTICS #### 
 
@@ -1494,7 +1493,9 @@ imageOutput('img1')
 
 ```
 <div>
-
+<br>
+<br>
+<br>
 <div>
 ```{r dendro note}
 
@@ -1516,6 +1517,7 @@ uiOutput("notedendro")
 ```
 </div>
 
+
 </div>
 ```{r dendro, echo=F, fig.cap = "Title", out.width ='100%'}
 
@@ -1526,7 +1528,7 @@ uiOutput("notedendro")
     req(input$layernameInput)## this will suppress error messages before a selection is made
     
     if(as.character(input$layernameInput) == "Assemblages"){            
-      list(src = "www/structure_dendro.png",width ='90%')#, height =1000, width = 900
+      list(src = "www/structure_dendro.png",width ='50%')#, height =1000, width = 900
     }
     else if(as.character(input$layernameInput) == "Effects"){
         list(src = "www/et_dendro.png",width ='50%')
