@@ -409,6 +409,10 @@ mcz <-  st_read(pool, query = "SELECT * FROM spatial.c20190905_offshorempas_wgs8
 sac <-  st_read(pool, query = "SELECT * FROM spatial.c20190905_offshorempas_wgs84 WHERE site_statu = 'SAC'or site_statu = 'cSAC';")
 ncmpa <-  st_read(pool, query = "SELECT * FROM spatial.c20190905_offshorempas_wgs84 WHERE site_statu = 'NCMPA';")
 disp  <-  st_read(pool, query = "SELECT * FROM spatial.disposalSiteJan2020;")
+piz <- st_read(pool, query = "SELECT distinct area_numbe as area,geom FROM ap_marine_aggregate.extraction_areas where droped = false;")
+siz<- st_read(pool, query = "SELECT distinct area_numbe as area,geom FROM ap_marine_aggregate.extraction_areas_siz 
+where droped = false;")
+ref <- st_read(pool, query = "SELECT box as area,geom FROM spatial.ref_box_all;")
 
 ## Check CRS
 st_crs(mcz)#Coordinate Reference System: NA
@@ -431,6 +435,9 @@ st_crs(sac) <- 4326
 st_crs(ncmpa) <- 4326
 st_crs(oga) <- 4326
 st_crs(disp) <- 4326
+st_crs(piz)<- 4326
+st_crs(siz)<- 4326
+st_crs(ref)<- 4326
 
 #__________________________________________________________________________________________
 #### LOAD DATA FOR MODEL PLOTS ####
@@ -617,8 +624,9 @@ leaflet() %>%
       addPolygons(data=owf_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf_cab",popup = paste0("<b>Name: </b>", owf_cab$Name_Prop, "<br>","<b>Status: </b>", owf_cab$Infra_Stat))%>%
       addPolygons(data=R4_chara,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_chara",popup = paste0("<b>Name: </b>", R4_chara$Name))%>%
       addPolygons(data=R4_bid,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_bid",popup = paste0("<b>Name: </b>", R4_bid$Name, "<br>","<b>Status: </b>", R4_bid$Bidding_Ar))%>%
-    addPolygons(data=agg,color = "#444444", weight = 2, smoothFactor = 0.5,group = "agg",popup = paste0("<b>Name: </b>", agg$Area_Name, "<br>",
-                                                                                                          "<b>Number: </b>", agg$Area_Numbe))%>%
+      addPolygons(data=piz,color = "#444444", weight = 1, smoothFactor = 0.5,group = "agg (PIZ)",popup = paste0("<b>PIZ Area: </b>", piz$area))%>%
+      addPolygons(data=siz,color = "#444444", fillOpacity = 0, weight = 1, smoothFactor = 0.5,group = "agg (SIZ)",popup = paste0("<b>SIZ Area: </b>", siz$area))%>%
+      addPolygons(data=ref,color = "#444444", fillOpacity = 0,weight = 1, smoothFactor = 0.5,group = "agg (REF)",popup = paste0("<b>Name: </b>", ref$area))%>%
       addPolygons(data=disp,color = "#444444", weight = 1, smoothFactor = 0.5,group = "disp",popup = paste0("<b>Name: </b>", disp$name_, "<br>","<b>Number: </b>", disp$site_))%>%
       addPolygons(data=wave,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave",popup = paste0("<b>Name: </b>", wave$Name_Prop, "<br>","<b>Status: </b>", wave$Inf_Status))%>%
       #addPolygons(data=wave_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave_cab",popup = paste0("<b>Name: </b>", wave_cab$Name_Prop, "<br>","<b>Status: </b>", wave_cab$Infra_Stat))%>% # layer depricated
@@ -629,8 +637,8 @@ leaflet() %>%
       addPolygons(data=ncmpa,color = "#444444", weight = 1, smoothFactor = 0.5,group = "ncmpa",popup = paste0("<b>Name: </b>", ncmpa$site_name))%>%
       addPolygons(data=oga,color = "#444444", weight = 1, smoothFactor = 0.5,group = "oga",popup = paste0("<b>Number: </b>", oga$LICREF, "<br>","<b>Organisation: </b>", oga$LICORGGR))%>%
       addLayersControl(
-      overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"),options = layersControlOptions(collapsed = FALSE))%>%#"wave_cab",
-      hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"))%>%#"wave_cab",
+      overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg (PIZ)","agg (SIZ)","agg (REF)","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"),options = layersControlOptions(collapsed = FALSE))%>%#"wave_cab",
+      hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg (PIZ)","agg (SIZ)","agg (REF)","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"))%>%#"wave_cab",
       #setView(-3,54.6,zoom=5.6)%>%
       setView(0.54,55.53,zoom=5.3)%>%
       addMouseCoordinates()
@@ -2987,8 +2995,9 @@ leaflet() %>%
       addPolygons(data=owf_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "owf_cab",popup = paste0("<b>Name: </b>", owf_cab$Name_Prop, "<br>","<b>Status: </b>", owf_cab$Infra_Stat))%>%
       addPolygons(data=R4_chara,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_chara",popup = paste0("<b>Name: </b>", R4_chara$Name))%>%
       addPolygons(data=R4_bid,color = "#444444", weight = 1, smoothFactor = 0.5,group = "R4_bid",popup = paste0("<b>Name: </b>", R4_bid$Name, "<br>","<b>Status: </b>", R4_bid$Bidding_Ar))%>%
-    addPolygons(data=agg,color = "#444444", weight = 2, smoothFactor = 0.5,group = "agg",popup = paste0("<b>Name: </b>", agg$Area_Name, "<br>",
-                                                                                                          "<b>Number: </b>", agg$Area_Numbe))%>%
+      addPolygons(data=piz,color = "#444444", weight = 1, smoothFactor = 0.5,group = "agg (PIZ)",popup = paste0("<b>PIZ Area: </b>", piz$area))%>%
+      addPolygons(data=siz,color = "#444444", fillOpacity = 0, weight = 1, smoothFactor = 0.5,group = "agg (SIZ)",popup = paste0("<b>SIZ Area: </b>", siz$area))%>%
+      addPolygons(data=ref,color = "#444444", fillOpacity = 0,weight = 1, smoothFactor = 0.5,group = "agg (REF)",popup = paste0("<b>Name: </b>", ref$area))%>%
       addPolygons(data=disp,color = "#444444", weight = 1, smoothFactor = 0.5,group = "disp",popup = paste0("<b>Name: </b>", disp$name_, "<br>","<b>Number: </b>", disp$site_))%>%
       addPolygons(data=wave,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave",popup = paste0("<b>Name: </b>", wave$Name_Prop, "<br>","<b>Status: </b>", wave$Inf_Status))%>%
       #addPolygons(data=wave_cab,color = "#444444", weight = 1, smoothFactor = 0.5,group = "wave_cab",popup = paste0("<b>Name: </b>", wave_cab$name_prop, "<br>","<b>Status: </b>", wave_cab$infra_stat))%>%
@@ -3009,8 +3018,8 @@ leaflet() %>%
    title = reactivetitle())%>%
     ##################################
     addLayersControl(
-      overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"),options = layersControlOptions(collapsed = FALSE))%>%#,"wave_cab"
-      hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"))%>%#,"wave_cab"
+      overlayGroups = c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg (PIZ)","agg (SIZ)","agg (REF)","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"),options = layersControlOptions(collapsed = FALSE))%>%#"wave_cab",
+      hideGroup(c("samples","euowf","owf","owf_cab","R4_chara","R4_bid","agg (PIZ)","agg (SIZ)","agg (REF)","disp","wave","tidal","tidal_cab","oga","mcz","sac","ncmpa"))%>%#,"wave_cab"
       #setView(-3,54.6,zoom=5.6)
     setView(0.54,55.53,zoom=5.3)%>%
     addMouseCoordinates()
