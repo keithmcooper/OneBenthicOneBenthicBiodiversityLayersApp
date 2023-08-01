@@ -1230,9 +1230,9 @@ br(),br(),
     #else if(as.character(input$layernameInput) == "Biodiversity_Cluster"){
     #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
     else if(as.character(input$layernameInput) == "Response"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K.M., Downie, A-L. Mapping marine benthic biological traits to facilitate future sustainable development. Ecological Applications (submitted).")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K., and Downie, A-L. 2023. Mapping Marine Benthic Biological Traits to Facilitate Future Sustainable Development. ",tags$i("Ecological Applications")," e2905.",tags$a(href="https://doi.org/10.1002/eap.2905", "https://doi.org/10.1002/eap.2905"))}
     else if(as.character(input$layernameInput) == "Effects"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K.M., Downie, A-L. Mapping marine benthic biological traits to facilitate future sustainable development. Ecological Applications (submitted).")}
+      list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K., and Downie, A-L. 2023. Mapping Marine Benthic Biological Traits to Facilitate Future Sustainable Development. ",tags$i("Ecological Applications")," e2905.",tags$a(href="https://doi.org/10.1002/eap.2905", "https://doi.org/10.1002/eap.2905"))}
    else if(as.character(input$layernameInput) == "Richness"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
       else if(as.character(input$layernameInput) == "Abundance"){
