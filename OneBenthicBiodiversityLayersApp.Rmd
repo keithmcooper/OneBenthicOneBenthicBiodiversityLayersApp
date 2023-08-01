@@ -1435,8 +1435,8 @@ uiOutput("noterechr")
 
 
 <div>
-```{r chara, echo=F, fig.cap = "Title", out.width ='100%'}
-
+```{r chara, echo=F, fig.cap = "Title"}
+#, out.width ='100%'
 #### MODELLED CATEGORY CHARACTERISTICS #### 
 
   output$img1 <- renderImage({  #This is where the image is set 
@@ -1498,7 +1498,7 @@ imageOutput('img1')
 
 
 ```
-<div>
+</div>
 <br>
 <br>
 <br>
@@ -1524,9 +1524,9 @@ uiOutput("notedendro")
 </div>
 
 
-</div>
-```{r dendro, echo=F, fig.cap = "Title", out.width ='100%'}
-
+<div>
+```{r dendro, echo=F, fig.cap = "Title"}
+#, out.width ='100%'
 #### MODELLED CATEGORY CHARACTERISTICS #### 
 
   output$dendro <- renderImage({  #This is where the image is set 
@@ -1549,6 +1549,7 @@ imageOutput('dendro')
 
 
 ```
+</div>
 
 ### Input Data {data-padding=20}
 
@@ -1957,7 +1958,7 @@ uiOutput("valstatsheader")
 ## SELECT VAL STATS DATA
 perf <- reactive({
   
-   req(input$layernameInput)## this will supress error messages before a selection is made
+   req(input$layernameInput)## this will surpress error messages before a selection is made
   
   if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       perf2 <- PSs[ which(PSs$Tax=='Sabellaria_spinulosa'),]
