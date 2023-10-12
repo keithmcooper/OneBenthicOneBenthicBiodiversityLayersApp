@@ -14,6 +14,7 @@ resource_files:
 ---
 
 ```{r setup, include = FALSE}
+
 library(flexdashboard)
 library(shiny)
 library(jsonlite)
@@ -475,13 +476,13 @@ RD$Tax[RD$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 RD$Tax[RD$Tax == 'Abra alba']<-"Abra_alba"
 RD$Tax[RD$Tax == 'Lagis koreni']<-"Lagis_koreni"
 RD$Tax[RD$Tax == 'assemblage']<-"Assemblages"
-#RD$Tax[RD$Tax == 'richness']<-"Richness"
-#RD$Tax[RD$Tax == 'abundSqrt']<-"Abundance"
-#RD$Tax[RD$Tax == 'evenness']<-"Evenness"
-#RD$Tax[RD$Tax == 'alpha']<-"Alpha"
-#RD$Tax[RD$Tax == 'beta']<-"Beta"
-#RD$Tax[RD$Tax == 'gamma']<-"Gamma"
-#RD$Tax[RD$Tax == 'taxdist']<-"TaxDist"
+RD$Tax[RD$Tax == 'richness']<-"Richness"
+RD$Tax[RD$Tax == 'abundSqrt']<-"Abundance"
+RD$Tax[RD$Tax == 'evenness']<-"Evenness"
+RD$Tax[RD$Tax == 'alpha']<-"Alpha"
+RD$Tax[RD$Tax == 'beta']<-"Beta"
+RD$Tax[RD$Tax == 'gamma']<-"Gamma"
+RD$Tax[RD$Tax == 'taxdist']<-"TaxDist"
 RD$Tax[RD$Tax == 'resptrait']<-"Response"
 RD$Tax[RD$Tax == 'efftrait']<-"Effects"
 
@@ -493,13 +494,13 @@ PSs$Tax[PSs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 PSs$Tax[PSs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 PSs$Tax[PSs$Tax == 'Abra alba']<-"Abra_alba"
 PSs$Tax[PSs$Tax == 'Lagis koreni']<-"Lagis_koreni"
-#PSs$Tax[PSs$Tax == 'richness']<-"Richness"
-#PSs$Tax[PSs$Tax == 'abundSqrt']<-"Abundance"
-#PSs$Tax[PSs$Tax == 'evenness']<-"Evenness"
-#PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
-#PSs$Tax[PSs$Tax == 'beta']<-"Beta"
-#PSs$Tax[PSs$Tax == 'gamma']<-"Gamma"
-#PSs$Tax[PSs$Tax == 'taxdist']<-"TaxDist"
+PSs$Tax[PSs$Tax == 'richness']<-"Richness"
+PSs$Tax[PSs$Tax == 'abundSqrt']<-"Abundance"
+PSs$Tax[PSs$Tax == 'evenness']<-"Evenness"
+PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
+PSs$Tax[PSs$Tax == 'beta']<-"Beta"
+PSs$Tax[PSs$Tax == 'gamma']<-"Gamma"
+PSs$Tax[PSs$Tax == 'taxdist']<-"TaxDist"
 ##################################
 
 PScs$Tax[PScs$Tax == 'assemblage']<-"Assemblages"
@@ -518,13 +519,13 @@ OvsPs$Tax[OvsPs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 OvsPs$Tax[OvsPs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 OvsPs$Tax[OvsPs$Tax == 'Abra alba']<-"Abra_alba"
 OvsPs$Tax[OvsPs$Tax == 'Lagis koreni']<-"Lagis_koreni"
-#OvsPs$Tax[OvsPs$Tax == 'richness']<-"Richness"
-#OvsPs$Tax[OvsPs$Tax == 'abundSqrt']<-"Abundance"
-#OvsPs$Tax[OvsPs$Tax == 'evenness']<-"Evenness"
-#OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
-#OvsPs$Tax[OvsPs$Tax == 'beta']<-"Beta"
-#OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
-#OvsPs$Tax[OvsPs$Tax == 'taxdist']<-"TaxDist"
+OvsPs$Tax[OvsPs$Tax == 'richness']<-"Richness"
+OvsPs$Tax[OvsPs$Tax == 'abundSqrt']<-"Abundance"
+OvsPs$Tax[OvsPs$Tax == 'evenness']<-"Evenness"
+OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
+OvsPs$Tax[OvsPs$Tax == 'beta']<-"Beta"
+OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
+OvsPs$Tax[OvsPs$Tax == 'taxdist']<-"TaxDist"
 OvsPs$Tax[OvsPs$Tax == 'resptrait']<-"Response"
 OvsPs$Tax[OvsPs$Tax == 'efftrait']<-"Effects"
 
@@ -537,17 +538,21 @@ VIs$Tax[VIs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 VIs$Tax[VIs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 VIs$Tax[VIs$Tax == 'Abra alba']<-"Abra_alba"
 VIs$Tax[VIs$Tax == 'Lagis koreni']<-"Lagis_koreni"
-#VIs$Tax[VIs$Tax == 'richness']<-"Richness"
-#VIs$Tax[VIs$Tax == 'abundSqrt']<-"Abundance"
-#VIs$Tax[VIs$Tax == 'evenness']<-"Evenness"
-#VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
-#VIs$Tax[VIs$Tax == 'beta']<-"Beta"
-#VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
-#VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
+VIs$Tax[VIs$Tax == 'richness']<-"Richness"
+VIs$Tax[VIs$Tax == 'abundSqrt']<-"Abundance"
+VIs$Tax[VIs$Tax == 'evenness']<-"Evenness"
+VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
+VIs$Tax[VIs$Tax == 'beta']<-"Beta"
+VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
+VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
 VIs$Tax[VIs$Tax == 'resptrait']<-"Response"
 VIs$Tax[VIs$Tax == 'efftrait']<-"Effects"
 
-names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","resptrait","efftrait")#,"Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist"
+#names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","resptrait","efftrait")#,"Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist"
+
+names(response.plots) <- c("Abra_alba"  ,          "Ampelisca_spinipes"  , "Arctica_islandica" ,   "Crepidula_fornicata" , "Goniadella_gracilis"  ,"Lagis_koreni"   ,      "Modiolus_modiolus" ,  
+"Sabellaria_spinulosa", "assemblage"   ,        "TaxDist"   ,           "Richness"        ,     "Gamma"      ,          "Evenness"      ,       "Beta"  ,              
+"Alpha"         ,       "Abundance"   ,         "resptrait"    ,        "efftrait"   )
 
 ## Labels for environmental variables in plots
 envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitrate','Oxygen','Phosphate','Phytoplankton','Gravel','Mud','Productivity','Rel. Slope Pos.','Salinity','Silicate','Suspended Matter','Temperature','Wave velocity','Gear type')
