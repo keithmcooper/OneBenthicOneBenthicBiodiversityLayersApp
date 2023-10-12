@@ -108,42 +108,42 @@ Assemblages = ratify(r)
 #s.agg <- aggregate(s, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(s.agg,'www/Richness.tif',overwrite=TRUE,format = "GTiff")
-Richness <- raster('www/Richness.tif')
+#Richness <- raster('www/Richness.tif')
 
 ## ABUNDANCE
 #n <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/abundSqrt_Mean_SQ.tif")
 #n.agg <- aggregate(n, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(n.agg,'www/Abundance.tif',overwrite=TRUE,format = "GTiff")
-Abundance <- raster('www/Abundance.tif')
+#Abundance <- raster('www/Abundance.tif')
 
 ## EVENNESS
 #e <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/evenness_Mean_SQ.tif")
 #e.agg <- aggregate(e, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(e.agg,'www/Evenness.tif',overwrite=TRUE,format = "GTiff")
-Evenness <- raster('www/Evenness.tif')
+#Evenness <- raster('www/Evenness.tif')
 
 ## ALPHA
 #a <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/alpha_Mean_SQ.tif")
 #a.agg <- aggregate(a, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(a.agg,'www/Alpha.tif',overwrite=TRUE,format = "GTiff")
-Alpha <- raster('www/Alpha.tif')
+#Alpha <- raster('www/Alpha.tif')
 
 ## BETA
 #b <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/beta_Mean_SQ.tif")
 #b.agg <- aggregate(b, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(b.agg,'www/Beta.tif',overwrite=TRUE,format = "GTiff")
-Beta <- raster('www/Beta.tif')
+#Beta <- raster('www/Beta.tif')
 
 ## GAMMA
 #g <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/gamma_Mean_SQ.tif")
 #g.agg <- aggregate(g, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(g.agg,'www/Gamma.tif',overwrite=TRUE,format = "GTiff")
-Gamma <- raster('www/Gamma.tif')
+#Gamma <- raster('www/Gamma.tif')
 
 ## TAX DIST
 #td <- raster("Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/taxdist_Mean_SQ.tif")
@@ -235,42 +235,42 @@ Modiolus_modiolus <- raster('www/Modiolus_modiolus.tif')
 #Richness_cv.agg <- aggregate(Richness_cv, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Richness_cv.agg,'www/Richness_cv.tif',overwrite=TRUE,format = "GTiff")
-Richness_cv <- raster('www/Richness_cv.tif')
+#Richness_cv <- raster('www/Richness_cv.tif')
 
 ## Abundance_cv
 #Abundance_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/abundSqrt_CV_SQ.tif')
 #Abundance_cv.agg <- aggregate(Abundance_cv, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Abundance_cv.agg,'www/Abundance_cv.tif',overwrite=TRUE,format = "GTiff")
-Abundance_cv <- raster('www/Abundance_cv.tif')
+#Abundance_cv <- raster('www/Abundance_cv.tif')
 
 ## Evenness_cv
 #Evenness_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/evenness_CV_SQ.tif')
 #Evenness_cv.agg <- aggregate(Evenness_cv, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Evenness_cv.agg,'www/Evenness_cv.tif',overwrite=TRUE,format = "GTiff")
-Evenness_cv <- raster('www/Evenness_cv.tif')
+#Evenness_cv <- raster('www/Evenness_cv.tif')
 
 ## Alpha_cv
 #Alpha_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/alpha_CV_SQ.tif')
 #Alpha_cv.agg <- aggregate(Alpha_cv, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Alpha_cv.agg,'www/Alpha_cv.tif',overwrite=TRUE,format = "GTiff")
-Alpha_cv <- raster('www/Alpha_cv.tif')
+#Alpha_cv <- raster('www/Alpha_cv.tif')
 
 ## Beta_cv
 #Beta_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/beta_CV_SQ.tif')
 #Beta_cv.agg <- aggregate(Beta_cv, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Beta_cv.agg,'www/Beta_cv.tif',overwrite=TRUE,format = "GTiff")
-Beta_cv <- raster('www/Beta_cv.tif')
+#Beta_cv <- raster('www/Beta_cv.tif')
 
 ## Gamma_cv
 #Gamma_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/gamma_CV_SQ.tif')
 #Gamma_cv.agg <- aggregate(Gamma_cv, fact=5,fun = modal)
 #setwd('C:/Users/kmc00/OneDrive - CEFAS/R_PROJECTS/OneBenthicBiodiversityLayersApp/R')
 #writeRaster(Gamma_cv.agg,'www/Gamma_cv.tif',overwrite=TRUE,format = "GTiff")
-Gamma_cv <- raster('www/Gamma_cv.tif')
+#Gamma_cv <- raster('www/Gamma_cv.tif')
 
 ## TaxDist_cv
 #taxdist_cv <- raster('Y:/C8210_OneBenthic/Working_Area/DiversityModelPredictions/taxdist_CV_SQ.tif')
@@ -357,20 +357,20 @@ Response_cv <- raster('www/Response_cv.tif')
 Effects_cv <- raster('www/Effects_cv.tif')
 #__________________________________________________________________________________________
 #### CREATE RASTER STACK ####
-myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus,Richness,Abundance,Evenness,Alpha,Beta,Gamma,TaxDist,Response,Effects) #,Richness,Biodiversity_Cluster,Abundance,Evenness,Response,Effects
+myras <- list(Assemblages,Sabellaria_spinulosa,Arctica_islandica,Ampelisca_spinipes,Abra_alba,Lagis_koreni,Goniadella_gracilis,Crepidula_fornicata,Modiolus_modiolus,Response,Effects) #,Richness,Abundance,Evenness,Alpha,Beta,Gamma,TaxDist,
 
 modis.rasters <- stack(myras) 
 #__________________________________________________________________________________________
 #### CREATE RASTER STACK (CONFIDENCE MAPS) ####
-myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv,Richness_cv,Abundance_cv,Evenness_cv,Alpha_cv,Beta_cv,Gamma_cv,TaxDist_cv,Response_cv,Effects_cv) 
+myras_cv <- list(Sabellaria_spinulosa_cv,Modiolus_modiolus_cv,Lagis_koreni_cv,Goniadella_gracilis_cv,Crepidula_fornicata_cv,Arctica_islandica_cv,Ampelisca_spinipes_cv,Abra_alba_cv,Assemblages_cv,Response_cv,Effects_cv) #,Richness_cv,Abundance_cv,Evenness_cv,Alpha_cv,Beta_cv,Gamma_cv,TaxDist_cv
 modis.rasters_cv <- stack(myras_cv) 
 
 ## Update layer names
-names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages','Richness', 'Abundance','Evenness', 'Alpha','Beta','Gamma','TaxDist','Response','Effects')
+names(modis.rasters_cv) <- c('Sabellaria_spinulosa','Modiolus_modiolus','Lagis_koreni','Goniadella_gracilis','Crepidula_fornicata','Arctica_islandica','Ampelisca_spinipes','Abra_alba','Assemblages','Response','Effects')#,'Richness', 'Abundance','Evenness', 'Alpha','Beta','Gamma','TaxDist'
 #__________________________________________________________________________________________
 #### DATAFRAME FOR SELECTION BOXES ####
-cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits")#"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Traits","Traits",
-layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni","Richness","Abundance",'Evenness','Alpha','Beta','Gamma','TaxDist','Response','Effects')#"Richness","Abundance","Evenness","Biodiversity_Cluster","Response","Effects",
+cat <- c("Structure","SDM","SDM","SDM","SDM","SDM","SDM","SDM","SDM","Traits","Traits")#,"Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity","Biodiversity"
+layer <- c("Assemblages","Sabellaria_spinulosa","Modiolus_modiolus","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Abra_alba","Lagis_koreni",'Response','Effects')#","Richness","Abundance",'Evenness','Alpha','Beta','Gamma','TaxDist'
 
 data <- data.frame(cat, layer)
 #__________________________________________________________________________________________
@@ -475,13 +475,13 @@ RD$Tax[RD$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 RD$Tax[RD$Tax == 'Abra alba']<-"Abra_alba"
 RD$Tax[RD$Tax == 'Lagis koreni']<-"Lagis_koreni"
 RD$Tax[RD$Tax == 'assemblage']<-"Assemblages"
-RD$Tax[RD$Tax == 'richness']<-"Richness"
-RD$Tax[RD$Tax == 'abundSqrt']<-"Abundance"
-RD$Tax[RD$Tax == 'evenness']<-"Evenness"
-RD$Tax[RD$Tax == 'alpha']<-"Alpha"
-RD$Tax[RD$Tax == 'beta']<-"Beta"
-RD$Tax[RD$Tax == 'gamma']<-"Gamma"
-RD$Tax[RD$Tax == 'taxdist']<-"TaxDist"
+#RD$Tax[RD$Tax == 'richness']<-"Richness"
+#RD$Tax[RD$Tax == 'abundSqrt']<-"Abundance"
+#RD$Tax[RD$Tax == 'evenness']<-"Evenness"
+#RD$Tax[RD$Tax == 'alpha']<-"Alpha"
+#RD$Tax[RD$Tax == 'beta']<-"Beta"
+#RD$Tax[RD$Tax == 'gamma']<-"Gamma"
+#RD$Tax[RD$Tax == 'taxdist']<-"TaxDist"
 RD$Tax[RD$Tax == 'resptrait']<-"Response"
 RD$Tax[RD$Tax == 'efftrait']<-"Effects"
 
@@ -493,13 +493,13 @@ PSs$Tax[PSs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 PSs$Tax[PSs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 PSs$Tax[PSs$Tax == 'Abra alba']<-"Abra_alba"
 PSs$Tax[PSs$Tax == 'Lagis koreni']<-"Lagis_koreni"
-PSs$Tax[PSs$Tax == 'richness']<-"Richness"
-PSs$Tax[PSs$Tax == 'abundSqrt']<-"Abundance"
-PSs$Tax[PSs$Tax == 'evenness']<-"Evenness"
-PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
-PSs$Tax[PSs$Tax == 'beta']<-"Beta"
-PSs$Tax[PSs$Tax == 'gamma']<-"Gamma"
-PSs$Tax[PSs$Tax == 'taxdist']<-"TaxDist"
+#PSs$Tax[PSs$Tax == 'richness']<-"Richness"
+#PSs$Tax[PSs$Tax == 'abundSqrt']<-"Abundance"
+#PSs$Tax[PSs$Tax == 'evenness']<-"Evenness"
+#PSs$Tax[PSs$Tax == 'alpha']<-"Alpha"
+#PSs$Tax[PSs$Tax == 'beta']<-"Beta"
+#PSs$Tax[PSs$Tax == 'gamma']<-"Gamma"
+#PSs$Tax[PSs$Tax == 'taxdist']<-"TaxDist"
 ##################################
 
 PScs$Tax[PScs$Tax == 'assemblage']<-"Assemblages"
@@ -518,13 +518,13 @@ OvsPs$Tax[OvsPs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 OvsPs$Tax[OvsPs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 OvsPs$Tax[OvsPs$Tax == 'Abra alba']<-"Abra_alba"
 OvsPs$Tax[OvsPs$Tax == 'Lagis koreni']<-"Lagis_koreni"
-OvsPs$Tax[OvsPs$Tax == 'richness']<-"Richness"
-OvsPs$Tax[OvsPs$Tax == 'abundSqrt']<-"Abundance"
-OvsPs$Tax[OvsPs$Tax == 'evenness']<-"Evenness"
-OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
-OvsPs$Tax[OvsPs$Tax == 'beta']<-"Beta"
-OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
-OvsPs$Tax[OvsPs$Tax == 'taxdist']<-"TaxDist"
+#OvsPs$Tax[OvsPs$Tax == 'richness']<-"Richness"
+#OvsPs$Tax[OvsPs$Tax == 'abundSqrt']<-"Abundance"
+#OvsPs$Tax[OvsPs$Tax == 'evenness']<-"Evenness"
+#OvsPs$Tax[OvsPs$Tax == 'alpha']<-"Alpha"
+#OvsPs$Tax[OvsPs$Tax == 'beta']<-"Beta"
+#OvsPs$Tax[OvsPs$Tax == 'gamma']<-"Gamma"
+#OvsPs$Tax[OvsPs$Tax == 'taxdist']<-"TaxDist"
 OvsPs$Tax[OvsPs$Tax == 'resptrait']<-"Response"
 OvsPs$Tax[OvsPs$Tax == 'efftrait']<-"Effects"
 
@@ -537,17 +537,17 @@ VIs$Tax[VIs$Tax == 'Crepidula fornicata']<-"Crepidula_fornicata"
 VIs$Tax[VIs$Tax == 'Goniadella gracilis']<-"Goniadella_gracilis"
 VIs$Tax[VIs$Tax == 'Abra alba']<-"Abra_alba"
 VIs$Tax[VIs$Tax == 'Lagis koreni']<-"Lagis_koreni"
-VIs$Tax[VIs$Tax == 'richness']<-"Richness"
-VIs$Tax[VIs$Tax == 'abundSqrt']<-"Abundance"
-VIs$Tax[VIs$Tax == 'evenness']<-"Evenness"
-VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
-VIs$Tax[VIs$Tax == 'beta']<-"Beta"
-VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
-VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
+#VIs$Tax[VIs$Tax == 'richness']<-"Richness"
+#VIs$Tax[VIs$Tax == 'abundSqrt']<-"Abundance"
+#VIs$Tax[VIs$Tax == 'evenness']<-"Evenness"
+#VIs$Tax[VIs$Tax == 'alpha']<-"Alpha"
+#VIs$Tax[VIs$Tax == 'beta']<-"Beta"
+#VIs$Tax[VIs$Tax == 'gamma']<-"Gamma"
+#VIs$Tax[VIs$Tax == 'taxdist']<-"TaxDist"
 VIs$Tax[VIs$Tax == 'resptrait']<-"Response"
 VIs$Tax[VIs$Tax == 'efftrait']<-"Effects"
 
-names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist","resptrait","efftrait")
+names(response.plots) <- c("Abra_alba","Ampelisca_spinipes","Arctica_islandica","Crepidula_fornicata","Goniadella_gracilis","Lagis_koreni","Modiolus_modiolus","Sabellaria_spinulosa","assemblage","resptrait","efftrait")#,"Richness","Abundance","Evenness","Alpha","Beta","Gamma","TaxDist"
 
 ## Labels for environmental variables in plots
 envlab <- c('Depth','Chl-a','Current velocity','Iron','Light','LS-Factor','Nitrate','Oxygen','Phosphate','Phytoplankton','Gravel','Mud','Productivity','Rel. Slope Pos.','Salinity','Silicate','Suspended Matter','Temperature','Wave velocity','Gear type')
@@ -591,14 +591,14 @@ reactiveRaster <-  reactive({raster::subset(modis.rasters,grep(as.character(inpu
 ## Reactive object for raster colours 
   reactiveColour <- reactive({if (as.character(input$layernameInput) == "Assemblages") {colours <- #c('#9aff9a','#0000ee','#00cd00','#00ffff','#ffff00','#ff0000','#9a32cd','#ff8c00','#b4b404','#b40202','#05aac1')}
 c('#0000ee','#00ffff','#05aac1','#9a32cd','#00cd00','#9aff9a','#b40202','#ff0000','#ff8c00','#ffff00','#b4b404')}    
-    else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "Richness"){colours <- jet(100)}
     #else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
-    else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
-    else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
-    else if (as.character(input$layernameInput) == "Alpha"){colours <- jet(100)}
-    else if (as.character(input$layernameInput) == "Beta"){colours <- jet(100)}
-    else if (as.character(input$layernameInput) == "Gamma"){colours <- jet(100)}
-    else if (as.character(input$layernameInput) == "TaxDist"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "Abundance"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "Evenness"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "Alpha"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "Beta"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "Gamma"){colours <- jet(100)}
+   # else if (as.character(input$layernameInput) == "TaxDist"){colours <- jet(100)}
        else if (as.character(input$layernameInput) == "Response"){colours <- c('#4575b4', '#00E600', '#91bfdb', '#e0f3f8','#fee090','#fc8d59')}#'#4575b4','#d73027','#91bfdb','#e0f3f8','#fee090','#fc8d59'
     else if (as.character(input$layernameInput) == "Effects"){colours <- c('#5ab4ac', '#d8b365', '#c7eae5', '#8c510a','#f6e8c3', '#FF0000')}#'#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e'
     else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){colorBin(palette = brewer.pal(n = 6, name = "YlGnBu"), bins = c(0,2.5,5,10,15,30), domain = c(0,2.5,5,10,15,30),na.color = "transparent")}
@@ -674,65 +674,65 @@ addLegend(
 #labels = c('1','2','3','4','5','6'),        
 #opacity = 3,
 #title = "biodiv")}
-else if (as.character(input$layernameInput) == "Richness"){
-pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Richness), title = "Richness")}
+#else if (as.character(input$layernameInput) == "Richness"){
+#pal <- colorNumeric(jet(100), values(Richness),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Richness), title = "Richness")}
 
-else if (as.character(input$layernameInput) == "Abundance"){
-pal <- colorNumeric(jet(100), values(Abundance),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(
-position = "bottomright",
-pal = pal,
-values = values(Abundance),
-title = "Abundance (Sqrt)")}
+#else if (as.character(input$layernameInput) == "Abundance"){
+#pal <- colorNumeric(jet(100), values(Abundance),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(
+#position = "bottomright",
+#pal = pal,
+#values = values(Abundance),
+#title = "Abundance (Sqrt)")}
 
-else if (as.character(input$layernameInput) == "Evenness"){
-pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Evenness), title = "Evenness")}
+#else if (as.character(input$layernameInput) == "Evenness"){
+#pal <- colorNumeric(jet(100), values(Evenness),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Evenness), title = "Evenness")}
 
-else if (as.character(input$layernameInput) == "Alpha"){
-pal <- colorNumeric(jet(100), values(Alpha),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Alpha), title = "Alpha")}
+#else if (as.character(input$layernameInput) == "Alpha"){
+#pal <- colorNumeric(jet(100), values(Alpha),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Alpha), title = "Alpha")}
  
-else if (as.character(input$layernameInput) == "Beta"){
-pal <- colorNumeric(jet(100), values(Beta),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Beta), title = "Beta")}
+#else if (as.character(input$layernameInput) == "Beta"){
+#pal <- colorNumeric(jet(100), values(Beta),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Beta), title = "Beta")}
  
-else if (as.character(input$layernameInput) == "Gamma"){
-pal <- colorNumeric(jet(100), values(Gamma),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Gamma), title = "Gamma")}
+#else if (as.character(input$layernameInput) == "Gamma"){
+#pal <- colorNumeric(jet(100), values(Gamma),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(Gamma), title = "Gamma")}
   
-else if (as.character(input$layernameInput) == "TaxDist"){
-pal <- colorNumeric(jet(100), values(TaxDist),na.color = "transparent")
-leafletProxy ('map1')%>%
-clearImages()%>%
-clearControls()%>%
-addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
-addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(TaxDist), title = "TaxDist")}
+#else if (as.character(input$layernameInput) == "TaxDist"){
+#pal <- colorNumeric(jet(100), values(TaxDist),na.color = "transparent")
+#leafletProxy ('map1')%>%
+#clearImages()%>%
+#clearControls()%>%
+#addRasterImage(reactiveRaster(),col=reactiveColour(),opacity = 1,project = 3857)%>%
+#addLegend(position = "bottomright",pal = pal,opacity = 5, values = values(TaxDist), title = "TaxDist")}
 
 else if (as.character(input$layernameInput) == "Response"){leafletProxy ('map1')%>%
 clearImages()%>%
@@ -1169,20 +1169,20 @@ library(knitr)
     #  list("seven")}
        else if(as.character(input$layernameInput) == "Response"){list(h3("Description",style=c("color:#044D94")),"This layer shows model predictions based on a k-means clustering of five response traits pertaining to fourth-root transformed macrofaunal abundance data from comparable surveys (i.e. 0.1m",tags$sup("2")," grab or core, processed over a 1mm sieve, and not taken from known impact sites). The proportional expression of the various response traits categories within each cluster group is presented in a table under the 'Characteristics' tab, and the relative cluster group similarity is shown in the dendrogram below this. Cluster group distribution was modelled using a random forest approach, with the final map representing an average of 10 repeated split sample runs. For each run, the dataset (see 'Input data' tab) was split into 75% training and 25% test data via random sampling without replacement. Model performance, variable contribution and partial response curves summarised over the 10 repeat runs are shown on individual tabs. An associated confidence map was produced by multiplying the frequency of the most common class by the average probability over the 10 model runs. In this map the high values represent high confidence (see 'Confidence' tab).",br(),br()," As a species’ response to a change in the environment is inherently governed by its response traits, the map shows areas which are theoretically likely to respond differently to a change in environmental conditions (natural or anthropogenic). Thus, we can use this information to identify areas which are likely to be relatively sensitive or relatively tolerant to a pressure.  For example, the elevated expression of free-living, swimming and exoskeleton traits of cluster 5 theoretically implies these assemblages, which are located in certain parts of the southern North Sea, are more tolerant to chronic trawling. Similarly, based on the findings of ",tags$a(href="https://doi.org/10.1016/j.marpolbul.2016.02.031", "Bolam et al. (2016)"),", the relatively higher proportions of soft-bodied, deep-dwelling burrowers of assemblage cluster 6 which are found in the southern North Sea (especially off the coast of The Netherlands) and in small regions of the Bristol Channel and the Irish Sea, potentially display greater tolerance to the disturbance associated with routine dredged material disposal.  This layer may, therefore, be used alongside other current approaches to determine seabed sensitivity to pressure as part of an improved licence decision-making process.")}
        else if(as.character(input$layernameInput) == "Effects"){list(h3("Description",style=c("color:#044D94")),"This layer shows model predictions based on a k-means clustering of five effect traits pertaining to fourth-root transformed macrofaunal abundance data from comparable surveys (i.e. 0.1m",tags$sup("2")," grab or core, processed over a 1mm sieve, and not taken from known impact sites). The proportional expression of the various effect trait categories within each cluster group is presented in a table under the 'Characteristics' tab, and the relative cluster group similarity is shown in the dendrogram below this. Cluster group distribution was modelled using a random forest approach, with the final map representing an average of 10 repeated split sample runs. For each run, the dataset (see 'Input data' tab) was split into 75% training and 25% test data via random sampling without replacement. Model performance, variable contribution and partial response curves summarised over the 10 repeat runs are shown on individual tabs. An associated confidence map was produced by multiplying the frequency of the most common class by the average probability over the 10 model runs. In this map the high values represent high confidence (see 'Confidence' tab).",br(),br(),"It is widely understood that benthic macrofaunal organisms are major providers of ecosystem functioning in marine habitats. They modify soft-sediment habitats through biological processes such as ingestion, digestion, excretion, and bioturbation, which facilitates microbial recycling of nutrients, detoxification of pollutants, and organic matter remineralization.  In transferring energy across trophic levels, benthic macrofauna also connect benthic and pelagic ecosystems.  The mechanistic links species and function are intrinsically governed by the traits the species express, or more specifically, their effect traits. Improving our understanding of these better informs us of the links between community structure, ecosystem function and ecosystem service provision. Effect traits and their interactions represent valuable surrogate variables for ecosystem function.  Our effect traits-based map, portraying the spatial patterns exhibited by the six assemblage types based on the five effect traits adopted, identifies regions which possess (dis)similar functional potential: functional differences being dictated by those effect traits which show different levels of expression between cluster assemblages.  For example, the assemblages of the most distinct cluster, cluster 6, which is found in very small, isolated regions of the Celtic Sea and southern North Sea, have a greater expression of longer-lived (3-10 y) taxa, a feeding mode of scavengers and predators and a diffusive mixing bioturbation mode.  Such assemblages are, based on current theoretical understanding, likely to have different roles in trophic energy transfer and carbon capture and remineralisation than those of cluster group 1 where non-bioturbators and suspension feeders occupy much higher numerical proportions.  The relatively small spatial extents represented by cluster 6 would imply that anthropogenic activities in such seabed areas should be carefully considered in order to safeguard their potentially unique functional characteristics.  The linking of specific traits categories with ecological function in the marine benthos is still, however, in its relative infancy, and thus it is presently difficult to quantify how and the extent to which a shift in effect traits expression will have on ecosystem function.")}
-    else if(as.character(input$layernameInput) == "Richness"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted taxon richness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
-       else if(as.character(input$layernameInput) == "Abundance"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted square-root Abundance based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
-       else if(as.character(input$layernameInput) == "Evenness"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted Pileou's Evenness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
-       else if(as.character(input$layernameInput) == "Alpha"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted Alpha Diversity based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
-       else if(as.character(input$layernameInput) == "Beta"){
-      list(h3("Description",style=c("color:#044D94")),"Predicted Beta Diversity based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
-       else if(as.character(input$layernameInput) == "Gamma"){
-            list(h3("Description",style=c("color:#044D94")),"Predicted Gamma Diversity based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
-       else if(as.character(input$layernameInput) == "TaxDist"){
-            list(h3("Description",style=c("color:#044D94")),"Predicted Taxonomic Distance based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+#    else if(as.character(input$layernameInput) == "Richness"){
+#      list(h3("Description",style=c("color:#044D94")),"Predicted taxon richness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+#       else if(as.character(input$layernameInput) == "Abundance"){
+#      list(h3("Description",style=c("color:#044D94")),"Predicted square-root Abundance based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+#       else if(as.character(input$layernameInput) == "Evenness"){
+#      list(h3("Description",style=c("color:#044D94")),"Predicted Pileou's Evenness (family level and above) based on macrofaunal samples collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+#       else if(as.character(input$layernameInput) == "Alpha"){
+#      list(h3("Description",style=c("color:#044D94")),"Predicted Alpha Diversity based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+#       else if(as.character(input$layernameInput) == "Beta"){
+#      list(h3("Description",style=c("color:#044D94")),"Predicted Beta Diversity based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+ #      else if(as.character(input$layernameInput) == "Gamma"){
+ #           list(h3("Description",style=c("color:#044D94")),"Predicted Gamma Diversity based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
+#       else if(as.character(input$layernameInput) == "TaxDist"){
+#            list(h3("Description",style=c("color:#044D94")),"Predicted Taxonomic Distance based on macrofaunal samples (species data only) collected using 0.1m",tags$sup("2")," grab/core devices and processed using a 1mm sieve. Output represents an average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       list(h3("Description",style=c("color:#044D94")),"Predicted abundance of",em("Sabellaria spinulosa"),"(square-root transformed count in grab / core samples) presented as the average of 10 repeated split sample runs of Random Forest models. The model was trained and tested on a dataset extracted from the",tags$a(href="https://sway.office.com/HM5VkWvBoZ86atYP?ref=Link/", "OneBenthic")," database, including all abundance observations and a subset of all sampled locations where the species was absent, randomly sampled to extract 10% of the number of the species abundance records to make up the full model dataset. For each run the dataset (see ",tags$b("Input data"), " tab) was split into 75% training and 25% test data via random sampling without replacement. Model ",tags$b("performance"),", ", tags$b("variable contribution")," and",tags$b(" partial response curves")," summarised over the 10 repeat runs are shown on individual tabs. A confidence map layer consisting of the coefficient of variation (CV, 10 run standard deviation/mean) is shown in in the ",tags$b("Confidence")," tab.")}
    else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1233,20 +1233,20 @@ br(),br(),
       list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K., and Downie, A-L. 2023. Mapping Marine Benthic Biological Traits to Facilitate Future Sustainable Development. ",tags$i("Ecological Applications")," e2905.",tags$a(href="https://doi.org/10.1002/eap.2905", "https://doi.org/10.1002/eap.2905"))}
     else if(as.character(input$layernameInput) == "Effects"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Bolam, S.G., Cooper, K., and Downie, A-L. 2023. Mapping Marine Benthic Biological Traits to Facilitate Future Sustainable Development. ",tags$i("Ecological Applications")," e2905.",tags$a(href="https://doi.org/10.1002/eap.2905", "https://doi.org/10.1002/eap.2905"))}
-   else if(as.character(input$layernameInput) == "Richness"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
-      else if(as.character(input$layernameInput) == "Abundance"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
-      else if(as.character(input$layernameInput) == "Evenness"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
-      else if(as.character(input$layernameInput) == "Alpha"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
-      else if(as.character(input$layernameInput) == "Beta"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
-      else if(as.character(input$layernameInput) == "Gamma"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
-      else if(as.character(input$layernameInput) == "TaxDist"){
-      list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+ #  else if(as.character(input$layernameInput) == "Richness"){
+ #     list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+ #     else if(as.character(input$layernameInput) == "Abundance"){
+ #     list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+ #     else if(as.character(input$layernameInput) == "Evenness"){
+  #    list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+  #    else if(as.character(input$layernameInput) == "Alpha"){
+  #    list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+  #    else if(as.character(input$layernameInput) == "Beta"){
+  #    list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+  #    else if(as.character(input$layernameInput) == "Gamma"){
+   #   list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
+  #    else if(as.character(input$layernameInput) == "TaxDist"){
+  #    list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Thompson, M. A digital twin for benthic biodiversity (in prep).")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       list(h3("Reference(s)",style=c("color:#044D94")),"Cooper, K. M., Downie, A.-L. and Curtis, M. (2022). North Sea Net Gain (NSNG). Cefas Project Report for The Crown Estate, 57 pp. Access the report", tags$a(href="https://www.marinedataexchange.co.uk/details/3573/2022-the-crown-estate-de-rijke-noordzee-cefas-flanders-marine-institute-offshore-wind-evidence-and-change-programme-north-sea-net-gain-project/summary", "here."))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1288,13 +1288,13 @@ output$refheader <-  renderUI({
     #  list("Benthic biodiversity based on a kmeans clustering of richness, abundance and Evenness")}
     else if(as.character(input$layernameInput) == "Response"){list(h3("Partners",style=c("color:#044D94")))}
     else if(as.character(input$layernameInput) == "Effects"){list(h3("Partners",style=c("color:#044D94")))}
-   else if(as.character(input$layernameInput) == "Richness"){list(h3("Partners",style=c("color:#044D94")))}
-  else if(as.character(input$layernameInput) == "Abundance"){list(h3("Partners",style=c("color:#044D94")))}
-  else if(as.character(input$layernameInput) == "Evenness"){list(h3("Partners",style=c("color:#044D94")))}
-  else if(as.character(input$layernameInput) == "Alpha"){list(h3("Partners",style=c("color:#044D94")))}
-  else if(as.character(input$layernameInput) == "Beta"){list(h3("Partners",style=c("color:#044D94")))}
-  else if(as.character(input$layernameInput) == "Gamma"){list(h3("Partners",style=c("color:#044D94")))}
-  else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Partners",style=c("color:#044D94")))}
+  # else if(as.character(input$layernameInput) == "Richness"){list(h3("Partners",style=c("color:#044D94")))}
+  #else if(as.character(input$layernameInput) == "Abundance"){list(h3("Partners",style=c("color:#044D94")))}
+  #else if(as.character(input$layernameInput) == "Evenness"){list(h3("Partners",style=c("color:#044D94")))}
+  #else if(as.character(input$layernameInput) == "Alpha"){list(h3("Partners",style=c("color:#044D94")))}
+  #else if(as.character(input$layernameInput) == "Beta"){list(h3("Partners",style=c("color:#044D94")))}
+  #else if(as.character(input$layernameInput) == "Gamma"){list(h3("Partners",style=c("color:#044D94")))}
+  #else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Partners",style=c("color:#044D94")))}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Partners",style=c("color:#044D94")))}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Partners",style=c("color:#044D94")))}
        else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Partners",style=c("color:#044D94")))}
@@ -1331,20 +1331,20 @@ output$img10 <- renderImage({  #This is where the image is set
        list(src = "www/logos2.PNG",width ='90%')}
  #else if(as.character(input$layernameInput) == "Richness"){            
  #     list(src = "www/cefas&defralogo.png",width ='50%')}
-  else if(as.character(input$layernameInput) == "Richness"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
-    else if(as.character(input$layernameInput) == "Abundance"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
-    else if(as.character(input$layernameInput) == "Evenness"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
-    else if(as.character(input$layernameInput) == "Alpha"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
-    else if(as.character(input$layernameInput) == "Beta"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
-    else if(as.character(input$layernameInput) == "Gamma"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
-    else if(as.character(input$layernameInput) == "TaxDist"){            
-      list(src = "www/defra_cefas_logos.png",width ='80%')}
+ # else if(as.character(input$layernameInput) == "Richness"){            
+ #     list(src = "www/defra_cefas_logos.png",width ='80%')}
+ #   else if(as.character(input$layernameInput) == "Abundance"){            
+ #     list(src = "www/defra_cefas_logos.png",width ='80%')}
+ #   else if(as.character(input$layernameInput) == "Evenness"){            
+ #     list(src = "www/defra_cefas_logos.png",width ='80%')}
+ #   else if(as.character(input$layernameInput) == "Alpha"){            
+ #     list(src = "www/defra_cefas_logos.png",width ='80%')}
+  #  else if(as.character(input$layernameInput) == "Beta"){            
+  #    list(src = "www/defra_cefas_logos.png",width ='80%')}
+  #  else if(as.character(input$layernameInput) == "Gamma"){            
+  #    list(src = "www/defra_cefas_logos.png",width ='80%')}
+  #  else if(as.character(input$layernameInput) == "TaxDist"){            
+  #    list(src = "www/defra_cefas_logos.png",width ='80%')}
       else if(as.character(input$layernameInput) == "Response"){            
       list(src = "www/defra_cefas_logos.png",width ='80%')}
     else if(as.character(input$layernameInput) == "Effects"){            
@@ -1374,6 +1374,14 @@ imageOutput('img10')
 </div>
 
 ### Characteristics {data-padding=20}
+
+```{css my-style1, echo = FALSE}
+#section-characteristics
+  .chart-shim {
+    overflow-y: scroll;
+    }
+```
+
 <div>
 ```{r chr note}
 
@@ -1381,6 +1389,7 @@ imageOutput('img10')
 
  output$noterechr <-  renderUI({
    
+  
     if(as.character(input$layernameInput) == "Assemblages"){
       list("Biological characteristics of modelled assemblages identified through a k-means clustering of macrofaunal data.")}
    # else if(as.character(input$layernameInput) == "Richness"){
@@ -1395,20 +1404,20 @@ imageOutput('img10')
       list("Response trait characteristics of cluster groups identified through a k-means clustering of trait data.")}
     else if(as.character(input$layernameInput) == "Effects"){
       list("Effects traits characteristics of cluster groups identified through a k-means clustering of trait data.")}
-   else if(as.character(input$layernameInput) == "Richness"){
-       list("Not applicable for numerical models")}
-      else if(as.character(input$layernameInput) == "Abundance"){
-       list("Not applicable for numerical models")}
-      else if(as.character(input$layernameInput) == "Evenness"){
-       list("Not applicable for numerical models")}
-      else if(as.character(input$layernameInput) == "Alpha"){
-       list("Not applicable for numerical models")}
-      else if(as.character(input$layernameInput) == "Beta"){
-       list("Not applicable for numerical models")}
-      else if(as.character(input$layernameInput) == "Gamma"){
-       list("Not applicable for numerical models")}
-      else if(as.character(input$layernameInput) == "TaxDist"){
-       list("Not applicable for numerical models")}
+  # else if(as.character(input$layernameInput) == "Richness"){
+  #     list("Not applicable for numerical models")}
+   #   else if(as.character(input$layernameInput) == "Abundance"){
+   #    list("Not applicable for numerical models")}
+   #   else if(as.character(input$layernameInput) == "Evenness"){
+   #    list("Not applicable for numerical models")}
+   #   else if(as.character(input$layernameInput) == "Alpha"){
+   #    list("Not applicable for numerical models")}
+   #   else if(as.character(input$layernameInput) == "Beta"){
+   #    list("Not applicable for numerical models")}
+   #   else if(as.character(input$layernameInput) == "Gamma"){
+   #    list("Not applicable for numerical models")}
+   #   else if(as.character(input$layernameInput) == "TaxDist"){
+   #    list("Not applicable for numerical models")}
     else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
        list("Not applicable for numerical models")}
        else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1462,20 +1471,20 @@ uiOutput("noterechr")
    #     list(src = "www/blank.png",height ='90%')}
    # else if(as.character(input$layernameInput) == "Evenness"){
    #     list(src = "www/blank.png",height ='90%')}
-      else if(as.character(input$layernameInput) == "Richness"){            
-      list(src = "www//blank.png",width ='90%')}
-          else if(as.character(input$layernameInput) == "Abundance"){            
-      list(src = "www//blank.png",width ='90%')}
-          else if(as.character(input$layernameInput) == "Evenness"){            
-      list(src = "www//blank.png",width ='90%')}
-          else if(as.character(input$layernameInput) == "Alpha"){            
-      list(src = "www//blank.png",width ='90%')}
-          else if(as.character(input$layernameInput) == "Beta"){            
-      list(src = "www//blank.png",width ='90%')}
-          else if(as.character(input$layernameInput) == "Gamma"){            
-      list(src = "www//blank.png",width ='90%')}
-          else if(as.character(input$layernameInput) == "TaxDist"){            
-      list(src = "www//blank.png",width ='90%')}
+    #  else if(as.character(input$layernameInput) == "Richness"){            
+   #   list(src = "www//blank.png",width ='90%')}
+   #       else if(as.character(input$layernameInput) == "Abundance"){            
+   #   list(src = "www//blank.png",width ='90%')}
+   #       else if(as.character(input$layernameInput) == "Evenness"){            
+   #   list(src = "www//blank.png",width ='90%')}
+   #       else if(as.character(input$layernameInput) == "Alpha"){            
+   #   list(src = "www//blank.png",width ='90%')}
+   #       else if(as.character(input$layernameInput) == "Beta"){            
+   #   list(src = "www//blank.png",width ='90%')}
+   #       else if(as.character(input$layernameInput) == "Gamma"){            
+   #   list(src = "www//blank.png",width ='90%')}
+   #       else if(as.character(input$layernameInput) == "TaxDist"){            
+   #   list(src = "www//blank.png",width ='90%')}
   else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www//blank.png",width ='90%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1534,15 +1543,28 @@ uiOutput("notedendro")
     req(input$layernameInput)## this will suppress error messages before a selection is made
     
     if(as.character(input$layernameInput) == "Assemblages"){            
-      list(src = "www/structure_dendro.png",width ='50%')#, height =1000, width = 900
-    }
+      list(src = "www/structure_dendro.png",width ='50%')}#, height =1000, width = 900
     else if(as.character(input$layernameInput) == "Effects"){
-        list(src = "www/et_dendro.png",width ='50%')
-    }
+        list(src = "www/et_dendro.png",width ='50%')}
     else if(as.character(input$layernameInput) == "Response"){
-        list(src = "www/rt_dendro.png",width ='50%')
-    }
-   
+        list(src = "www/rt_dendro.png",width ='50%')}
+        else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
+      list(src = "www//blank.png",width ='90%')}
+    else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Arctica_islandica"){
+      list(src = "www//blank.png",width ='90%')}
+    else if(as.character(input$layernameInput) == "Crepidula_fornicata"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Goniadella_gracilis"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Abra_alba"){
+      list(src = "www//blank.png",width ='90%')}
+       else if(as.character(input$layernameInput) == "Lagis_koreni"){
+      list(src = "www//blank.png",width ='90%')}
+    
   }, deleteFile = F)
    
 imageOutput('dendro') 
@@ -1553,18 +1575,26 @@ imageOutput('dendro')
 
 ### Input Data {data-padding=20}
 
+
+```{css my-style2, echo = FALSE}
+#section-input-data
+  .chart-shim {
+    overflow-y: scroll;
+    }
+```
+
 <div>
 ```{r}
 ## RECORDS HEADER
 output$recordsheader <-  renderUI({
 if(as.character(input$layernameInput) == "Assemblages"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-    else if(as.character(input$layernameInput) == "Richness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-   else if(as.character(input$layernameInput) == "Abundance"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-   else if(as.character(input$layernameInput) == "Evenness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-   else if(as.character(input$layernameInput) == "Alpha"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-   else if(as.character(input$layernameInput) == "Beta"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-   else if(as.character(input$layernameInput) == "Gamma"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
-   else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  #  else if(as.character(input$layernameInput) == "Richness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  # else if(as.character(input$layernameInput) == "Abundance"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  # else if(as.character(input$layernameInput) == "Evenness"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  # else if(as.character(input$layernameInput) == "Alpha"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  # else if(as.character(input$layernameInput) == "Beta"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  # else if(as.character(input$layernameInput) == "Gamma"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
+  # else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
 else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data."))}
   else if(as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Records",style=c("color:#044D94")),p("The spatial distribution of the input data. Second map excludes samples where n<10."))}
@@ -1594,8 +1624,6 @@ output$abund_obs <- renderImage({  #This is where the image is set
     if(as.character(input$layernameInput) == "Assemblages"){            
       list(src = "www/Assemblages datamap-1.png",width ='100%')#, height =1000, width = 900
     }
- #else if(as.character(input$layernameInput) == "Richness"){            
- #     list(src = "www/cefas&defralogo.png",width ='50%')}
    else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){            
       list(src = "www/Sab datamap-1.png",width ='130%')}
   else if(as.character(input$layernameInput) == "Modiolus_modiolus"){
@@ -1612,20 +1640,20 @@ output$abund_obs <- renderImage({  #This is where the image is set
       list(src = "www/Abra datamap-1.png",width ='130%')}
        else if(as.character(input$layernameInput) == "Lagis_koreni"){
       list(src = "www/Lagis datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "Richness"){
-      list(src = "www/richness datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "Abundance"){
-      list(src = "www/SqAb datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "Alpha"){
-      list(src = "www/Alpha datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "Beta"){
-      list(src = "www/Beta datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "Gamma"){
-      list(src = "www/Gamma datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "Evenness"){
-      list(src = "www/Evenness datamap-1.png",width ='130%')}
-      else if(as.character(input$layernameInput) == "TaxDist"){
-      list(src = "www/Taxdist datamap-1.png",width ='130%')}
+     # else if(as.character(input$layernameInput) == "Richness"){
+     # list(src = "www/richness datamap-1.png",width ='130%')}
+      #else if(as.character(input$layernameInput) == "Abundance"){
+      #list(src = "www/SqAb datamap-1.png",width ='130%')}
+     # else if(as.character(input$layernameInput) == "Alpha"){
+     # list(src = "www/Alpha datamap-1.png",width ='130%')}
+     # else if(as.character(input$layernameInput) == "Beta"){
+      #list(src = "www/Beta datamap-1.png",width ='130%')}
+      #else if(as.character(input$layernameInput) == "Gamma"){
+      #list(src = "www/Gamma datamap-1.png",width ='130%')}
+      #else if(as.character(input$layernameInput) == "Evenness"){
+      #list(src = "www/Evenness datamap-1.png",width ='130%')}
+      #else if(as.character(input$layernameInput) == "TaxDist"){
+      #list(src = "www/Taxdist datamap-1.png",width ='130%')}
        else if(as.character(input$layernameInput) == "Response"){
       list(src = "www/resptrait datamap-1.png",width ='130%')}
       else if(as.character(input$layernameInput) == "Effects"){
@@ -1652,13 +1680,13 @@ else if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("P
   else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed abundance of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
   else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed abundance of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
   else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of the square-root transformed abundance of the modelled species, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-    else if(as.character(input$layernameInput) == "Richness"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of taxon Richness, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-      else if(as.character(input$layernameInput) == "Abundance"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of square-root Abundance, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-      else if(as.character(input$layernameInput) == "Evenness"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Pileou's Evenness, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-      else if(as.character(input$layernameInput) == "Alpha"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Alpha Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-      else if(as.character(input$layernameInput) == "Beta"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Beta Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-      else if(as.character(input$layernameInput) == "Gamma"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Gamma Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
-      else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Taxonomic Distance, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+   # else if(as.character(input$layernameInput) == "Richness"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of taxon Richness, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    #  else if(as.character(input$layernameInput) == "Abundance"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of square-root Abundance, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    #  else if(as.character(input$layernameInput) == "Evenness"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Pileou's Evenness, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    #  else if(as.character(input$layernameInput) == "Alpha"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Alpha Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    #  else if(as.character(input$layernameInput) == "Beta"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Beta Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    #  else if(as.character(input$layernameInput) == "Gamma"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Gamma Diversity, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
+    #  else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Plot",style=c("color:#044D94")),p("A histogram illustrating the distribution of Taxonomic Distance, with an insert summary table stating the number of observations (N) and the minimum, maximum, mean and median values in the data."))}
 else if(as.character(input$layernameInput) == "Response"){list(h3("Plot",style=c("color:#044D94")),p("A bar graph illustrating the distribution of the model input data over the 6 cluster groups."))}
 else if(as.character(input$layernameInput) == "Effect"){list(h3("Plot",style=c("color:#044D94")),p("A bar graph illustrating the distribution of the model input data over the 6 cluster groups."))}
   })
@@ -1678,27 +1706,27 @@ sdata <- reactive({
 if(as.character(input$layernameInput) == "Sabellaria_spinulosa"){
       sdata2 <- RD[ which(RD$Tax=='Sabellaria_spinulosa'),]
       print(sdata2)}
-    else if(as.character(input$layernameInput) == "Richness"){
-      sdata2 <- RD[ which(RD$Tax=='Richness'),]
-      print(sdata2)}
-      else if(as.character(input$layernameInput) == "Abundance"){
-      sdata2 <- RD[ which(RD$Tax=='Abundance'),]
-      print(sdata2)}
-      else if(as.character(input$layernameInput) == "Evenness"){
-      sdata2 <- RD[ which(RD$Tax=='Evenness'),]
-      print(sdata2)}
-      else if(as.character(input$layernameInput) == "Alpha"){
-      sdata2 <- RD[ which(RD$Tax=='Alpha'),]
-      print(sdata2)}
-      else if(as.character(input$layernameInput) == "Beta"){
-      sdata2 <- RD[ which(RD$Tax=='Beta'),]
-      print(sdata2)}
-        else if(as.character(input$layernameInput) == "Gamma"){
-      sdata2 <- RD[ which(RD$Tax=='Gamma'),]
-      print(sdata2)}
-          else if(as.character(input$layernameInput) == "TaxDist"){
-      sdata2 <- RD[ which(RD$Tax=='TaxDist'),]
-      print(sdata2)}
+    #else if(as.character(input$layernameInput) == "Richness"){
+    #  sdata2 <- RD[ which(RD$Tax=='Richness'),]
+    #  print(sdata2)}
+    #  else if(as.character(input$layernameInput) == "Abundance"){
+    #  sdata2 <- RD[ which(RD$Tax=='Abundance'),]
+    #  print(sdata2)}
+    #  else if(as.character(input$layernameInput) == "Evenness"){
+    #  sdata2 <- RD[ which(RD$Tax=='Evenness'),]
+    #  print(sdata2)}
+    #  else if(as.character(input$layernameInput) == "Alpha"){
+    #  sdata2 <- RD[ which(RD$Tax=='Alpha'),]
+    #  print(sdata2)}
+    #  else if(as.character(input$layernameInput) == "Beta"){
+    #  sdata2 <- RD[ which(RD$Tax=='Beta'),]
+    #  print(sdata2)}
+    #    else if(as.character(input$layernameInput) == "Gamma"){
+    #  sdata2 <- RD[ which(RD$Tax=='Gamma'),]
+    #  print(sdata2)}
+     #     else if(as.character(input$layernameInput) == "TaxDist"){
+     # sdata2 <- RD[ which(RD$Tax=='TaxDist'),]
+    #  print(sdata2)}
   else if(as.character(input$layernameInput) == "Arctica_islandica"){
       sdata2 <- RD[ which(RD$Tax=='Arctica_islandica'),]
       print(sdata2)}
@@ -1932,13 +1960,13 @@ plotOutput('inputdat', width = '50%', height = '50%')
 ## VALIDATION STATS HEADER
 output$valstatsheader <-  renderUI({
     if(as.character(input$layernameInput) == "Assemblages"){list(h3("Validation statistics",style=c("color:#044D94")),p("The tables give the mean and standard deviation of accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs for (1) the full model and (2) the individual assemblage cluster classes. The table for the full model shows the total number of samples used in the training data sets and the overall Sensitivity, Specificity and Balanced Accuracy, Kappa statistic, Quantity Disagreement and Allocation Disagreement. The table for individual classes shows the number of observations per class and the class-specific Sensitivity, Specificity and Balanced Accuracy scores."))}
-else if (as.character(input$layernameInput) == "Richness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-  else if (as.character(input$layernameInput) == "Abundance"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-  else if (as.character(input$layernameInput) == "Evenness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-  else if (as.character(input$layernameInput) == "Alpha"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-  else if (as.character(input$layernameInput) == "Beta"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-  else if (as.character(input$layernameInput) == "Gamma"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
-  else if (as.character(input$layernameInput) == "TaxDist"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+#else if (as.character(input$layernameInput) == "Richness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+#  else if (as.character(input$layernameInput) == "Abundance"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+#  else if (as.character(input$layernameInput) == "Evenness"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+#  else if (as.character(input$layernameInput) == "Alpha"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+#  else if (as.character(input$layernameInput) == "Beta"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+ # else if (as.character(input$layernameInput) == "Gamma"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
+ # else if (as.character(input$layernameInput) == "TaxDist"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Sabellaria_spinulosa"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
 else if (as.character(input$layernameInput) == "Ampelisca_spinipes"){list(h3("Validation statistics",style=c("color:#044D94")),p("The table summarises the number of samples used in the training data set, and the mean and standard deviation of the accuracy statistics calculated on the test data sets from the 10 split sample cross-validation runs. Root mean squared error (RMSE) and the relative RMSE represent the deviation of predicted values from those observed on absolute terms and in proportion to the range of observed values, respectively. The R2 indicates how well the observed and predicted values correlate. A relative RMSE of < 25% and an R2 >0.3 should be attained for a model to be judged fairly good."))}
@@ -2000,41 +2028,41 @@ perf <- reactive({
       perf3 <-perf2[,2:3]
       perf3[4,1] = "R<sup>2</sup>"#fix r2 label
       print(perf3)}
-     else if(as.character(input$layernameInput) == "Richness"){
-      perf2 <- PSs[ which(PSs$Tax=='Richness'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
-       else if(as.character(input$layernameInput) == "Abundance"){
-      perf2 <- PSs[ which(PSs$Tax=='Abundance'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
-       else if(as.character(input$layernameInput) == "Evenness"){
-      perf2 <- PSs[ which(PSs$Tax=='Evenness'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
-       else if(as.character(input$layernameInput) == "Alpha"){
-      perf2 <- PSs[ which(PSs$Tax=='Alpha'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
-       else if(as.character(input$layernameInput) == "Beta"){
-      perf2 <- PSs[ which(PSs$Tax=='Beta'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
-       else if(as.character(input$layernameInput) == "Gamma"){
-      perf2 <- PSs[ which(PSs$Tax=='Gamma'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
-       else if(as.character(input$layernameInput) == "TaxDist"){
-      perf2 <- PSs[ which(PSs$Tax=='TaxDist'),]
-      perf3 <-perf2[,2:3]
-      perf3[4,1] = "R<sup>2</sup>"#fix r2 label
-      print(perf3)}
+  #   else if(as.character(input$layernameInput) == "Richness"){
+   #   perf2 <- PSs[ which(PSs$Tax=='Richness'),]
+   #   perf3 <-perf2[,2:3]
+   #   perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+   #   print(perf3)}
+   #    else if(as.character(input$layernameInput) == "Abundance"){
+  #    perf2 <- PSs[ which(PSs$Tax=='Abundance'),]
+  #    perf3 <-perf2[,2:3]
+  #    perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+  #    print(perf3)}
+   #    else if(as.character(input$layernameInput) == "Evenness"){
+  #    perf2 <- PSs[ which(PSs$Tax=='Evenness'),]
+  #    perf3 <-perf2[,2:3]
+  #    perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+  #    print(perf3)}
+  #     else if(as.character(input$layernameInput) == "Alpha"){
+  #    perf2 <- PSs[ which(PSs$Tax=='Alpha'),]
+  #    perf3 <-perf2[,2:3]
+  #    perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+  #    print(perf3)}
+  #     else if(as.character(input$layernameInput) == "Beta"){
+  #    perf2 <- PSs[ which(PSs$Tax=='Beta'),]
+   #   perf3 <-perf2[,2:3]
+  #    perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+   #   print(perf3)}
+   #    else if(as.character(input$layernameInput) == "Gamma"){
+    #  perf2 <- PSs[ which(PSs$Tax=='Gamma'),]
+   #   perf3 <-perf2[,2:3]
+   #   perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+   #   print(perf3)}
+   #    else if(as.character(input$layernameInput) == "TaxDist"){
+   #   perf2 <- PSs[ which(PSs$Tax=='TaxDist'),]
+   #   perf3 <-perf2[,2:3]
+   #   perf3[4,1] = "R<sup>2</sup>"#fix r2 label
+   #   print(perf3)}
   else if(as.character(input$layernameInput) == "Assemblages"){
       perf2 <- PSas[ which(PSas$Tax=='Assemblages'),]
       perf3 <-perf2[,2:3]
@@ -2119,62 +2147,62 @@ perf() %>%
   row_spec(0, bold = T)  %>%
   column_spec(1, width = "7cm") %>%
   column_spec(2,width = "7cm")} 
-  else  if(as.character(input$layernameInput) == "Richness"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")} 
-    else  if(as.character(input$layernameInput) == "Abundance"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")} 
-    else  if(as.character(input$layernameInput) == "Evenness"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")} 
-     else  if(as.character(input$layernameInput) == "Alpha"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")}
-      else  if(as.character(input$layernameInput) == "Beta"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")}
-  else  if(as.character(input$layernameInput) == "Gamma"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")} 
-   else  if(as.character(input$layernameInput) == "TaxDist"){
-perf() %>% 
-  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
-                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
-  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
-  row_spec(0, bold = T)  %>%
-  column_spec(1, width = "7cm") %>%
-  column_spec(2,width = "7cm")}
+#  else  if(as.character(input$layernameInput) == "Richness"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+#  column_spec(1, width = "7cm") %>%
+#  column_spec(2,width = "7cm")} 
+#    else  if(as.character(input$layernameInput) == "Abundance"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+#  column_spec(1, width = "7cm") %>%
+#  column_spec(2,width = "7cm")} 
+#    else  if(as.character(input$layernameInput) == "Evenness"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+#  column_spec(1, width = "7cm") %>%
+#  column_spec(2,width = "7cm")} 
+#     else  if(as.character(input$layernameInput) == "Alpha"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+#  column_spec(1, width = "7cm") %>%
+#  column_spec(2,width = "7cm")}
+#      else  if(as.character(input$layernameInput) == "Beta"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+#  column_spec(1, width = "7cm") %>%
+#  column_spec(2,width = "7cm")}
+#  else  if(as.character(input$layernameInput) == "Gamma"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+#  column_spec(1, width = "7cm") %>%
+#  column_spec(2,width = "7cm")} 
+#   else  if(as.character(input$layernameInput) == "TaxDist"){
+#perf() %>% 
+#  kbl('html',digits = 2,escape = FALSE,col.names = c('Statistic','Mean \u00B1 SD'),
+#                caption='Mean and standard deviation (SD) of model validation statistics over 10 random split sample runs; N= Number of observations, RMSE = Root Mean Squared Error') %>%
+#  kable_classic(full_width = F, position = "left",fixed_thead = T) %>%
+#  row_spec(0, bold = T)  %>%
+# column_spec(1, width = "7cm") %>%
+ # column_spec(2,width = "7cm")}
 else if(as.character(input$layernameInput) == "Assemblages"){
   perf() %>%  kbl('html',digits = 2,escape = FALSE, col.names = c('Statistic','Mean \u00B1 SD'),
       caption='Overall model performance') %>%
@@ -2299,13 +2327,13 @@ else if(as.character(input$layernameInput) == "Crepidula_fornicata"){list(h3("Ob
 else if(as.character(input$layernameInput) == "Goniadella_gracilis"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
 else if(as.character(input$layernameInput) == "Abra_alba"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
 else if(as.character(input$layernameInput) == "Lagis_koreni"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-else if(as.character(input$layernameInput) == "Richness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-  else if(as.character(input$layernameInput) == "Abundance"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
-   else if(as.character(input$layernameInput) == "Evenness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
-     else if(as.character(input$layernameInput) == "Alpha"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-       else if(as.character(input$layernameInput) == "Beta"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-       else if(as.character(input$layernameInput) == "Gamma"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
-       else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+#else if(as.character(input$layernameInput) == "Richness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+ # else if(as.character(input$layernameInput) == "Abundance"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
+#   else if(as.character(input$layernameInput) == "Evenness"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))} 
+#     else if(as.character(input$layernameInput) == "Alpha"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+#       else if(as.character(input$layernameInput) == "Beta"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+#       else if(as.character(input$layernameInput) == "Gamma"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
+ #      else if(as.character(input$layernameInput) == "TaxDist"){list(h3("Observed vs predicted values",style=c("color:#044D94")),p("The plot showing predicted against observed values illustrates both statistics, where the linear fit through the scatterplot visualises R2, whilst the spreads of the points around the fit corresponds to the RMSE."))}
 else if(as.character(input$layernameInput) == "Assemblages"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
   else if(as.character(input$layernameInput) == "Response"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
     else if(as.character(input$layernameInput) == "Effects"){list(h3("Confusion Matrix",style=c("color:#044D94")),p("The confusion matrix plot summarises the values for each predicted and observed class combination and the user’s and producer’s accuracies for each class from confusion matrices from each of the 10 model runs as boxplots, illustrating the variability introduced into accuracy metrics by using different subsets of data."))}
@@ -2353,27 +2381,27 @@ predvsobs <- reactive({
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Lagis_koreni'),]
       print(predvsobs2)}
-   else if(as.character(input$layernameInput) == "Richness"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Richness'),]
-      print(predvsobs2)}
-     else if(as.character(input$layernameInput) == "Abundance"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Abundance'),]
-      print(predvsobs2)}
-     else if(as.character(input$layernameInput) == "Evenness"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Evenness'),]
-      print(predvsobs2)}
-  else if(as.character(input$layernameInput) == "Alpha"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Alpha'),]
-      print(predvsobs2)}
-  else if(as.character(input$layernameInput) == "Beta"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Beta'),]
-      print(predvsobs2)}
-  else if(as.character(input$layernameInput) == "Gamma"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Gamma'),]
-      print(predvsobs2)}
-   else if(as.character(input$layernameInput) == "TaxDist"){
-      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='TaxDist'),]
-      print(predvsobs2)} 
+#   else if(as.character(input$layernameInput) == "Richness"){
+#      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Richness'),]
+#      print(predvsobs2)}
+#     else if(as.character(input$layernameInput) == "Abundance"){
+#      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Abundance'),]
+#      print(predvsobs2)}
+#     else if(as.character(input$layernameInput) == "Evenness"){
+#      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Evenness'),]
+#      print(predvsobs2)}
+#  else if(as.character(input$layernameInput) == "Alpha"){
+ #     predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Alpha'),]
+#      print(predvsobs2)}
+#  else if(as.character(input$layernameInput) == "Beta"){
+#      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Beta'),]
+#      print(predvsobs2)}
+#  else if(as.character(input$layernameInput) == "Gamma"){
+#      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='Gamma'),]
+#      print(predvsobs2)}
+#   else if(as.character(input$layernameInput) == "TaxDist"){
+#      predvsobs2 <- OvsPs[ which(OvsPs$Tax=='TaxDist'),]
+#      print(predvsobs2)} 
   })
 
 
@@ -2615,13 +2643,13 @@ else if(as.character(input$layernameInput) == "Crepidula_fornicata"){p("Variable
 else if(as.character(input$layernameInput) == "Goniadella_gracilis"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")} 
 else if(as.character(input$layernameInput) == "Abra_alba"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 else if(as.character(input$layernameInput) == "Lagis_koreni"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-  else if(as.character(input$layernameInput) == "Richness"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-    else if(as.character(input$layernameInput) == "Abundance"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-    else if(as.character(input$layernameInput) == "Evenness"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-      else if(as.character(input$layernameInput) == "Alpha"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-      else if(as.character(input$layernameInput) == "Beta"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-        else if(as.character(input$layernameInput) == "Gamma"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
-        else if(as.character(input$layernameInput) == "TaxDist"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+ # else if(as.character(input$layernameInput) == "Richness"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+#    else if(as.character(input$layernameInput) == "Abundance"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+#    else if(as.character(input$layernameInput) == "Evenness"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+#      else if(as.character(input$layernameInput) == "Alpha"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+ #     else if(as.character(input$layernameInput) == "Beta"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+ #       else if(as.character(input$layernameInput) == "Gamma"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
+ #       else if(as.character(input$layernameInput) == "TaxDist"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the percent increase in ",tags$a(href="https://en.wikipedia.org/wiki/Mean_squared_error", "mean squared error (% MSE)"), " when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
 else if(as.character(input$layernameInput) == "Assemblages"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the mean decrease in the ",tags$a(href="https://en.wikipedia.org/wiki/Gini_coefficient", "Gini coefficient"), "when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
   
   else if(as.character(input$layernameInput) == "Response"){p("Variable importance is a measure of how much information the predictor variable contributes to the model, in the presence of all of the other variables and is calculated by Monte Carlo permutation inside the model algorithm. The importance is presented as the mean decrease in the ",tags$a(href="https://en.wikipedia.org/wiki/Gini_coefficient", "Gini coefficient"), "when a variable is permuted. The bars correspond to the mean model variable importance and error bars show standard error.")}
@@ -2664,27 +2692,27 @@ imppl <- reactive({
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       imppl2 <- VIs[ which(VIs$Tax=='Lagis_koreni'),]
       print(imppl2)}
-     else if(as.character(input$layernameInput) == "Richness"){
-      imppl2 <- VIs[ which(VIs$Tax=='Richness'),]
-      print(imppl2)}
-       else if(as.character(input$layernameInput) == "Abundance"){
-      imppl2 <- VIs[ which(VIs$Tax=='Abundance'),]
-      print(imppl2)}
-       else if(as.character(input$layernameInput) == "Evenness"){
-      imppl2 <- VIs[ which(VIs$Tax=='Evenness'),]
-      print(imppl2)}
-       else if(as.character(input$layernameInput) == "Alpha"){
-      imppl2 <- VIs[ which(VIs$Tax=='Alpha'),]
-      print(imppl2)}
-       else if(as.character(input$layernameInput) == "Beta"){
-      imppl2 <- VIs[ which(VIs$Tax=='Beta'),]
-      print(imppl2)}
-       else if(as.character(input$layernameInput) == "Gamma"){
-      imppl2 <- VIs[ which(VIs$Tax=='Gamma'),]
-      print(imppl2)}
-       else if(as.character(input$layernameInput) == "TaxDist"){
-      imppl2 <- VIs[ which(VIs$Tax=='TaxDist'),]
-      print(imppl2)}
+ #    else if(as.character(input$layernameInput) == "Richness"){
+ #     imppl2 <- VIs[ which(VIs$Tax=='Richness'),]
+ #     print(imppl2)}
+ #      else if(as.character(input$layernameInput) == "Abundance"){
+ #     imppl2 <- VIs[ which(VIs$Tax=='Abundance'),]
+ #     print(imppl2)}
+ #      else if(as.character(input$layernameInput) == "Evenness"){
+ #     imppl2 <- VIs[ which(VIs$Tax=='Evenness'),]
+ #     print(imppl2)}
+ #      else if(as.character(input$layernameInput) == "Alpha"){
+ #     imppl2 <- VIs[ which(VIs$Tax=='Alpha'),]
+ #     print(imppl2)}
+ #      else if(as.character(input$layernameInput) == "Beta"){
+  #    imppl2 <- VIs[ which(VIs$Tax=='Beta'),]
+  #    print(imppl2)}
+  #     else if(as.character(input$layernameInput) == "Gamma"){
+  #    imppl2 <- VIs[ which(VIs$Tax=='Gamma'),]
+  #    print(imppl2)}
+  #     else if(as.character(input$layernameInput) == "TaxDist"){
+  #    imppl2 <- VIs[ which(VIs$Tax=='TaxDist'),]
+  #    print(imppl2)}
   else if(as.character(input$layernameInput) == "Assemblages"){
       imppl2 <- VIs[ which(VIs$Tax=='Assemblages'),]
       print(imppl2)}
@@ -2739,27 +2767,27 @@ req(input$layernameInput)## this will suppress error messages before a selection
     else if(as.character(input$layernameInput) == "Lagis_koreni"){
       ylab_react2 <- "% Increase in MSE"
       print(ylab_react2)}
-      else if(as.character(input$layernameInput) == "Richness"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
-        else if(as.character(input$layernameInput) == "Abundance"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
-        else if(as.character(input$layernameInput) == "Evenness"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
-        else if(as.character(input$layernameInput) == "Alpha"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
-        else if(as.character(input$layernameInput) == "Beta"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
-        else if(as.character(input$layernameInput) == "Gamma"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
-        else if(as.character(input$layernameInput) == "TaxDist"){
-      ylab_react2 <- "% Increase in MSE"
-      print(ylab_react2)}
+  #    else if(as.character(input$layernameInput) == "Richness"){
+   #   ylab_react2 <- "% Increase in MSE"
+   #   print(ylab_react2)}
+   #     else if(as.character(input$layernameInput) == "Abundance"){
+   #   ylab_react2 <- "% Increase in MSE"
+   #   print(ylab_react2)}
+   #     else if(as.character(input$layernameInput) == "Evenness"){
+   #   ylab_react2 <- "% Increase in MSE"
+   #   print(ylab_react2)}
+  #      else if(as.character(input$layernameInput) == "Alpha"){
+  #    ylab_react2 <- "% Increase in MSE"
+   #   print(ylab_react2)}
+  #      else if(as.character(input$layernameInput) == "Beta"){
+  #    ylab_react2 <- "% Increase in MSE"
+  #    print(ylab_react2)}
+  #      else if(as.character(input$layernameInput) == "Gamma"){
+   #   ylab_react2 <- "% Increase in MSE"
+   #   print(ylab_react2)}
+   #     else if(as.character(input$layernameInput) == "TaxDist"){
+   #   ylab_react2 <- "% Increase in MSE"
+   #   print(ylab_react2)}
 })
 ##################
 
@@ -2819,20 +2847,20 @@ else if(as.character(input$layernameInput) == "Abra_alba"){
 list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}      
 else if(as.character(input$layernameInput) == "Lagis_koreni"){
 list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
-   else if(as.character(input$layernameInput) == "Richness"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")} 
-      else if(as.character(input$layernameInput) == "Abundance"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
-      else if(as.character(input$layernameInput) == "Evenness"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
-         else if(as.character(input$layernameInput) == "Alpha"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
-         else if(as.character(input$layernameInput) == "Beta"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
-         else if(as.character(input$layernameInput) == "Gamma"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
-            else if(as.character(input$layernameInput) == "TaxDist"){
-list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+ #  else if(as.character(input$layernameInput) == "Richness"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")} 
+ #     else if(as.character(input$layernameInput) == "Abundance"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+ #     else if(as.character(input$layernameInput) == "Evenness"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+  #       else if(as.character(input$layernameInput) == "Alpha"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+ #        else if(as.character(input$layernameInput) == "Beta"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+   #      else if(as.character(input$layernameInput) == "Gamma"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
+ #           else if(as.character(input$layernameInput) == "TaxDist"){
+#list("Partial response curves show the effect each predictor variable has on the response variable. The curves are produced by varying each predictor variable over its range in turn and predicting with the model, whilst all other variables are held constant at their mean (or in the case of a factor variable, most common) value. Holding all other variables at a constant value is important to consider when interpreting the plots. Regression trees incorporate interaction structure, and hence the curves can look different at different values of the other variables. The plot should be interpreted as a general guide of the direction of influence for each predictor variable, but they are not directly indicative of a predictor variable’s overall effect. The plots show the response as a loess smooth fitted to predictions made at 100 evenly spaced values along the range of the predictor variable for each cross validation run (grey lines) and one smooth based on all cross-validation.")}
   })
 uiOutput("prc_text")   
 
@@ -2865,20 +2893,20 @@ cvRP.list <- reactive({
       cvRP.list2 <- response.plots[['Abra_alba']]}
    else if(as.character(input$layernameInput) == "Lagis_koreni"){
       cvRP.list2 <- response.plots[['Lagis_koreni']]}
-     else if(as.character(input$layernameInput) == "Richness"){
-      cvRP.list2 <- response.plots[['Richness']]}
-     else if(as.character(input$layernameInput) == "Abundance"){
-      cvRP.list2 <- response.plots[['Abundance']]}
-     else if(as.character(input$layernameInput) == "Evenness"){
-      cvRP.list2 <- response.plots[['Evenness']]}
-       else if(as.character(input$layernameInput) == "Alpha"){
-      cvRP.list2 <- response.plots[['Alpha']]}
-     else if(as.character(input$layernameInput) == "Beta"){
-      cvRP.list2 <- response.plots[['Beta']]}
-     else if(as.character(input$layernameInput) == "Gamma"){
-      cvRP.list2 <- response.plots[['Gamma']]}
-       else if(as.character(input$layernameInput) == "TaxDist"){
-      cvRP.list2 <- response.plots[['TaxDist']]}
+   #  else if(as.character(input$layernameInput) == "Richness"){
+    #  cvRP.list2 <- response.plots[['Richness']]}
+   #  else if(as.character(input$layernameInput) == "Abundance"){
+   #   cvRP.list2 <- response.plots[['Abundance']]}
+   #  else if(as.character(input$layernameInput) == "Evenness"){
+   #   cvRP.list2 <- response.plots[['Evenness']]}
+   #    else if(as.character(input$layernameInput) == "Alpha"){
+   #   cvRP.list2 <- response.plots[['Alpha']]}
+   #  else if(as.character(input$layernameInput) == "Beta"){
+   #   cvRP.list2 <- response.plots[['Beta']]}
+    # else if(as.character(input$layernameInput) == "Gamma"){
+    #  cvRP.list2 <- response.plots[['Gamma']]}
+    #   else if(as.character(input$layernameInput) == "TaxDist"){
+    #  cvRP.list2 <- response.plots[['TaxDist']]}
 else if(as.character(input$layernameInput) == "Assemblages"){
       cvRP.list2 <- response.plots[['assemblage']]}
   else if(as.character(input$layernameInput) == "Response"){
@@ -2922,13 +2950,13 @@ else if (as.character(input$layernameInput) == "Goniadella_gracilis"){colorBin(p
 else if (as.character(input$layernameInput) == "Crepidula_fornicata"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 else if (as.character(input$layernameInput) == "Assemblages"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")} 
-else if (as.character(input$layernameInput) == "Richness"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-else if (as.character(input$layernameInput) == "Abundance"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-else if (as.character(input$layernameInput) == "Evenness"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}    
-else if (as.character(input$layernameInput) == "Alpha"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-else if (as.character(input$layernameInput) == "Beta"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-else if (as.character(input$layernameInput) == "Gamma"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
-else if (as.character(input$layernameInput) == "TaxDist"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "Richness"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "Abundance"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "Evenness"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}    
+#else if (as.character(input$layernameInput) == "Alpha"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "Beta"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "Gamma"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
+#else if (as.character(input$layernameInput) == "TaxDist"){colorBin(palette = brewer.pal(n = 5, name = "Oranges"), bins = c(0,0.10,0.25,0.5,1), domain = c(0,0.10,0.25,0.5,1),na.color = "transparent")}
 #else if (as.character(input$layernameInput) == "Biodiversity_Cluster"){colours <- c('#7fbf7b','#af8dc3','#e7d4e8','#d9f0d3','#1b7837','#762a83')}
 else if (as.character(input$layernameInput) == "Response"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")}
     else if (as.character(input$layernameInput) == "Effects"){colorBin(palette = brewer.pal(n = 6, name = "Oranges"), bins = c(0,0.2,0.4,0.6,0.8,1.0), domain = c(0,0.2,0.4,0.6,0.8,1.0),na.color = "transparent")}
@@ -2972,13 +3000,13 @@ else if (as.character(input$layernameInput) == "Goniadella_gracilis"){print("Gon
 else if (as.character(input$layernameInput) == "Crepidula_fornicata"){print("Crepidula fornicata CV")}
 else if (as.character(input$layernameInput) == "Modiolus_modiolus"){print("Modiolus modiolus CV")}
 else if (as.character(input$layernameInput) == "Assemblages"){print("Assemblages Confidence")} 
-else if (as.character(input$layernameInput) == "Richness"){print("Richness CV")} 
-else if (as.character(input$layernameInput) == "Abundance"){print("Abundance CV")} 
-  else if (as.character(input$layernameInput) == "Evenness"){print("Evenness CV")}
-  else if (as.character(input$layernameInput) == "Alpha"){print("Alpha CV")}
-  else if (as.character(input$layernameInput) == "Beta"){print("Beta CV")}
-  else if (as.character(input$layernameInput) == "Gamma"){print("Gamma CV")}
-  else if (as.character(input$layernameInput) == "TaxDist"){print("TaxDist CV")}
+#else if (as.character(input$layernameInput) == "Richness"){print("Richness CV")} 
+#else if (as.character(input$layernameInput) == "Abundance"){print("Abundance CV")} 
+#  else if (as.character(input$layernameInput) == "Evenness"){print("Evenness CV")}
+#  else if (as.character(input$layernameInput) == "Alpha"){print("Alpha CV")}
+#  else if (as.character(input$layernameInput) == "Beta"){print("Beta CV")}
+ # else if (as.character(input$layernameInput) == "Gamma"){print("Gamma CV")}
+ # else if (as.character(input$layernameInput) == "TaxDist"){print("TaxDist CV")}
       })
 
 
